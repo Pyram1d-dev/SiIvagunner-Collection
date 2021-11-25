@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="monsterChristmas_bean.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Monster Right note0000" x="0" y="0" width="640" height="640" frameX="-46" frameY="-75" frameWidth="484" frameHeight="711"/>
+	<SubTexture name="Monster left note0000" x="0" y="0" width="640" height="640" frameX="-46" frameY="-75" frameWidth="484" frameHeight="711"/>
+	<SubTexture name="monster down0000" x="0" y="0" width="640" height="640" frameX="-46" frameY="-75" frameWidth="484" frameHeight="711"/>
+	<SubTexture name="monster idle0000" x="0" y="0" width="640" height="640" frameX="-46" frameY="-75" frameWidth="484" frameHeight="711"/>
+	<SubTexture name="monster up note0000" x="0" y="0" width="640" height="640" frameX="-46" frameY="-75" frameWidth="484" frameHeight="711"/>
+</TextureAtlas>

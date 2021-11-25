@@ -1,0 +1,7 @@
+idle 0 0
+singUP -6 50
+singRIGHT 0 27
+singLEFT -10 10
+singDOWN 0 -30
+stare 0 0
+meow 0 0

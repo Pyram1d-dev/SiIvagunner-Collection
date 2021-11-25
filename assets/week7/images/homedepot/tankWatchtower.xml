@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="tankWatchtower.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="watchtower gradient color instance 10000" x="20" y="20" width="318" height="684" frameX="0" frameY="-3" frameWidth="318" frameHeight="690"/>
+	<SubTexture name="watchtower gradient color instance 10001" x="20" y="20" width="318" height="684" frameX="0" frameY="-3" frameWidth="318" frameHeight="690"/>
+	<SubTexture name="watchtower gradient color instance 10002" x="353" y="20" width="315" height="687" frameX="-2" frameY="-2" frameWidth="318" frameHeight="690"/>
+	<SubTexture name="watchtower gradient color instance 10003" x="353" y="20" width="315" height="687" frameX="-2" frameY="-2" frameWidth="318" frameHeight="690"/>
+	<SubTexture name="watchtower gradient color instance 10004" x="683" y="20" width="312" height="690" frameX="-3" frameY="0" frameWidth="318" frameHeight="690"/>
+	<SubTexture name="watchtower gradient color instance 10005" x="683" y="20" width="312" height="690" frameX="-3" frameY="0" frameWidth="318" frameHeight="690"/>
+	<SubTexture name="watchtower gradient color instance 10006" x="683" y="20" width="312" height="690" frameX="-3" frameY="0" frameWidth="318" frameHeight="690"/>
+	<SubTexture name="watchtower gradient color instance 10007" x="683" y="20" width="312" height="690" frameX="-3" frameY="0" frameWidth="318" frameHeight="690"/>
+	<SubTexture name="watchtower gradient color instance 10008" x="683" y="20" width="312" height="690" frameX="-3" frameY="0" frameWidth="318" frameHeight="690"/>
+	<SubTexture name="watchtower gradient color instance 10009" x="683" y="20" width="312" height="690" frameX="-3" frameY="0" frameWidth="318" frameHeight="690"/>
+	<SubTexture name="watchtower gradient color instance 10010" x="683" y="20" width="312" height="690" frameX="-3" frameY="0" frameWidth="318" frameHeight="690"/>
+	<SubTexture name="watchtower gradient color instance 10011" x="683" y="20" width="312" height="690" frameX="-3" frameY="0" frameWidth="318" frameHeight="690"/>
+	<SubTexture name="watchtower gradient color instance 10012" x="683" y="20" width="312" height="690" frameX="-3" frameY="0" frameWidth="318" frameHeight="690"/>
+	<SubTexture name="watchtower gradient color instance 10013" x="683" y="20" width="312" height="690" frameX="-3" frameY="0" frameWidth="318" frameHeight="690"/>
+</TextureAtlas>
