@@ -1247,6 +1247,7 @@ class PlayState extends MusicBeatState
 					camGame.zoom = 1.05;
 					camFollow.setPosition(dad.getMidpoint().x + 50, dad.getMidpoint().y - 100);
 					camGame.focusOn(FlxPoint.get(camFollow.getPosition().x, camFollow.getPosition().y - 50));
+
 					if (FlxG.random.bool(65))
 					{
 						add(blacc);
@@ -2322,13 +2323,20 @@ class PlayState extends MusicBeatState
 			skipIntroText.scrollFactor.set();
 			skipIntroText.screenCenter(X);
 			skipIntroText.updateHitbox();
+			skipIntroText.antialiasing = FlxG.save.data.antialiasing;
 			if (FlxG.save.data.skipIntro)
+			{
 				add(skipIntroText);
-			new FlxTimer().start(2, function(tmr:FlxTimer) {
-				FlxTween.tween(skipIntroText, {alpha: 0}, 1, {onComplete: function(twn:FlxTween) {
-					remove(skipIntroText);
-				}});
-			});
+				new FlxTimer().start(2, function(tmr:FlxTimer)
+				{
+					FlxTween.tween(skipIntroText, {alpha: 0}, 1, {
+						onComplete: function(twn:FlxTween)
+						{
+							remove(skipIntroText);
+						}
+					});
+				});
+			}
 			skipTime = notes.members[0].strumTime - 1500;
 		}
 		for (i in 0...unspawnNotes.length)
@@ -2346,21 +2354,8 @@ class PlayState extends MusicBeatState
 		Conductor.changeBPM(songData.bpm);
 		curSong = songData.altSong != null ? songData.altSong : songData.song;
 
-		var copyrightList = CoolUtil.coolTextFile(Paths.txt("data/copyrightedSonglist"));
-		var copyrighted = "";
-		if (FlxG.save.data.noCopyright == 1) // TODO: GET GOOD AT FL LMAO
-		{
-			for (i in copyrightList)
-			{
-				var data = i.split(":");
-				if (SONG.song == data[0])
-					copyrighted = data[1];
-			}
-			trace(copyrighted);
-		}
-
 		if (SONG.needsVoices)
-			vocals = new FlxSound().loadEmbedded(Paths.voices(curSong, (copyrighted == "vocals" || copyrighted == "both")));
+			vocals = new FlxSound().loadEmbedded(Paths.voices(curSong));
 		else
 			vocals = new FlxSound();
 
@@ -2373,7 +2368,7 @@ class PlayState extends MusicBeatState
 		FlxG.sound.list.add(vocals);
 
 		if (!paused)
-			FlxG.sound.playMusic(Paths.inst(curSong, (copyrighted == "inst" || copyrighted == "both")), 1, false);
+			FlxG.sound.playMusic(Paths.inst(curSong), 1, false);
 
 		FlxG.sound.music.onComplete = endSong;
 		FlxG.sound.music.pause();
@@ -5953,10 +5948,10 @@ class PlayState extends MusicBeatState
 				case "Bopeebo In-Game Version":
 					heyIsForHorses = curBeat % 8 == 7 && curBeat > 32 && curBeat < 128;
 				case "Bopeebo Newgrounds Build":
-					if ((inBetween(0, 24) && inBetween(120, 128)))
+					if ((inBetween(0, 26) && inBetween(120, 128)))
 						heyIsForHorses = curBeat % 8 == 7;
 					else
-						heyIsForHorses = curBeat % 16 == 7;
+						heyIsForHorses = curBeat % 16 == 15;
 			}
 			if (heyIsForHorses)
 			{
