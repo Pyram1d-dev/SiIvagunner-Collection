@@ -780,7 +780,16 @@ class PlayState extends MusicBeatState
 				gf.y += 300;
 			case 'whitty':
 				boyfriend.x -= 25;
-				gf.y += 200;
+				if (SONG.stage == "ballisticAlley")
+				{
+					gf.x += 15;
+					gf.y += 200;
+				}
+				else
+				{
+					gf.x -= 100;
+					gf.y += 50;
+				}
 			case 'militaryzone' | 'homedepot':
 				boyfriend.x += 195;
 		}
