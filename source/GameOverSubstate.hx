@@ -1,12 +1,12 @@
 package;
 
+import flixel.FlxG;
+import flixel.FlxObject;
 import flixel.math.FlxMath;
+import flixel.system.FlxSound;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
-import flixel.system.FlxSound;
-import flixel.FlxG;
-import flixel.FlxObject;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 
@@ -46,7 +46,8 @@ class GameOverSubstate extends MusicBeatSubstate
 			for (i in 1...temp.length)
 				p1final += '-' + temp[i];
 			p1 = p1final;
-			if (p1.split('-')[1] == 'car') // ALSO THERE'S LITERALLY A CHARACTER CALLED 'bf-car-christmas' SO I HAVE TO DO THIS TERRIBLENESS
+			if (p1.split('-')[1] == 'car') // ALSO THERE'S LITERALLY A CHARACTER CALLED 'bf-car-christmas' SO I HAVE TO DO THIS TERRIBLENESS... Is what I say but I could've literally just checked for that one case and reduced it to just "bf..."
+				// I DONT CARE THIS WORKS FUCK YOU
 			{
 				var temp:Array<String> = p1.split('-');
 				var p1final = temp[0];
@@ -210,8 +211,8 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished)
 		{
-			//trace(PlayState.storyWeek);
-			if (PlayState.storyWeek == 7)
+			// Death lines yeah baby
+			if (PlayState.SONG.player2.startsWith("tankman"))
 			{
 				trace('burh');
 				FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix), 0.2);

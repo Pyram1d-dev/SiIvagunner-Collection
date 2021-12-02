@@ -98,6 +98,19 @@ class PauseSubState extends MusicBeatSubstate
 		levelInfo.x = FlxG.width - (levelInfo.width + 20);
 		levelDifficulty.x = FlxG.width - (levelDifficulty.width + 20);
 
+		if (PlayState.isStoryMode)
+		{
+			var remainingSongs:FlxText = new FlxText(0, 0, 0, "", 32);
+			remainingSongs.text = "Song " + (PlayState.storyLength - PlayState.storyPlaylist.length + 1) + "/" + PlayState.storyLength;
+			remainingSongs.scrollFactor.set();
+			remainingSongs.setFormat(Paths.font("vcr.ttf"), 32);
+			remainingSongs.updateHitbox();
+			remainingSongs.setPosition(FlxG.width - remainingSongs.width - 15, FlxG.height);
+			remainingSongs.alpha = 0;
+			add(remainingSongs);
+			FlxTween.tween(remainingSongs, {alpha: 1, y: FlxG.height - remainingSongs.height - 20}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.7});
+		}
+
 		FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
 		FlxTween.tween(levelInfo, {alpha: 1, y: 20}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
 		FlxTween.tween(levelDifficulty, {alpha: 1, y: levelDifficulty.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.5});

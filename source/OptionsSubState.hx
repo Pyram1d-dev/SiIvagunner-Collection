@@ -92,6 +92,8 @@ class OptionsSubState extends MusicBeatSubstate
 			new PlayEnemyOption("Play as the enemy and beat the shit outta bf!"),
 			new ShortenNamesOption("Abbreviate the names of songs in freeplay. (Reopen Freeplay to take effect)"),
 			new FreeplayCutscenesOption("Play story mode cutscenes in freeplay."),
+			// STILL WORKIN ON IT SORRY FAM
+			//new DisableCopyrightOption("Protect yourself from potentially copyrighted content."),
 			new SupportSiIvagunnerButton("Check out the SiIvagunner channel!")
 		])
 	];

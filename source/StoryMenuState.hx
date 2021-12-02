@@ -136,7 +136,14 @@ class StoryMenuState extends MusicBeatState
 			['Lo-Fight', 'Overhead', 'Ballistic'],
 			['Wocky', 'Beathoven'],
 			['Madness'],
-			['Fresh Itch io Build', 'Winter Horrorland Short Version']
+			['Fresh Itch io Build', 'Winter Horrorland Short Version'],
+			[
+				'Smooth Sherbet Alpha Mix',
+				'Dance Inferno',
+				'Heat In Your Hand Beta Mix',
+				'Konga Conga Kappa Original Mix',
+				'The Fab Fairies Dance'
+			]
 		];
 	}
 
@@ -150,7 +157,8 @@ class StoryMenuState extends MusicBeatState
 
 	var weekCharacters:Array<Dynamic> = [
 		['', 'bf', 'gf'], ['dad', 'bf', 'gf'], ['spooky', 'bf', 'gf'], ['pico', 'bf', 'gf'], ['mom', 'bf', 'gf'], ['parents-christmas', 'bf', 'gf'],
-		['senpai', 'bf', 'gf'], ['tankman', 'bf', 'gf'], ['whitty', 'bf', 'gf'], ['kapi', '', ''], ['trickyMask', 'bf', 'gf'], ['', 'bf', '']];
+		['senpai', 'bf', 'gf'], ['tankman', 'bf', 'gf'], ['whitty', 'bf', 'gf'], ['kapi', '', ''], ['trickyMask', 'bf', 'gf'], ['', 'bf', 'gf'],
+		['', 'bf', 'gf']];
 
 	var weekNames:Array<String> = CoolUtil.coolTextFile(Paths.txt('data/weekNames'));
 
@@ -482,6 +490,7 @@ class StoryMenuState extends MusicBeatState
 			}
 
 			PlayState.storyPlaylist = weekData()[curWeek];
+			PlayState.storyLength = PlayState.storyPlaylist.length;
 			PlayState.isStoryMode = true;
 			selectedWeek = true;
 

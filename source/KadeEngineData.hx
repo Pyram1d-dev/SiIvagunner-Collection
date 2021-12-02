@@ -124,6 +124,9 @@ class KadeEngineData
 		if (FlxG.save.data.freeplayCutscenes == null)
 			FlxG.save.data.freeplayCutscenes = false;
 
+		if (FlxG.save.data.noCopyright == null)
+			FlxG.save.data.noCopyright = 0;
+
 		if (FlxG.save.data.color == null)
 			FlxG.save.data.color = true;
 

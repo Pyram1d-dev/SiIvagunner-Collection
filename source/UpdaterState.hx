@@ -48,10 +48,7 @@ class UpdaterState extends FlxState
 		}, 0);
 
 		#if cpp
-		new FlxTimer().start(5, function(tmr:FlxTimer)
-		{
-			Thread.create(requestUpdateInfo);
-		});
+		Thread.create(requestUpdateInfo);
 		#end
     }
 
@@ -60,7 +57,7 @@ class UpdaterState extends FlxState
 		// Get current version of Kade Engine
 		// No lmao
 
-		var http = new haxe.Http("https://raw.githubusercontent.com/KadeDev/Kade-Engine/master/version.downloadMe");
+		var http = new haxe.Http("https://raw.githubusercontent.com/Pyram1d-dev/SiIvagunner-Collection/main/version.downloadMe");
 		var returnedData:Array<String> = [];
 
 		http.onData = function(data:String)
@@ -69,9 +66,9 @@ class UpdaterState extends FlxState
                 return;
 			returnedData[0] = data.substring(0, data.indexOf(';'));
 			returnedData[1] = data.substring(data.indexOf('-'), data.length);
-			if (!MainMenuState.kadeEngineVer.contains(returnedData[0].trim()) && !OutdatedSubState.leftState)
+			if (!MainMenuState.gameVer.contains(returnedData[0].trim()) && !OutdatedSubState.leftState)
 			{
-				trace('outdated lmao! ' + returnedData[0] + ' != ' + MainMenuState.kadeEngineVer);
+				trace('outdated lmao! ' + returnedData[0] + ' != ' + MainMenuState.gameVer);
 				OutdatedSubState.needVer = returnedData[0];
 				OutdatedSubState.currChanges = returnedData[1];
 				FlxG.switchState(new OutdatedSubState());

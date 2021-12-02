@@ -386,9 +386,9 @@ class TitleState extends MusicBeatState
 				else
 				{
 					#if cpp
-					// if (!OutdatedSubState.leftState)
-					// 	FlxG.switchState(new UpdaterState());
-					// else
+					if (!OutdatedSubState.leftState)
+						FlxG.switchState(new UpdaterState());
+					else
 						FlxG.switchState(new MainMenuState());
 					#else
 					FlxG.switchState(new MainMenuState());

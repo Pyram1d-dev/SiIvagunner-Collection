@@ -45,7 +45,8 @@ class FreeplayState extends MusicBeatState
 
 	var weekColors:Array<FlxColor> = [
 		FlxColor.WHITE, FlxColor.PURPLE, FlxColor.ORANGE, FlxColor.LIME, FlxColor.MAGENTA, FlxColor.PURPLE,
-		FlxColor.YELLOW, FlxColor.ORANGE, FlxColor.RED, FlxColor.PINK, 0xFF5E0000, FlxColor.BLACK
+		FlxColor.YELLOW, FlxColor.ORANGE, FlxColor.RED,
+		FlxColor.PINK, 0xFF5E0000, FlxColor.GRAY, FlxColor.BLACK
 	];
 
 	var scoreText:FlxText;
@@ -100,6 +101,10 @@ class FreeplayState extends MusicBeatState
 		if (!fromSong)
 			curSelected = 0;
 		var initSonglist = CoolUtil.coolTextFile(Paths.txt('data/freeplaySonglist'));
+		var copyrightedSonglist = CoolUtil.coolTextFile(Paths.txt('data/copyrightedSonglist'));
+		var h:Array<String> = [];
+		for (v in copyrightedSonglist)
+			h.push(v.split(":")[0]);
 
 		// var diffList = "";
 
@@ -109,7 +114,10 @@ class FreeplayState extends MusicBeatState
 		for (i in 0...initSonglist.length)
 		{
 			var data:Array<String> = initSonglist[i].split(':');
-			if (week != null && Std.parseInt(data[2]) != week)
+			var inCategory = Std.parseInt(data[data.length - 1]) != week;
+			if (FlxG.save.data.noCopyright == 2 && h.contains(data[0]))
+				continue;
+			if (week != null && inCategory)
 				continue;
 			var meta = new SongMetadata(data[0], Std.parseInt(data[2]), data[1]);
 			var format = StringTools.replace(meta.songName, " ", "-");
@@ -173,7 +181,8 @@ class FreeplayState extends MusicBeatState
 				var converter:Map<String, String> = [
 					"betamix" => "BM", "in-gameversion" => "IGV", "extendedversion" => "EV", "vocalmix" => "VM", "ostversion" => "OST",
 					"alternateversion" => "AV", "itchiobuild" => "Itch Ver.", "poopversion" => "PV", "jpversion" => "JPV", "jpnversion" => "JPNV", "week4update" => "Updated",
-					"in-gamemix" => "IGM", "alterneeyyytivemix" => "eyyyy", "shortversion" => "SHORT", "newgroundsbuild" => "NG Ver"
+					"in-gamemix" => "IGM", "alterneeyyytivemix" => "eyyyy", "shortversion" => "SHORT",
+					"newgroundsbuild" => "NG Ver", "originalmix" => "OGM", "alphamix" => "AM"
 				]; // Yeah, I used a map. I could just abbreviate shit but sometimes the length of the title is different and I'd like entries to be something specific so instead of mixing those two I created more work for myself lmao
 				var startIndex = (temp[temp.length - 3] == 'itch' || temp[temp.length - 3] == 'week') ? 3 : 2;
 				var h:String = ""; // h
@@ -231,14 +240,16 @@ class FreeplayState extends MusicBeatState
 		grpSongs.clear();
 		curSelected = curSection;
 		var weekNames = [
-			"Misc Songs", "Week One", "Week Two", "Week Three", "Week Four", "Week Five", "Week Six", "Week Seven", "Back Alley Blitz", "Arcade Showdown", "CLOWN", "Unbeatable"
+			"Misc Songs", "Week One", "Week Two", "Week Three", "Week Four", "Week Five", "Week Six", "Week Seven", "Back Alley Blitz", "Arcade Showdown",
+			"CLOWN", "Extras", "Unbeatable"
 		];
 		var iconPenis = [
-			'gf', 'dad', 'spooky', 'pico', 'mom', 'parents-christmas', 'senpai', 'tankman', 'whitty', 'kapi', 'tricky', 'pain'
+			'gf', 'dad', 'spooky', 'pico', 'mom', 'parents-christmas', 'senpai', 'tankman', 'whitty', 'kapi', 'tricky', 'face', 'pain'
 		];
 		var initSonglist = CoolUtil.coolTextFile(Paths.txt('data/freeplaySonglist'));
 		var data:Array<String> = initSonglist[initSonglist.length - 1].split(':');
-		for (i in 0...Std.parseInt(data[2]) + 1)
+		var numWeeks = Std.parseInt(data[data.length - 1]) + 1;
+		for (i in 0...numWeeks)
 		{
 			var sectionName = weekNames[i];
 			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, sectionName, true, false, true);
@@ -429,7 +440,7 @@ class FreeplayState extends MusicBeatState
 			FlxG.sound.music.volume -= 0.5 * FlxG.elapsed;
 		}
 
-		bg.color = FlxColor.interpolate(bg.color, (inSection) ? weekColors[songs[curSelected].week] : FlxColor.CYAN, 0.05);
+		bg.color = FlxColor.interpolate(bg.color, (inSection) ? weekColors[curSection] : FlxColor.CYAN, 0.05);
 
 		if (inSection)
 		{

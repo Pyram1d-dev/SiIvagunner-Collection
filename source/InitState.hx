@@ -30,6 +30,7 @@ class InitState extends FlxState
 		shittyText.autoSize = false;
 		shittyText.setFormat("VCR OSD Mono", 35, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
 		shittyText.text = "This mod contains some copyrighted content! (which should be under fair use but, y'know)\n\nThere will be copyright covers in the future. If you're worried about a strike, you can skip the song via the pause menu.\n\nPress ENTER to continue";
+		//shittyText.text = "This mod contains some copyrighted content! (which should be under fair use but, y'know)\n\nPress ENTER to continue\nPress SPACE to enable copyright covers\n\nBe warned, not all of the covers are finished yet. If you're worried about a strike, you can skip the song via the pause menu.";
 		shittyText.alignment = LEFT;
 		shittyText.updateHitbox();
 		shittyText.screenCenter(XY);
@@ -47,12 +48,12 @@ class InitState extends FlxState
 				FlxG.switchState(new TitleState());
 				transitioning = true;
 			}
-			if (FlxG.keys.justPressed.SPACE)
-			{
-				FlxG.save.data.noCopyright = 1;
-				FlxG.switchState(new TitleState());
-				transitioning = true;
-			}
+			// if (FlxG.keys.justPressed.SPACE)
+			// {
+			// 	FlxG.save.data.noCopyright = 1;
+			// 	FlxG.switchState(new TitleState());
+			// 	transitioning = true;
+			// }
 		}
 	}
 }

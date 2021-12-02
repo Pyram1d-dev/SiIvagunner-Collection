@@ -97,6 +97,7 @@ class PlayState extends MusicBeatState
 	public static var isStoryMode:Bool = false;
 	public static var storyWeek:Int = 0;
 	public static var storyPlaylist:Array<String> = [];
+	public static var storyLength:Int = 0;
 	public static var storyDifficulty:Int = 1;
 	public static var weekSong:Int = 0;
 	public static var weekScore:Int = 0;
@@ -1256,7 +1257,6 @@ class PlayState extends MusicBeatState
 					camGame.zoom = 1.05;
 					camFollow.setPosition(dad.getMidpoint().x + 50, dad.getMidpoint().y - 100);
 					camGame.focusOn(FlxPoint.get(camFollow.getPosition().x, camFollow.getPosition().y - 50));
-
 					if (FlxG.random.bool(65))
 					{
 						add(blacc);
@@ -1981,7 +1981,15 @@ class PlayState extends MusicBeatState
 
 		var swagCounter:Int = 0;
 
-		startTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
+		var timerSpeed = Conductor.crochet / 1000;
+
+		if (SONG.song == "The Fab Fairies Dance")
+		{
+			swagCounter = 4;
+			timerSpeed = 0.01;
+		}
+
+		startTimer = new FlxTimer().start(timerSpeed, function(tmr:FlxTimer)
 		{
 			if (dad.animation.curAnim.name.startsWith('idle') || dad.animation.curAnim.name.startsWith('dance'))
 				dad.dance();
@@ -2240,7 +2248,7 @@ class PlayState extends MusicBeatState
 		}
 		else if (!FlxG.save.data.ghost && songStarted && notes.length != 0)
 		{
-			ghostTapInput(null, data, ana);
+			checkBadInput(null, data, ana);
 			// noteMiss(data, null);
 		}
 	}
@@ -2334,18 +2342,12 @@ class PlayState extends MusicBeatState
 			skipIntroText.updateHitbox();
 			skipIntroText.antialiasing = FlxG.save.data.antialiasing;
 			if (FlxG.save.data.skipIntro)
-			{
 				add(skipIntroText);
-				new FlxTimer().start(2, function(tmr:FlxTimer)
-				{
-					FlxTween.tween(skipIntroText, {alpha: 0}, 1, {
-						onComplete: function(twn:FlxTween)
-						{
-							remove(skipIntroText);
-						}
-					});
-				});
-			}
+			new FlxTimer().start(2, function(tmr:FlxTimer) {
+				FlxTween.tween(skipIntroText, {alpha: 0}, 1, {onComplete: function(twn:FlxTween) {
+					remove(skipIntroText);
+				}});
+			});
 			skipTime = notes.members[0].strumTime - 1500;
 		}
 		for (i in 0...unspawnNotes.length)
@@ -2363,8 +2365,27 @@ class PlayState extends MusicBeatState
 		Conductor.changeBPM(songData.bpm);
 		curSong = songData.altSong != null ? songData.altSong : songData.song;
 
+		var copyrightList = CoolUtil.coolTextFile(Paths.txt("data/copyrightedSonglist"));
+		var copyrighted = "";
+		var coverVoices:Bool = false;
+		var coverInst:Bool = false;
+		if (FlxG.save.data.noCopyright == 1) // TODO: GET GOOD AT FL LMAO
+		{
+			for (i in copyrightList)
+			{
+				var data = i.split(":");
+				if (SONG.song == data[0])
+					copyrighted = data[1];
+			}
+			copyrighted = copyrighted.trim().toLowerCase();
+			coverVoices = (copyrighted == "vocals" || copyrighted == "both");
+			coverInst = (copyrighted == "inst" || copyrighted == "both");
+			trace(copyrighted, coverVoices, coverInst);
+		}
+		
+
 		if (SONG.needsVoices)
-			vocals = new FlxSound().loadEmbedded(Paths.voices(curSong));
+			vocals = new FlxSound().loadEmbedded(Paths.voices(curSong, coverVoices));
 		else
 			vocals = new FlxSound();
 
@@ -2377,7 +2398,7 @@ class PlayState extends MusicBeatState
 		FlxG.sound.list.add(vocals);
 
 		if (!paused)
-			FlxG.sound.playMusic(Paths.inst(curSong), 1, false);
+			FlxG.sound.playMusic(Paths.inst(curSong, coverInst), 1, false);
 
 		FlxG.sound.music.onComplete = endSong;
 		FlxG.sound.music.pause();
@@ -2438,15 +2459,69 @@ class PlayState extends MusicBeatState
 		#end
 		var daBeats:Int = 0; // Not exactly representative of 'daBeats' lol, just how much it has looped
 
+		var bpmChanges:Array<String> = [];
+
+		for (i in SONG.eventObjects)
+		{
+			if (i.type == "BPM Change" && i.position != 0)
+				bpmChanges.push(Std.string(i.position + ";" + i.value));
+		}
+
+		trace(bpmChanges);
+
+		var curBPM = SONG.bpm;
+
+		var lastBPMChange:Array<Float> = [0, 0];
+
 		for (section in noteData)
 		{
 			var coolSection:Int = Std.int(section.lengthInSteps / 4);
 
 			for (songNotes in section.sectionNotes)
 			{
+				var nearestBPMChange:Array<Float> = null;
+
+				if (bpmChanges.length > 0)
+				{
+					var rawData = bpmChanges[0].split(';');
+					var pos = Std.parseFloat(rawData[0]);
+					// Kade out here makin shit hard (but he cute tho so it don't matter :flushed:)
+					// Anyways convert BPM change beat to milliseconds in the song because we need it later
+					// It's just the inverse of getting the beat. Basically just do the ms -> bpm conversion backwards lol.
+					var bpmChangeMS = (pos - lastBPMChange[1]) * 1000 / (curBPM/60) + lastBPMChange[0];
+					nearestBPMChange = [pos, Std.parseFloat(rawData[1]), bpmChangeMS];
+				}
+
 				var daStrumTime:Float = songNotes[0] + FlxG.save.data.offset + songOffset;
 				if (daStrumTime < 0)
 					daStrumTime = 0;
+
+				// I'M SO FUCKIN SMART UGHHH I'M LIKE A REGULAR MEGAMIND OVER HERE
+				// slow maths (it took me a good hour lmao, I figured it out mostly thanks to how SNIFF handles BPM changes)
+				// I don't even know why I wanted to fix this lol barely anyone uses quantization. I suppose it was just for the challenge.
+				// Basically just adds the beat at which the BPM changed last and recounts the beats using the new BPM. If that makes sense.
+				// TODO: kinda fucky with a bunch of BPM changes. Solution: cry about it for now
+				var daNoteBeatStrum = lastBPMChange[1] + (curBPM/60) * (daStrumTime - lastBPMChange[0]) / 1000;
+
+				if (nearestBPMChange != null && nearestBPMChange[0] < daNoteBeatStrum)
+				{
+					trace("BPM CHANGE TO "
+						+ curBPM
+						+ " AT "
+						+ nearestBPMChange[2]
+						+ " MS (BEAT " 
+						// Just giving my shitty math a test. Works surprisingly well lmao.
+						+ (lastBPMChange[1] + (curBPM / 60) * (nearestBPMChange[2] - lastBPMChange[0]) / 1000)
+						+ ")");
+					bpmChanges.shift();
+					curBPM = nearestBPMChange[1];
+					lastBPMChange = [nearestBPMChange[2], nearestBPMChange[0]];
+					// Fix for BPM change (in case the change happened a few beats before this note is supposed to be hit)
+					daNoteBeatStrum = lastBPMChange[1] + (curBPM / 60) * (daStrumTime - lastBPMChange[0]) / 1000;
+				}
+
+				// Technically speaking with all this effort I put into BPM changes I could just calculate the strumTime changes in-game rather than in the chart editor but also fuck you
+
 				var daNoteData:Int = Std.int(songNotes[1]);
 
 				var gottaHitNote:Bool = section.mustHitSection;
@@ -2462,7 +2537,7 @@ class PlayState extends MusicBeatState
 				else
 					oldNote = null;
 
-				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote);
+				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote, false, false, false, daNoteBeatStrum);
 
 				if ((PlayStateChangeables.Optimize)
 					&& ((gottaHitNote && FlxG.save.data.playEnemy) || (!gottaHitNote && !FlxG.save.data.playEnemy)))
@@ -3201,6 +3276,42 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		if (updateFrame == 4)
+		{
+			TimingStruct.clearTimings();
+
+			var currentIndex = 0;
+			for (i in SONG.eventObjects)
+			{
+				if (i.type == "BPM Change")
+				{
+					var beat:Float = i.position;
+
+					var endBeat:Float = Math.POSITIVE_INFINITY;
+
+					var bpm = i.value;
+
+					TimingStruct.addTiming(beat, bpm, endBeat, 0); // offset in this case = start time since we don't have a offset
+
+					if (currentIndex != 0)
+					{
+						var data = TimingStruct.AllTimings[currentIndex - 1];
+						data.endBeat = beat;
+						data.length = (data.endBeat - data.startBeat) / (data.bpm / 60);
+						var step = ((60 / data.bpm) * 1000) / 4;
+						TimingStruct.AllTimings[currentIndex].startStep = Math.floor(((data.endBeat / (data.bpm / 60)) * 1000) / step);
+						TimingStruct.AllTimings[currentIndex].startTime = data.startTime + data.length;
+					}
+
+					currentIndex++;
+				}
+			}
+
+			updateFrame++;
+		}
+		else if (updateFrame != 5)
+			updateFrame++;
+
 		if (skipTime != 0)
 		{
 			if (Conductor.songPosition < skipTime && FlxG.keys.justPressed.SPACE)
@@ -3230,8 +3341,8 @@ class PlayState extends MusicBeatState
 				}});
 			}
 		}
-
-		var timingSeg = TimingStruct.getTimingAtTimestamp(Conductor.songPosition);
+		
+		var timingSeg = TimingStruct.getTimingAtBeat(curDecimalBeat);
 
 		if (timingSeg != null)
 		{
@@ -3241,6 +3352,8 @@ class PlayState extends MusicBeatState
 			{
 				trace("BPM CHANGE to " + timingSegBpm);
 				Conductor.changeBPM(timingSegBpm, false);
+				Conductor.crochet = (60 / (timingSegBpm) * 1000);
+				Conductor.stepCrochet = Conductor.crochet / 4;
 			}
 		}
 
@@ -5131,7 +5244,7 @@ class PlayState extends MusicBeatState
 					if (!FlxG.save.data.ghost && notes.length != 0)
 					{
 						trace(unspawnNotes.length);
-						ghostTapInput(pressArray);
+						checkBadInput(pressArray);
 					}
 					for (coolNote in possibleNotes)
 					{
@@ -5173,7 +5286,7 @@ class PlayState extends MusicBeatState
 				else if (!FlxG.save.data.ghost && notes.length != 0)
 				{
 					trace(unspawnNotes.length);
-					ghostTapInput(pressArray);
+					checkBadInput(pressArray);
 				}
 			}
 
@@ -5302,7 +5415,7 @@ class PlayState extends MusicBeatState
 		// h
 	}
 
-	function ghostTapInput(pressArray:Array<Bool>, ?data:Int, ?ana:Ana)
+	function checkBadInput(pressArray:Array<Bool>, ?data:Int, ?ana:Ana)
 	{
 		var p1Notes = [];
 		if (FlxG.save.data.missMs < 1010)
@@ -5864,18 +5977,56 @@ class PlayState extends MusicBeatState
 							FlxG.sound.play(Paths.sound('fnf_loss_sfx'));
 						}
 					}
+				case 'the-fab-fairies-dance':
+					switch (curBeat)
+					{
+						case 5:
+							var ready:FlxSprite = new FlxSprite().loadGraphic(Paths.image("ready", "shared"));
+							ready.scrollFactor.set();
+							ready.updateHitbox();
+							ready.screenCenter();
+							add(ready);
+							FlxTween.tween(ready, {y: ready.y += 100, alpha: 0}, Conductor.crochet / 1000, {
+								ease: FlxEase.cubeInOut,
+								onComplete: function(twn:FlxTween)
+								{
+									ready.destroy();
+								}
+							});
+						case 6:
+							var set:FlxSprite = new FlxSprite().loadGraphic(Paths.image("set", "shared"));
+							set.scrollFactor.set();
+							set.screenCenter();
+							add(set);
+							FlxTween.tween(set, {y: set.y += 100, alpha: 0}, Conductor.crochet / 1000, {
+								ease: FlxEase.cubeInOut,
+								onComplete: function(twn:FlxTween)
+								{
+									set.destroy();
+								}
+							});
+						case 7:
+							var go:FlxSprite = new FlxSprite().loadGraphic(Paths.image("go", "shared"));
+							go.scrollFactor.set();
+							go.updateHitbox();
+							go.screenCenter();
+							add(go);
+							FlxTween.tween(go, {y: go.y += 100, alpha: 0}, Conductor.crochet / 1000, {
+								ease: FlxEase.cubeInOut,
+								onComplete: function(twn:FlxTween)
+								{
+									go.destroy();
+								}
+							});
+					}
 			}
 
 		if (generatedMusic)
-		{
 			notes.sort(FlxSort.byY, (PlayStateChangeables.useDownscroll ? FlxSort.ASCENDING : FlxSort.DESCENDING));
-		}
 
 		#if cpp
 		if (executeModchart && luaModchart != null)
-		{
 			luaModchart.executeState('beatHit', [curBeat]);
-		}
 		#end
 
 		if (curSong.startsWith("Tutorial") && dad.curCharacter.startsWith('gf') && SONG.notes[Math.floor(curStep / 16)] != null)
@@ -5957,10 +6108,10 @@ class PlayState extends MusicBeatState
 				case "Bopeebo In-Game Version":
 					heyIsForHorses = curBeat % 8 == 7 && curBeat > 32 && curBeat < 128;
 				case "Bopeebo Newgrounds Build":
-					if ((inBetween(0, 26) && inBetween(120, 128)))
+					if ((inBetween(0, 24) && inBetween(120, 128)))
 						heyIsForHorses = curBeat % 8 == 7;
 					else
-						heyIsForHorses = curBeat % 16 == 15;
+						heyIsForHorses = curBeat % 16 == 7;
 			}
 			if (heyIsForHorses)
 			{

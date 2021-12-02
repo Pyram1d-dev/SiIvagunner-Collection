@@ -61,4 +61,9 @@ Ballistic:whittyCrazy:8
 Wocky:kapi:9
 Beathoven:remilia:9
 Madness:grimm:10
-Spookeez:pain:11
+Smooth Sherbet Alpha Mix:parents-christmas:5:11
+Dance Inferno:dad:1:11
+Heat In Your Hand Beta Mix:whitty:8:11
+Konga Conga Kappa Original Mix:tankman:7:11
+The Fab Fairies Dance:tankman:7:11
+Spookeez:pain:2:12

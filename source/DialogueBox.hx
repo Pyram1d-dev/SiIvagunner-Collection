@@ -110,7 +110,7 @@ class DialogueBox extends FlxSpriteGroup
 				sound.fadeIn(1, 0, 0.8);
 		}
 
-		var gaming:Bool = rootSong != 'lo-fight' && rootSong != 'overhead' && rootSong != 'ballistic';
+		var gaming:Bool = PlayState.curStage != "whitty";
 
 		trace('not epic!!!');
 
@@ -145,7 +145,7 @@ class DialogueBox extends FlxSpriteGroup
 
 		trace('epic!!!');
 
-		if (PlayState.storyWeek != 9)
+		if (PlayState.SONG.stage != "arcade")
 			box = new FlxSprite(-20, 45);
 		else
 			box = new FlxSprite(0, 0);
@@ -193,7 +193,7 @@ class DialogueBox extends FlxSpriteGroup
 		box.animation.play('normalOpen');
 
 		if (gaming)
-			if (PlayState.storyWeek != 9)
+			if (PlayState.SONG.stage != "arcade")
 				box.setGraphicSize(Std.int(box.width * PlayState.daPixelZoom * 0.9));
 			else
 				box.setGraphicSize(Std.int(box.width * 1));
@@ -211,7 +211,7 @@ class DialogueBox extends FlxSpriteGroup
 
 		if (gaming)
 		{
-			if (PlayState.storyWeek != 9)
+			if (PlayState.SONG.stage != "arcade")
 			{
 				portraitLeft = new FlxSprite(-20, 40);
 				portraitLeft.frames = Paths.getSparrowAtlas(paths.get('lP'), 'week6');
@@ -303,7 +303,7 @@ class DialogueBox extends FlxSpriteGroup
 
 		box.screenCenter(X);
 
-		if (gaming && PlayState.storyWeek != 9)
+		if (gaming && PlayState.SONG.stage != "arcade")
 		{
 			portraitLeft.screenCenter(X);
 			handSelect = new FlxSprite(FlxG.width * 0.9, FlxG.height * 0.9).loadGraphic(Paths.image(paths.get('hS')));

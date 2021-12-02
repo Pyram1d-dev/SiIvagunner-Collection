@@ -45,7 +45,7 @@ class Note extends FlxSprite
 
 	public var noteYOff:Int = 0;
 
-	public var beat:Float = 0;
+	public var beat:Null<Float> = null;
 
 	public static var swagWidth:Float = 160 * 0.7;
 	public static var PURP_NOTE:Int = 0;
@@ -72,7 +72,7 @@ class Note extends FlxSprite
 
 	var mineOffsets:Array<Array<Array<Int>>> = null;
 
-	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inCharter:Bool = false, ?isAlt:Bool = false, ?bet:Float = 0)
+	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inCharter:Bool = false, ?isAlt:Bool = false, ?bet:Float)
 	{
 		super();
 
@@ -318,9 +318,15 @@ class Note extends FlxSprite
 			// so nah fuck that imma keep using SNIFF the players can cry about it ¯\_(ツ)_/¯
 			// No offense to Kade's version of the chart editor but shit's kinda busted in this version and also FL is nice to use lol
 
-			// BUT I did fix the receptor colors in this version so they don't have to cry about that ;D
+			// update: LMAO I FIGURED IT OUT LET'S GO BAYBEE
 
-			var ind:Int = Std.int(Math.round(strumCheck / (Conductor.stepCrochet / 2)));
+			// I did fix the receptor colors in this version so they don't have to cry about that ;D
+
+			var strumStep = (beat != null ? beat * 8 : strumCheck / (Conductor.stepCrochet / 2));
+
+			var ind:Int = Std.int(Math.round(strumStep));
+
+			//trace(strumStep, ind % 8);
 
 			var col:Int = 0;
 			col = quantityColor[ind % 8]; // Set the color depending on the beats

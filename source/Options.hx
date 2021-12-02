@@ -1356,6 +1356,59 @@ class MissGFXOption extends Option // balls
 	}
 }
 
+class DisableCopyrightOption extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+		acceptValues = true;
+	}
+
+	public override function press():Bool
+	{
+		return false;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Copyright Protection: ";
+	}
+
+	override function left():Bool
+	{
+		FlxG.save.data.noCopyright -= 1;
+
+		if (FlxG.save.data.noCopyright < 0)
+			FlxG.save.data.noCopyright = 2;
+
+		return false;
+	}
+
+	override function right():Bool
+	{
+		FlxG.save.data.noCopyright += 1;
+		FlxG.save.data.noCopyright %= 3;
+
+		return true;
+	}
+
+	override function getValue():String
+	{
+		var textlol = "";
+		switch (FlxG.save.data.noCopyright)
+		{
+			case 0:
+				textlol = "None";
+			case 1:
+				textlol = "Covers";
+			case 2:
+				textlol = "Completely Remove";
+		}
+		return "< " + textlol + " >";
+	}
+}
+
 class PlayEnemyOption extends Option // Some enemies in this game look like they have more interesting parts so it would be a waste to NOT add this lol
 {
 	public function new(desc:String)

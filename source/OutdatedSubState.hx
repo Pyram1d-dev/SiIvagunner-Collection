@@ -45,21 +45,14 @@ class OutdatedSubState extends MusicBeatState
 		add(kadeLogo);
 		
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
-			"Your Kade Engine is outdated!\nYou are on "
-			+ MainMenuState.kadeEngineVer
+			"Your game is outdated!\nYou are on "
+			+ MainMenuState.gameVer
 			+ "\nwhile the most recent version is " + needVer + "."
 			+ "\n\nWhat's new:\n\n"
 			+ currChanges
 			+ "\n& more changes and bugfixes in the full changelog"
 			+ "\n\nPress Space to view the full changelog and update\nor ESCAPE to ignore this",
 			32);
-
-		if (MainMenuState.nightly != "")
-			txt.text = 
-			"You are on\n"
-			+ MainMenuState.kadeEngineVer
-			+ "\nWhich is a PRE-RELEASE BUILD!"
-			+ "\n\nReport all bugs to the author of the pre-release.\nSpace/Escape ignores this.";
 		
 		txt.setFormat("VCR OSD Mono", 32, FlxColor.fromRGB(200, 200, 200), CENTER);
 		txt.borderColor = FlxColor.BLACK;
@@ -95,7 +88,7 @@ class OutdatedSubState extends MusicBeatState
 	{
 		if (controls.ACCEPT && MainMenuState.nightly == "")
 		{
-			fancyOpenURL("https://kadedev.github.io/Kade-Engine/changelogs/changelog-" + needVer);
+			fancyOpenURL("https://github.com/Pyram1d-dev/SiIvagunner-Collection/tree/main/changelogs/changelog-" + needVer + ".txt");
 		}
 		else if (controls.ACCEPT)
 		{

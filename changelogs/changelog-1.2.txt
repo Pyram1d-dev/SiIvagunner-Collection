@@ -1,0 +1,6 @@
+WHAT'S NEW:
+- New non-FNF rips charted
+- Auto-checking updates
+- BPM Change fixes
+- Remaining songs counter (because these weeks long af)
+- Fixed song instrumental playing instead of the menu theme

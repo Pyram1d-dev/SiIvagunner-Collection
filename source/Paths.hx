@@ -105,7 +105,7 @@ class Paths
 		return getPath('music/$key.$SOUND_EXT', MUSIC, library);
 	}
 
-	inline static public function voices(song:String)
+	inline static public function voices(song:String, ?isCover:Bool = false)
 	{
 		var songLowercase = StringTools.replace(song, " ", "-").toLowerCase();
 		switch (songLowercase)
@@ -115,10 +115,13 @@ class Paths
 			case 'philly-nice':
 				songLowercase = 'philly';
 		}
-		return 'songs:assets/songs/${songLowercase}/Voices.$SOUND_EXT';
+		var crAdder = (isCover) ? '-cover' : '';
+		if (isCover)
+			trace("LOADING COVER OF " + song.toUpperCase() + "'S VOICES");
+		return 'songs:assets/songs/${songLowercase}/Voices${crAdder}.$SOUND_EXT';
 	}
 
-	inline static public function inst(song:String)
+	inline static public function inst(song:String, ?isCover:Bool = false)
 	{
 		var songLowercase = StringTools.replace(song, " ", "-").toLowerCase();
 		switch (songLowercase)
@@ -128,7 +131,10 @@ class Paths
 			case 'philly-nice':
 				songLowercase = 'philly';
 		}
-		return 'songs:assets/songs/${songLowercase}/Inst.$SOUND_EXT';
+		var crAdder = (isCover) ? '-cover' : '';
+		if (isCover)
+			trace("LOADING COVER OF " + song.toUpperCase() + "'S INSTRUMENTAL TRACK");
+		return 'songs:assets/songs/${songLowercase}/Inst${crAdder}.$SOUND_EXT';
 	}
 
 	inline static public function image(key:String, ?library:String, ?debug:Bool = false)
