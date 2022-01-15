@@ -25,7 +25,7 @@ class CoolUtil
 		for (i in 0...daList.length)
 		{
 			daList[i] = daList[i].trim();
-			if (daList[i].startsWith("//"))
+			if (daList[i].startsWith("//") || daList[i] == "")
 				daList.remove(daList[i]);
 		}
 
