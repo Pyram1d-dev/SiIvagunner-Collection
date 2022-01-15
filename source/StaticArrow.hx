@@ -43,7 +43,7 @@ class StaticArrow extends FlxSprite // Stolen from KE 1.7 LMAOOOOOOOOOOO
 		updateHitbox();
 
 		// Dunno why Kade didn't exclude the pixel notes from this like I did, they don't require an offset and this just made them move around in 1.7
-		if ((AnimName == 'confirm' || AnimName.startsWith('dirCon')) && PlayState.SONG.noteStyle != 'pixel' && PlayState.SONG.noteStyle != 'clubpenguin')
+		if ((AnimName == 'confirm' || AnimName.startsWith('dirCon')) && PlayState.instance.noteSkinData.type != 'pixel')
 		{
 			offset.set(frameWidth / 2, frameHeight / 2);
 
