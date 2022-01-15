@@ -1,0 +1,44 @@
+{
+    "skins":[
+        {
+            "name":"fireNote",
+            "effect":"Smoke",
+            "effectAnimation":
+            {
+                "prefix":"smoke",
+                "frameRate":24,
+                "directional":false,
+                "offset":[-15,-15],
+                "variation":0,
+                "sound":"burnSound",
+                "scale":0.6
+            },
+            "animations":["purple fire","blue fire","green fire","red fire"],
+            "offsets":[
+                [[43,60],[43,60],[43,60],[43,60]],
+                [[43,195],[43,195],[43,195],[43,195]]
+            ],
+            "flipDownscroll":true
+        },
+        {
+            "name":"haato",
+            "effect":"haatoSplash",
+            "effectAnimation":
+            {
+                "prefix":"haato note shatter ",
+                "frameRate":24,
+                "directional":true,
+                "offset":[-25,-25],
+                "variation":2,
+                "sound":"haatoShatter",
+                "scale":0.6
+            },
+            "animations":["purple alone","blue alone","green alone","red alone"],
+            "offsets":[
+                [[0,0],[0,0],[0,0],[0,0]],
+                [[0,0],[0,0],[0,0],[0,0]]
+            ],
+            "flipDownscroll":false
+        }
+    ]
+}

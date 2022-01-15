@@ -1,0 +1,224 @@
+{
+    "data":[
+        {
+            "title":"Tutorial",
+            "subtitle":"Pain",
+            "preview":"tutorial",
+            "color":"0xFFFFFFFF",
+            "week":0,
+            "songs":[
+                "Tutorial",
+				"Tutorial Beta Mix",
+				"Test",
+				"Test In-Game Version",
+				"Video Games Removed"
+            ]
+        },
+        {
+            "title":"Week 1",
+            "subtitle":"Lotta Fresh rips tbh",
+            "preview":"week1",
+            "color":"0xFF800080",
+            "week":1,
+            "songs":[
+				"Bopeebo Beta Mix",
+                "Bopeebo In-Game Version",
+                "Bopeebo Extended Version",
+                "Bopeebo Newgrounds Build",
+                "Fresh",
+                "Fresh In-Game Version",
+				"Fresh Alternate Version",
+                "Fresh Vocal Mix",
+                "Fresh OST Version",
+                "Fresh Poop Version",
+                "Dad Battle In-Game Version",
+                "Dad Battle In-Game Mix",
+				"Dad Battle JP Version"
+            ]
+        },
+        {
+            "title":"Week 2",
+            "subtitle":"crack",
+            "preview":"week2",
+            "color":"0xFFFFA500",
+            "week":2,
+            "songs":[
+				"Spookeez Beta Mix",
+				"Spookeez In-Game Version",
+				"Spookeez JPN Version",
+				"South",
+				"South In-Game Version",
+				"Monster"
+            ]
+        },
+        {
+            "title":"Week 3",
+            "subtitle":"wah",
+            "preview":"week3",
+            "color":"0xFF00FF00",
+            "week":3,
+            "songs":[
+				"Pico",
+				"Pico In-Game Version",
+				"Philly Nice",
+				"Blammed",
+				"Blammed OST Version",
+				"Blammed Week 4 Update",
+				"Blammed In-Game Version"
+            ]
+        },
+        {
+            "title":"YANKIN'",
+            "subtitle":"why",
+            "preview":"yankin",
+            "color":"0xFF5E0000",
+            "week":3,
+            "songs":[
+                "Philly Nice In-Game Version",
+                "Blammed In-Game Mix",
+                "Ugh In-Game Version"
+            ]
+        },
+        {
+            "title":"Week 4",
+            "subtitle":"R34",
+            "preview":"week4",
+            "color":"0xFFFF00FF",
+            "week":4,
+            "songs":[
+				"Satin Panties",
+                "Satin Panties In-Game Version",
+                "Ridge",
+                "High",
+                "High In-Game Version",
+                "High JP Version",
+                "Milf",
+                "Milf Beta Mix",
+                "Milf In-Game Version",
+                "Milf Itch io Build",
+                "Milf JP Version"
+            ]
+        },
+        {
+            "title":"Week 5",
+            "subtitle":"Oh, there they are",
+            "preview":"week5",
+            "color":"0xFF800080",
+            "week":5,
+            "songs":[
+                "Cocoa Short Version",
+                "Eggnog",
+                "Eggnog Short Version",
+                "Winter Horrorland Short Version"
+            ]
+        },
+        {
+            "title":"Week 6",
+            "subtitle":"Quality",
+            "preview":"week6",
+            "color":"0xFFFFFF00",
+            "week":6,
+            "songs":[
+				"Senpai",
+				"Senpai In-Game Version",
+				"Senpai Beta Mix",
+				"Roses Beta Mix",
+				"Roses Itch io Build",
+				"Roses OST Version",
+				"Roses",
+				"Thorns",
+				"Thorns Beta Mix"
+            ]
+        },
+        {
+            "title":"Week 7",
+            "subtitle":"Armored Vehicle Guy",
+            "preview":"week7",
+            "color":"0xFFFFA500",
+            "week":7,
+            "songs":[
+                "Ugh",
+                "Ugh Alterneeyyytive Mix",
+                "Guns Short Version"
+            ]
+        },
+        {
+            "title":"Back Alley Blitz",
+            "subtitle":"High Quality",
+            "preview":"bonusweek",
+            "color":"0xFFFF0000",
+            "week":8,
+            "songs":[
+                "Lo-Fight",
+                "Overhead",
+                "Ballistic"
+            ]
+        },
+        {
+            "title":"Arcade Showdown",
+            "subtitle":"No Kap",
+            "preview":"kapi",
+            "color":"0xFFFFC0CB",
+            "week":9,
+            "songs":[
+                "Wocky",
+                "Beathoven"
+            ]
+        },
+        {
+            "title":"CLOWN",
+            "subtitle":"CLOWN",
+            "preview":"clown",
+            "color":"0xFF5E0000",
+            "week":10,
+            "songs":[
+                "Madness"
+            ]
+        },
+        {
+            "title":"Doki Doki Takeover",
+            "subtitle":"Doki Doki Panic",
+            "preview":"monika",
+            "color":"0xFF5E0000",
+            "week":11,
+            "songs":[
+                "High School Conflict"
+            ]
+        },
+        {
+            "title":"Holofunk",
+            "subtitle":"They got a lotta json files :flushed:",
+            "preview":"holo",
+            "color":"0xFFFC03F8",
+            "week":12,
+            "songs":[
+                "Red and Black"
+            ]
+        },
+        {
+            "title":"Awesome",
+            "subtitle":"Very epic",
+            "preview":"awesome",
+            "color":"0xFF2B130B",
+            "week":"awesome",
+            "songs":[
+                "Fresh Itch io Build",
+                "Winter Horrorland Short Version"
+            ]
+        },
+        {
+            "title":"Extras",
+            "subtitle":"Non-FNF Rips!",
+            "preview":"extra",
+            "color":"0xFF808080",
+            "week":"extra",
+            "songs":[
+                "Smooth Sherbet Alpha Mix",
+                "Dance Inferno",
+                "Heat In Your Hand Beta Mix",
+                "Konga Conga Kappa Original Mix",
+                "The Fab Fairies Dance"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,64 @@
+{
+    "credits":[
+        {
+            "name":"Original Devs",
+            "description":"Please support the original game!",
+            "link":"https://ninja-muffin24.itch.io/funkin",
+            "icons":[]
+        },
+        {
+            "name":"SiIvagunner",
+            "description":"All reskins and rips",
+            "link":"https://www.youtube.com/c/SiIvaGunner",
+            "icons":[]
+        },
+        {
+            "name":"MtH",
+            "description":"SNIFF (Charting Tool)",
+            "link":"https://twitter.com/emmnyaa",
+            "icons":[]
+        },
+        {
+            "name":"KadeDev",
+            "description":"Kade Engine, Whitty and Tricky code",
+            "link":"https://www.youtube.com/c/KadeDev",
+            "icons":["whitty","tricky"]
+        },
+        {
+            "name":"Banbuds",
+            "description":"Tricky assets",
+            "link":"https://twitter.com/Banbuds",
+            "icons":["tricky"]
+        },
+        {
+            "name":"PaperKitty",
+            "description":"Kapi assets",
+            "link":"https://www.youtube.com/channel/UC9ORKA6WXIaa6oxlRLBJzrg",
+            "icons":["kapi"]
+        },
+        {
+            "name":"Doki Doki Takeover Team",
+            "description":"Doki Doki Takeover assets",
+            "link":"https://gamebanana.com/mods/47364",
+            "icons":["monikaOG"]
+        },
+        {
+            "name":"Holofunk Team",
+            "description":"Holofunk assets",
+            "link":"https://gamebanana.com/mods/41250",
+            "icons":["bf-christmas-aloe"]
+        },
+        {
+            "name":"PolybiusProxy",
+            "description":"MP4 Video Code",
+            "link":"https://github.com/polybiusproxy",
+            "icons":[]
+        },
+        {
+            "name":"BrightFyre",
+            "description":"Cool-ass modding tutorials",
+            "link":"https://www.youtube.com/c/brightfyre",
+            "icons":[]
+        }
+    ]
+}

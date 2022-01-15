@@ -1,0 +1,12 @@
+data.halloweenLevel = true;
+
+var hallowTex = Paths.getSparrowAtlas('halloween_bg', 'week2');
+
+var halloweenBG = new FlxSprite(-200, -100);
+halloweenBG.frames = hallowTex;
+halloweenBG.animation.addByPrefix('idle', 'halloweem bg0');
+halloweenBG.animation.addByPrefix('lightning', 'halloweem bg lightning strike', 24, false);
+halloweenBG.animation.play('idle');
+halloweenBG.antialiasing = FlxG.save.data.antialiasing;
+data.swagBacks['halloweenBG'] = halloweenBG;
+data.toAdd.push(halloweenBG);

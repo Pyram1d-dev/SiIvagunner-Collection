@@ -1,0 +1,49 @@
+data.curStage = 'philly';
+var bg = new FlxSprite(-100).loadGraphic(Paths.image('philly/sky', 'week3'));
+bg.scrollFactor.set(0.1, 0.1);
+bg.antialiasing = FlxG.save.data.antialiasing;
+data.swagBacks['bg'] = bg;
+data.toAdd.push(bg);
+
+var city = new FlxSprite(-10).loadGraphic(Paths.image('philly/city', 'week3'));
+city.scrollFactor.set(0.3, 0.3);
+city.setGraphicSize(Std.int(city.width * 0.85));
+city.updateHitbox();
+city.antialiasing = FlxG.save.data.antialiasing;
+data.swagBacks['city'] = city;
+data.toAdd.push(city);
+
+var phillyCityLights = new FlxGroup();
+data.distractions.push(phillyCityLights);
+data.swagGroup['phillyCityLights'] = phillyCityLights;
+data.toAdd.push(phillyCityLights);
+
+for (i in 0...5)
+{
+    var light = new FlxSprite(city.x).loadGraphic(Paths.image('philly/win' + i, 'week3'));
+    light.scrollFactor.set(0.3, 0.3);
+    light.visible = false;
+    light.setGraphicSize(Std.int(light.width * 0.85));
+    light.updateHitbox();
+    light.antialiasing = FlxG.save.data.antialiasing;
+    phillyCityLights.add(light);
+}
+
+var streetBehind = new FlxSprite(-40, 50).loadGraphic(Paths.image('philly/behindTrain', 'week3'));
+streetBehind.antialiasing = FlxG.save.data.antialiasing;
+data.swagBacks['streetBehind'] = streetBehind;
+data.toAdd.push(streetBehind);
+
+var phillyTrain = new FlxSprite(2000, 360).loadGraphic(Paths.image('philly/train', 'week3'));
+phillyTrain.antialiasing = FlxG.save.data.antialiasing;
+data.distractions.push(phillyTrain);
+data.swagBacks['phillyTrain'] = phillyTrain;
+data.toAdd.push(phillyTrain);
+
+data.swagSounds['trainSound'] = new FlxSound().loadEmbedded(Paths.sound('train_passes', 'week3'));
+FlxG.sound.list.add(data.swagSounds['trainSound']);
+
+var street = new FlxSprite(-40, streetBehind.y).loadGraphic(Paths.image('philly/street', 'week3'));
+street.antialiasing = FlxG.save.data.antialiasing;
+data.swagBacks['street'] = street;
+data.toAdd.push(street);

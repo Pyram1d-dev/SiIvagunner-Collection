@@ -1,0 +1,19 @@
+var bg = new FlxSprite(-400, -500).loadGraphic(Paths.image('christmas/evilBG', 'week5'));
+bg.antialiasing = FlxG.save.data.antialiasing;
+bg.scrollFactor.set(0.2, 0.2);
+bg.active = false;
+bg.setGraphicSize(Std.int(bg.width * 0.8));
+bg.updateHitbox();
+data.swagBacks['bg'] = bg;
+data.toAdd.push(bg);
+
+var evilTree = new FlxSprite(300, -300).loadGraphic(Paths.image('christmas/evilTree', 'week5'));
+evilTree.antialiasing = FlxG.save.data.antialiasing;
+evilTree.scrollFactor.set(0.2, 0.2);
+data.swagBacks['evilTree'] = evilTree;
+data.toAdd.push(evilTree);
+
+var evilSnow = new FlxSprite(-200, 700).loadGraphic(Paths.image("christmas/evilSnow", 'week5'));
+evilSnow.antialiasing = FlxG.save.data.antialiasing;
+data.swagBacks['evilSnow'] = evilSnow;
+data.toAdd.push(evilSnow);

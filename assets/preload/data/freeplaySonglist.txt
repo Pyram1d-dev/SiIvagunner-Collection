@@ -3,6 +3,7 @@ Tutorial Beta Mix:gf-yankin:0
 Test:bf-pixel:0
 Test In-Game Version:bf-pixel:0
 Video Games Removed:parents-games:0
+
 Bopeebo Beta Mix:dad:1
 Bopeebo In-Game Version:dad:1
 Bopeebo Extended Version:dad:1
@@ -18,31 +19,44 @@ Dad Battle:pain:1
 Dad Battle In-Game Version:mario:1
 Dad Battle In-Game Mix:mario-ded:1
 Dad Battle JP Version:mom-ragyo:1
+Dance Inferno:dad:1
+
 Spookeez Beta Mix:spooky:2
 Spookeez In-Game Version:spooky-slam:2
 Spookeez JPN Version:metalSonic:2
 South:childishgambino:2
 South In-Game Version:spooky-tetris:2
 Monster:monster:2
+Spookeez:pain:2
+
 Pico:pico-igor:3
 Pico In-Game Version:pico-grandpa:3
 Philly Nice:pico:3
 Blammed:pico:3
-Blammed OST Version:pain:3
+Blammed OST Version:pico-cringe:3
 Blammed Week 4 Update:pico-fw:3
 Blammed In-Game Version:juiceWRLD:3
+Philly Nice In-Game Version:lady:3
+Blammed In-Game Mix:lady:3
+
 Satin Panties:mom:4
 Satin Panties In-Game Version:mom:4
 Ridge:mom:4
 High:mom:4
 High In-Game Version:mom:4
+High JP Version:mom:4
 Milf:mom:4
 Milf Beta Mix:mom:4
 Milf In-Game Version:mom:4
 Milf Itch io Build:mom:4
 Milf JP Version:mom-car-neko:4
+
+Cocoa Short Version:parents-christmas:5
+Eggnog:parents-christmas:5:new
 Eggnog Short Version:parents-christmas:5
 Winter Horrorland Short Version:monster-christmas:5
+Smooth Sherbet Alpha Mix:parents-christmas:5
+
 Senpai:senpai:6
 Senpai In-Game Version:senpai-helper:6
 Senpai Beta Mix:senpai:6
@@ -52,18 +66,24 @@ Roses Itch io Build:senpai:6
 Roses OST Version:senpai-skeletron:6
 Thorns:spirit-gariwald:6
 Thorns Beta Mix:spirit-giygas:6
+
 Ugh:tankman-homedepot:7
 Ugh Alterneeyyytive Mix:psy:7
 Guns Short Version:tankman:7
+Ugh In-Game Version:maskedWolf:7
+Konga Conga Kappa Original Mix:tankman:7
+The Fab Fairies Dance:tankman:7
+
 Lo-Fight:whitty:8
 Overhead:whitty-mars:8
 Ballistic:whittyCrazy:8
+Heat In Your Hand Beta Mix:whitty:8
+
 Wocky:kapi:9
 Beathoven:remilia:9
+
 Madness:grimm:10
-Smooth Sherbet Alpha Mix:parents-christmas:5:11
-Dance Inferno:dad:1:11
-Heat In Your Hand Beta Mix:whitty:8:11
-Konga Conga Kappa Original Mix:tankman:7:11
-The Fab Fairies Dance:tankman:7:11
-Spookeez:pain:2:12
+
+High School Conflict:monika:11
+
+Red and Black:chama:12

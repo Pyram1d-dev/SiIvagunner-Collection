@@ -1,0 +1,213 @@
+{
+    "list": [
+        {
+            "title":"New Songs",
+            "icon":"alert",
+            "color":"0xFF00FFFF",
+            "songs":[
+                "Dad Battle In-Game Version",
+                "Philly Nice In-Game Version",
+                "Blammed In-Game Mix",
+                "Ugh In-Game Version",
+                "High JP Version",
+                "Cocoa Short Version",
+                "Eggnog",
+                "High School Conflict",
+                "Red and Black"
+            ]
+        },
+        {
+            "title":"Misc Songs",
+            "icon":"gf",
+            "color":"0xFFFFFFFF",
+            "songs":[
+                "Tutorial",
+                "Tutorial Beta Mix",
+                "Test",
+                "Test In-Game Version",
+                "Video Games Removed"
+            ]
+        },
+        {
+            "title":"Week One",
+            "icon":"dad",
+            "color":"0xFF800080",
+            "songs":[
+                "Bopeebo Beta Mix",
+                "Bopeebo In-Game Version",
+                "Bopeebo Extended Version",
+                "Bopeebo Newgrounds Build",
+                "Fresh",
+                "Fresh In-Game Version",
+                "Fresh Itch io Build",
+                "Fresh Alternate Version",
+                "Fresh Vocal Mix",
+                "Fresh OST Version",
+                "Fresh Poop Version",
+                "Dad Battle",
+                "Dad Battle In-Game Version",
+                "Dad Battle In-Game Mix",
+                "Dad Battle JP Version"
+            ]
+        },
+        {
+            "title":"Week Two",
+            "icon":"spooky",
+            "color":"0xFFFFA500",
+            "songs":[
+                "Spookeez Beta Mix",
+                "Spookeez In-Game Version",
+                "Spookeez JPN Version",
+                "South",
+                "South In-Game Version",
+                "Monster"
+            ]
+        },
+        {
+            "title":"Week Three",
+            "icon":"pico",
+            "color":"0xFF00FF00",
+            "songs":[
+                "Pico",
+                "Pico In-Game Version",
+                "Philly Nice",
+                "Blammed",
+                "Blammed OST Version",
+                "Blammed Week 4 Update",
+                "Blammed In-Game Version",
+                "Philly Nice In-Game Version",
+                "Blammed In-Game Mix"
+            ]
+        },
+        {
+            "title":"YANKIN",
+            "icon":"lady",
+            "color":"0xFF5E0000",
+            "songs":[
+                "Philly Nice In-Game Version",
+                "Blammed In-Game Mix",
+                "Ugh In-Game Version"
+            ]
+        },
+        {
+            "title":"Week Four",
+            "icon":"mom",
+            "color":"0xFFFF00FF",
+            "songs":[
+                "Satin Panties",
+                "Satin Panties In-Game Version",
+                "Ridge",
+                "High",
+                "High In-Game Version",
+                "High JP Version",
+                "Milf",
+                "Milf Beta Mix",
+                "Milf In-Game Version",
+                "Milf Itch io Build",
+                "Milf JP Version"
+            ]
+        },
+        {
+            "title":"Week Five",
+            "icon":"parents-christmas",
+            "color":"0xFF800080",
+            "songs":[
+                "Cocoa Short Version",
+                "Eggnog",
+                "Eggnog Short Version",
+                "Winter Horrorland Short Version"
+            ]
+        },
+        {
+            "title":"Week Six",
+            "icon":"senpai",
+            "color":"0xFFFFFF00",
+            "songs":[
+                "Senpai",
+                "Senpai In-Game Version",
+                "Senpai Beta Mix",
+                "Roses",
+                "Roses Beta Mix",
+                "Roses Itch io Build",
+                "Roses OST Version",
+                "Thorns",
+                "Thorns Beta Mix"
+            ]
+        },
+        {
+            "title":"Week Seven",
+            "icon":"tankman",
+            "color":"0xFFFFA500",
+            "songs":[
+                "Ugh",
+                "Ugh Alterneeyyytive Mix",
+                "Guns Short Version",
+                "Ugh In-Game Version"
+            ]
+        },
+        {
+            "title":"Back Alley Blitz",
+            "icon":"whitty",
+            "color":"0xFFFF0000",
+            "songs":[
+                "Lo-Fight",
+                "Overhead",
+                "Ballistic"
+            ]
+        },
+        {
+            "title":"Arcade Showdown",
+            "icon":"kapi",
+            "color":"0xFFFFC0CB",
+            "songs":[
+                "Wocky",
+                "Beathoven"
+            ]
+        },
+        {
+            "title":"CLOWN",
+            "icon":"tricky-mask",
+            "color":"0xFF5E0000",
+            "songs":[
+                "Madness"
+            ]
+        },
+        {
+            "title":"Monika",
+            "icon":"monikaOG",
+            "color":"0xFF5E0000",
+            "songs":[
+                "High School Conflict"
+            ]
+        },
+        {
+            "title":"Holofunk",
+            "icon":"bf-christmas-aloe",
+            "color":"0xFFFC03F8",
+            "songs":[
+                "Red and Black"
+            ]
+        },
+        {
+            "title":"Extras",
+            "icon":"face",
+            "color":"0xFF808080",
+            "songs":[
+                "Smooth Sherbet Alpha Mix",
+                "Dance Inferno",
+                "Heat In Your Hand Beta Mix",
+                "Konga Conga Kappa Original Mix",
+                "The Fab Fairies Dance"
+            ]
+        },
+        {
+            "title":"Unbeatable",
+            "icon":"pain",
+            "color":"0xFF000000",
+            "songs":[
+                "Spookeez",
+                "Winter Horrorland Short Version"
+            ]
+        }
+    ]
+}

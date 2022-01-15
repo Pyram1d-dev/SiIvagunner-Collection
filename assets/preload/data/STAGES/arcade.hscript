@@ -1,0 +1,55 @@
+data.curStage = 'stage';
+data.camZoom = 0.9;
+var bg = new FlxSprite(-600, -200).loadGraphic(Paths.image('stageback', 'arcadeWeek'));
+bg.antialiasing = FlxG.save.data.antialiasing;
+bg.scrollFactor.set(0.9, 0.9);
+bg.active = false;
+data.swagBacks['bg'] = bg;
+data.toAdd.push(bg);
+
+var stageFront = new FlxSprite(-650, 600).loadGraphic(Paths.image('stagefront', 'arcadeWeek'));
+stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
+stageFront.updateHitbox();
+stageFront.antialiasing = FlxG.save.data.antialiasing;
+stageFront.scrollFactor.set(0.9, 0.9);
+stageFront.active = false;
+data.swagBacks['stageFront'] = stageFront;
+data.toAdd.push(stageFront);
+
+var phillyCityLights = new FlxGroup();
+data.swagGroup['phillyCityLights'] = phillyCityLights;
+
+if (songLowercase == "beathoven")
+{
+    var bottomBoppers = new Dancer(25, 200);
+    bottomBoppers.frames = Paths.getSparrowAtlas('littleguys', 'arcadeWeek');
+    bottomBoppers.animation.addByPrefix('idle', 'Bottom Level Boppers', 24, false);
+    bottomBoppers.antialiasing = FlxG.save.data.antialiasing;
+    bottomBoppers.scrollFactor.set(0.9, 0.9);
+    bottomBoppers.setGraphicSize(Std.int(bottomBoppers.width * 1));
+    bottomBoppers.updateHitbox();
+    data.swagDancers['bottomBoppers'] = bottomBoppers;
+    data.distractions.push(phillyCityLights);
+    data.toAdd.push(phillyCityLights);
+    data.toAdd.push(bottomBoppers);
+}
+
+for (i in 0...5)
+{
+    var light = new FlxSprite(-600, -200).loadGraphic(Paths.image('lights/win' + i, 'arcadeWeek'));
+    light.scrollFactor.set(0.9, 0.9);
+    light.visible = false;
+    light.updateHitbox();
+    light.antialiasing = FlxG.save.data.antialiasing;
+    phillyCityLights.add(light);
+}
+
+if (songLowercase == 'beathoven' && PlayState.storyDifficulty == 3)
+{
+    trace('gottem');
+    var ok = new FlxSprite(50, 200).loadGraphic(Paths.image('ok', 'arcadeWeek'));
+    ok.scrollFactor.set(0.9, 0.9);
+    ok.updateHitbox();
+    ok.antialiasing = FlxG.save.data.antialiasing;
+    data.toAdd.push(ok);
+}

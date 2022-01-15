@@ -1,0 +1,16 @@
+data.camZoom = 0.9;
+data.curStage = 'stage';
+var bg = new FlxSprite(-600, -200).loadGraphic(Paths.image('grandpa/stageback','week1'));
+bg.antialiasing = FlxG.save.data.antialiasing;
+bg.scrollFactor.set(0.9, 0.9);
+bg.active = false;
+data.swagBacks['bg'] = bg;
+data.toAdd.push(bg);
+var stageFront = new FlxSprite(-650, 600).loadGraphic(Paths.image('grandpa/stagefront','week1'));
+data.swagBacks['stageFront'] = stageFront;
+stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
+stageFront.updateHitbox();
+stageFront.antialiasing = FlxG.save.data.antialiasing;
+stageFront.scrollFactor.set(0.9, 0.9);
+stageFront.active = false;
+data.toAdd.push(stageFront);

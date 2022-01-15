@@ -1,0 +1,45 @@
+trace('alley moment');
+data.curStage = 'whitty';
+data.camZoom = 0.9;
+var stageSuffix = (songLowercase == 'overhead') ? 'OH/' : (songLowercase == 'ballistic') ? 'Ballistic/' : '';
+
+trace(stageSuffix);
+var wBg = new FlxSprite(-500, -300).loadGraphic(Paths.image(stageSuffix + 'whittyBack', 'bonusWeek'));
+data.swagBacks['wBg'] = wBg;
+
+var wstageFront = new FlxSprite(-650, 600).loadGraphic(Paths.image('whittyFront', 'bonusWeek'));
+wstageFront.setGraphicSize(Std.int(wstageFront.width * 1.1));
+wstageFront.updateHitbox();
+wstageFront.antialiasing = FlxG.save.data.antialiasing;
+wstageFront.scrollFactor.set(0.9, 0.9);
+wstageFront.active = false;
+data.swagBacks['wstageFront'] = wstageFront;
+
+if (stageName == 'ballisticAlley')
+{
+    trace('pogging');
+    wBg.antialiasing = FlxG.save.data.antialiasing;
+    var bgTex = Paths.getSparrowAtlas('BallisticBackground', 'bonusWeek');
+    var nwBg = new FlxSprite(-600, -200);
+    nwBg.frames = bgTex;
+    nwBg.antialiasing = FlxG.save.data.antialiasing;
+    nwBg.scrollFactor.set(0.9, 0.9);
+    nwBg.active = true;
+    nwBg.animation.addByPrefix('start', 'Background Whitty Start', 24, false);
+    nwBg.animation.addByPrefix('gaming', 'Background Whitty Startup', 24, false);
+    nwBg.animation.addByPrefix('gameButMove', 'Background Whitty Moving', 16, true);
+    data.swagBacks['nwBg'] = nwBg;
+    data.toAdd.push(wBg);
+    data.toAdd.push(nwBg);
+    nwBg.alpha = 0;
+    data.toAdd.push(wBg);
+    data.toAdd.push(wstageFront);
+}
+else
+{
+    wBg.antialiasing = FlxG.save.data.antialiasing;
+    wBg.scrollFactor.set(0.9, 0.9);
+    wBg.active = false;
+    data.toAdd.push(wBg);
+    data.toAdd.push(wstageFront);
+}

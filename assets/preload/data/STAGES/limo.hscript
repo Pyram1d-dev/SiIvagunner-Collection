@@ -1,0 +1,60 @@
+data.camZoom = 0.90;
+
+var skyBG = new FlxSprite(-120, -50).loadGraphic(Paths.image('limo/limoSunset', 'week4'));
+skyBG.scrollFactor.set(0.1, 0.1);
+skyBG.antialiasing = FlxG.save.data.antialiasing;
+data.swagBacks['skyBG'] = skyBG;
+data.toAdd.push(skyBG);
+
+var h = (songLowercase == 'satin-panties-in-game-version') ? 'Christmas' : '';
+
+var bgLimo = new FlxSprite(-200, 480);
+bgLimo.frames = Paths.getSparrowAtlas('limo'+ h +'/bgLimo', 'week4');
+bgLimo.animation.addByPrefix('drive', "background limo pink", 24);
+bgLimo.animation.play('drive');
+bgLimo.scrollFactor.set(0.4, 0.4);
+bgLimo.antialiasing = FlxG.save.data.antialiasing;
+data.swagBacks['bgLimo'] = bgLimo;
+data.toAdd.push(bgLimo);
+
+var fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('limo/fastCarLol', 'week4'));
+fastCar.antialiasing = FlxG.save.data.antialiasing;
+
+var grpLimoDancers = new DancerGroup();
+data.toAdd.push(grpLimoDancers);
+data.distractions.push(grpLimoDancers);
+
+for (i in 0...5)
+{
+    var dancer = new Dancer((370 * i) + 130, bgLimo.y - 400, true);
+    var special = (PlayState.SONG.player1 == 'bf-car-vitas') ? 'Vitas' : (songLowercase == 'milf-jp-version') ? 'Neko' : h;
+
+    dancer.frames = Paths.getSparrowAtlas('limo' + special + '/limoDancer', 'week4');
+    dancer.animation.addByIndices('danceLeft', 'bg dancer sketch PINK', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+    dancer.animation.addByIndices('danceRight', 'bg dancer sketch PINK', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "",
+        24, false);
+    dancer.animation.play('danceLeft');
+    dancer.antialiasing = FlxG.save.data.antialiasing;
+    dancer.scrollFactor.set(0.4, 0.4);
+    data.swagDancers['bgDancer' + i] = dancer;
+    grpLimoDancers.add(dancer);
+}
+
+data.swagBacks['fastCar'] = fastCar;
+data.layInFront[2].push(fastCar);
+data.distractions.push(fastCar);
+
+var overlayShit = new FlxSprite(-500, -600).loadGraphic(Paths.image('limo/limoOverlay', 'week4'));
+overlayShit.alpha = 0.5;
+
+var ljhgwefouj = (songLowercase == 'milf-jp-version') ? 'Neko' : h;
+
+var limoTex = Paths.getSparrowAtlas('limo' + ljhgwefouj + '/limoDrive', 'week4');
+
+var limo = new FlxSprite(-120, 550);
+limo.frames = limoTex;
+limo.animation.addByPrefix('drive', "Limo stage", 24);
+limo.animation.play('drive');
+limo.antialiasing = FlxG.save.data.antialiasing;
+data.layInFront[0].push(limo);
+data.swagBacks['limo'] = limo;

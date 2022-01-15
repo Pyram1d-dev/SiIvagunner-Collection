@@ -1,0 +1,16 @@
+var bg = new FlxSprite(-600, -300).loadGraphic(Paths.image('haato/evilBG', 'week5'));
+bg.scrollFactor.set(0.9, 0.9);
+bg.antialiasing = FlxG.save.data.antialiasing;
+data.toAdd.push(bg);
+
+var fireGlow = new FlxSprite(-610, -375).loadGraphic(Paths.image('haato/fireGlow', 'week5'));
+fireGlow.scrollFactor.set(0.9, 0.9);
+fireGlow.antialiasing = FlxG.save.data.antialiasing;
+data.toAdd.push(fireGlow);
+
+var tree = new FlxSprite(300, -100).loadGraphic(Paths.image('haato/evilTree', 'week5'));
+tree.scrollFactor.set(0.9, 0.9);
+tree.antialiasing = FlxG.save.data.antialiasing;
+data.toAdd.push(tree);
+
+data.camZoom = 0.9;

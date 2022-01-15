@@ -1,0 +1,128 @@
+data.camZoom = 0.9;
+data.curStage = "militaryzone";
+
+var bg = new FlxSprite(-400, -400).loadGraphic(Paths.image('tankSky', 'week7'));
+bg.scrollFactor.set();
+bg.antialiasing = FlxG.save.data.antialiasing;
+data.toAdd.push(bg);
+
+var clouds = new FlxSprite(FlxG.random.int(-700, -100), FlxG.random.int(-20, 20)).loadGraphic(Paths.image('tankClouds', 'week7'));
+
+clouds.antialiasing = FlxG.save.data.antialiasing;
+clouds.scrollFactor.set(0.1, 0.1);
+clouds.velocity.x = FlxG.random.float(5, 15);
+data.toAdd.push(clouds);
+
+var mountains = new FlxSprite(-300, -20).loadGraphic(Paths.image('tankMountains', 'week7'));
+mountains.antialiasing = FlxG.save.data.antialiasing;
+mountains.setGraphicSize(Std.int(mountains.width * 1.2));
+mountains.updateHitbox();
+mountains.scrollFactor.set(0.2, 0.2);
+data.toAdd.push(mountains);
+
+var building = new FlxSprite(-200).loadGraphic(Paths.image('homedepot/tankBuildings', 'week7'));
+building.setGraphicSize(Std.int(building.width * 1.1));
+building.antialiasing = FlxG.save.data.antialiasing;
+building.updateHitbox();
+building.scrollFactor.set(0.3, 0.3);
+data.toAdd.push(building);
+
+var ruins = new FlxSprite(-200).loadGraphic(Paths.image('homedepot/tankRuins', 'week7'));
+ruins.scrollFactor.set(0.35, 0.35);
+ruins.setGraphicSize(Std.int(1.1 * ruins.width));
+ruins.updateHitbox();
+ruins.antialiasing = FlxG.save.data.antialiasing;
+data.toAdd.push(ruins);
+
+var smokeLeft = new FlxSprite(-200, -100);
+smokeLeft.frames = Paths.getSparrowAtlas('smokeLeft', 'week7');
+smokeLeft.animation.addByPrefix('idle', 'SmokeBlurLeft', 24, true);
+smokeLeft.animation.play('idle', true);
+smokeLeft.scrollFactor.set(0.4, 0.4);
+smokeLeft.antialiasing = FlxG.save.data.antialiasing;
+data.toAdd.push(smokeLeft);
+
+var smokeRight = new FlxSprite(1100, -100);
+smokeRight.frames = Paths.getSparrowAtlas('smokeRight', 'week7');
+smokeRight.animation.addByPrefix('idle', 'SmokeRight', 24, true);
+smokeRight.animation.play('idle', true);
+smokeRight.scrollFactor.set(0.4, 0.4);
+smokeRight.antialiasing = FlxG.save.data.antialiasing;
+data.toAdd.push(smokeRight);
+
+var tower = new Dancer(100, 50, false, [2, 0]);
+tower.frames = Paths.getSparrowAtlas('homedepot/tankWatchtower', 'week7');
+tower.animation.addByPrefix('idle', 'watchtower gradient color', 24, false);
+tower.animation.play('idle', true);
+tower.scrollFactor.set(0.5, 0.5);
+tower.updateHitbox();
+tower.antialiasing = FlxG.save.data.antialiasing;
+data.swagDancers.set('tower', tower);
+data.toAdd.push(tower);
+
+var rollingTank = new RollingTank(300, 300, 'homedepot/');
+rollingTank.antialiasing = FlxG.save.data.antialiasing;
+rollingTank.scrollFactor.set(0.5, 0.5);
+data.swagBacks['rollingTank'] = rollingTank;
+data.toAdd.push(rollingTank);
+data.distractions.push(rollingTank);
+
+var ground = new FlxSprite(-420, -150).loadGraphic(Paths.image('tankGround', 'week7'));
+ground.setGraphicSize(Std.int(1.15 * ground.width));
+ground.updateHitbox();
+ground.antialiasing = FlxG.save.data.antialiasing;
+data.toAdd.push(ground);
+
+var tankmen = new DancerGroup();
+data.swagDancerGroup.push(tankmen);
+data.distractions.push(tankmen);
+
+var tank0 = new Dancer(-200, 650, false, [2, 0]);
+tank0.frames = Paths.getSparrowAtlas('tank0', 'week7');
+tank0.antialiasing = FlxG.save.data.antialiasing;
+tank0.animation.addByPrefix("idle", "fg", 24, false);
+tank0.scrollFactor.set(1.7, 1.5);
+tank0.animation.play("idle");
+tankmen.add(tank0);
+
+var tank1 = new Dancer(-100, 750, false, [2, 0]);
+tank1.frames = Paths.getSparrowAtlas('tank1', 'week7');
+tank1.antialiasing = FlxG.save.data.antialiasing;
+tank1.animation.addByPrefix("idle", "fg", 24, false);
+tank1.scrollFactor.set(2, 0.2);
+tank1.animation.play("idle");
+tankmen.add(tank1);
+
+var tank2 = new Dancer(650, 940, false, [2, 0]);
+tank2.frames = Paths.getSparrowAtlas('tank2', 'week7');
+tank2.antialiasing = FlxG.save.data.antialiasing;
+tank2.animation.addByPrefix("idle", "foreground", 24, false);
+tank2.scrollFactor.set(1.5, 1.5);
+tank2.animation.play("idle");
+tankmen.add(tank2);
+
+var tank4 = new Dancer(1500, 900, false, [2, 0]);
+tank4.frames = Paths.getSparrowAtlas('tank4', 'week7');
+tank4.antialiasing = FlxG.save.data.antialiasing;
+tank4.animation.addByPrefix("idle", "fg", 24, false);
+tank4.scrollFactor.set(1.5, 1.5);
+tank4.animation.play("idle");
+tankmen.add(tank4);
+
+var tank5 = new Dancer(1820, 700, false, [2, 0]);
+tank5.frames = Paths.getSparrowAtlas('tank5', 'week7');
+tank5.antialiasing = FlxG.save.data.antialiasing;
+tank5.animation.addByPrefix("idle", "fg", 24, false);
+tank5.scrollFactor.set(1.5, 1.5);
+tank5.animation.play("idle");
+tankmen.add(tank5);
+
+var tank3 = new Dancer(1850, 1200, false, [2, 0]);
+tank3.frames = Paths.getSparrowAtlas('tank3', 'week7');
+tank3.antialiasing = FlxG.save.data.antialiasing;
+tank3.animation.addByPrefix("idle", "fg", 24, false);
+tank3.scrollFactor.set(3.5, 2.5);
+tank3.animation.play("idle");
+tankmen.add(tank3);
+
+data.layInFront[2].push(tankmen);

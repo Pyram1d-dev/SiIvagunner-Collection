@@ -1,0 +1,15 @@
+idle 0 0
+singUP -5 24
+singRIGHT -12 -2
+singLEFT 0 -11
+singDOWN 24 -50
+idle-fard 0 0
+singUP-fard -5 24
+singRIGHT-fard -12 -2
+singLEFT-fard 0 -11
+singDOWN-fard 24 -50
+singUPmiss -4 24
+singRIGHTmiss -11 9
+singLEFTmiss 0 -3
+singDOWNmiss 21 -27
+hey -10 -2

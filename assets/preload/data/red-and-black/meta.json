@@ -1,0 +1,16 @@
+{
+	"name": "Red and Black",
+	"artist": "GGalactigal",
+	"week": 6,
+	"difficulties": [
+		{
+			"name": "hard",
+			"chart": "red-and-black-hard",
+			"displayName": "Hard"
+		}
+	],
+	"initDifficulty": "hard",
+	"icon": "chama",
+	"background": "haachama",
+	"colors": [ "0xFFA51126", "0xFF231A1D" ]
+}
