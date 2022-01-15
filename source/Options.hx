@@ -846,8 +846,8 @@ class ScrollSpeedOption extends Option
 		if (FlxG.save.data.scrollSpeed < 1)
 			FlxG.save.data.scrollSpeed = 1;
 
-		if (FlxG.save.data.scrollSpeed > 4)
-			FlxG.save.data.scrollSpeed = 4;
+		if (FlxG.save.data.scrollSpeed > 10)
+			FlxG.save.data.scrollSpeed = 10;
 		return true;
 	}
 
@@ -864,8 +864,8 @@ class ScrollSpeedOption extends Option
 		if (FlxG.save.data.scrollSpeed < 1)
 			FlxG.save.data.scrollSpeed = 1;
 
-		if (FlxG.save.data.scrollSpeed > 4)
-			FlxG.save.data.scrollSpeed = 4;
+		if (FlxG.save.data.scrollSpeed > 10)
+			FlxG.save.data.scrollSpeed = 10;
 
 		return true;
 	}
@@ -1099,6 +1099,27 @@ class CamZoomOption extends Option
 	}
 }
 
+class CamSwayOption extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		FlxG.save.data.camsway = !FlxG.save.data.camsway;
+		display = updateDisplay();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Camera Sway: " + (!FlxG.save.data.camsway ? "[Off]" : "[On]");
+	}
+}
+
 class LockWeeksOption extends Option
 {
 	var confirm:Bool = false;
@@ -1240,6 +1261,7 @@ class ResetSettings extends Option
 		FlxG.save.data.strumline = null;
 		FlxG.save.data.customStrumLine = null;
 		FlxG.save.data.camzoom = null;
+		FlxG.save.data.camsway = null;
 		FlxG.save.data.scoreScreen = null;
 		FlxG.save.data.inputShow = null;
 		FlxG.save.data.optimize = null;
