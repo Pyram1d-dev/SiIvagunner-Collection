@@ -1,3 +1,4 @@
+import Stage.StageData;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
@@ -16,15 +17,13 @@ import openfl.ui.Keyboard;
 import flixel.FlxSprite;
 import flixel.FlxG;
 
+using StringTools;
+
 class GameplayCustomizeState extends MusicBeatState
 {
 
     var defaultX:Float = FlxG.width * 0.55 - 135;
     var defaultY:Float = FlxG.height / 2 - 50;
-
-    var background:FlxSprite;
-    var curt:FlxSprite;
-    var front:FlxSprite;
 
     var sick:FlxSprite;
 
@@ -39,6 +38,8 @@ class GameplayCustomizeState extends MusicBeatState
     var strumLineNotes:FlxTypedGroup<FlxSprite>;
     var playerStrums:FlxTypedGroup<FlxSprite>;
     private var camHUD:FlxCamera;
+
+    var camFollow:FlxObject;
     
     public override function create() {
         #if windows
@@ -46,15 +47,9 @@ class GameplayCustomizeState extends MusicBeatState
 		DiscordClient.changePresence("Customizing Gameplay Modules", null);
 		#end
 
-        sick = new FlxSprite().loadGraphic(Paths.image('sick','shared'));
+        sick = new FlxSprite().loadGraphic(Paths.image('uiskins/normal/sick','shared'));
         sick.antialiasing = FlxG.save.data.antialiasing;
-        sick.scrollFactor.set();
-        background = new FlxSprite(-1000, -200).loadGraphic(Paths.image('stageback','shared'));
-        curt = new FlxSprite(-500, -300).loadGraphic(Paths.image('stagecurtains','shared'));
-        front = new FlxSprite(-650, 600).loadGraphic(Paths.image('stagefront','shared'));
-        background.antialiasing = FlxG.save.data.antialiasing;
-        curt.antialiasing = FlxG.save.data.antialiasing;
-        front.antialiasing = FlxG.save.data.antialiasing;
+		sick.scrollFactor.set();
 
 		//Conductor.changeBPM(102);
 		persistentUpdate = true;
@@ -67,30 +62,149 @@ class GameplayCustomizeState extends MusicBeatState
 
         camHUD.zoom = FlxG.save.data.zoom;
 
-        background.scrollFactor.set(0.9,0.9);
-        curt.scrollFactor.set(0.9,0.9);
-        front.scrollFactor.set(0.9,0.9);
-
-        add(background);
-        add(front);
-        add(curt);
-
-		var camFollow = new FlxObject(0, 0, 1, 1);
+		camFollow = new FlxObject(0, 0, 1, 1);
 
 		dad = new Character(100, 100, 'dad');
 
-        bf = new Boyfriend(770, 450, 'bf');
+		bf = new Boyfriend(770, 450, 'bf');
 
-        gf = new Character(400, 130, 'gf');
+		gf = new Character(400, 130, 'gf');
 		gf.scrollFactor.set(0.95, 0.95);
+
+		var stageCheck = "stage";
+
+		var exceptions:Array<String> = ['monster-christmas'];
+
+		var exceptionCheck:Bool = false;
+
+		var vibeCheck:String = dad.curCharacter;
+
+		if (exceptions.contains(dad.curCharacter))
+		{
+			exceptionCheck = true;
+			for (i in exceptions)
+			{
+				if (dad.curCharacter.startsWith(i))
+				{
+					vibeCheck = i;
+					break;
+				}
+			}
+		}
+
+		vibeCheck = (!exceptionCheck) ? dad.baseCharacter.split('-')[0] : vibeCheck;
+
+		switch (vibeCheck)
+		{
+			case 'gf':
+				dad.setPosition(gf.x, gf.y);
+				gf.visible = false;
+			case "spooky":
+				dad.y += 200;
+			case "monster":
+				dad.y += 100;
+			case 'monster-christmas':
+				dad.y += 130;
+			case 'chama':
+				dad.y += 400;
+			case 'whitty' | 'whittyCrazy':
+				dad.x -= 100;
+			case 'pico':
+				dad.y += 300;
+			case 'parents':
+				dad.x -= 500;
+			case 'senpai':
+				dad.x += 150;
+				dad.y += 360;
+				trace('I banged your mom'); // NOTE: this is true
+			case 'spirit':
+				dad.x -= 150;
+				dad.y += 100;
+			case 'tankman':
+				dad.x += 110;
+				dad.y += 220;
+		}
 
 		var camPos:FlxPoint = new FlxPoint(dad.getGraphicMidpoint().x + 400, dad.getGraphicMidpoint().y);
 
 		camFollow.setPosition(camPos.x, camPos.y);
 
-        add(gf);
-        add(bf);
-        add(dad);
+		var stage:StageData = HScriptHandler.loadStageFromHScript(stageCheck);
+
+		for (i in stage.toAdd)
+		{
+			cast(i, FlxSprite).cameras = [camHUD];
+            add(i);
+        }
+		for (index => array in stage.layInFront)
+		{
+			switch (index)
+			{
+				case 0:
+					add(gf);
+					gf.scrollFactor.set(0.95, 0.95);
+					for (bg in array)
+					{
+						cast(bg, FlxSprite).cameras = [camHUD];
+						add(bg);
+					}
+				case 1:
+					add(dad);
+					for (bg in array)
+					{
+						cast(bg, FlxSprite).cameras = [camHUD];
+						add(bg);
+					}
+				case 2:
+					add(bf);
+					for (bg in array)
+					{
+						cast(bg, FlxSprite).cameras = [camHUD];
+						add(bg);
+                    }
+			}
+		}
+
+		var vibeCheck2 = (stageCheck.startsWith('school')) ? 'school' : stageCheck;
+
+		trace(vibeCheck2);
+
+		switch (vibeCheck2)
+		{
+			case 'nevada':
+				bf.x += 260;
+			case 'limo':
+				bf.y -= 220;
+				bf.x += 260;
+			case 'mall':
+				bf.x += 200;
+			case 'hellsKitchen':
+				bf.x += 320;
+				bf.y += 300;
+				gf.y += 300;
+			case 'mallEvil':
+				bf.x += 320;
+				dad.y -= 80;
+			case 'school':
+				bf.x += 200;
+				bf.y += 220;
+				gf.x += 180;
+				gf.y += 300;
+			case 'whitty':
+				bf.x -= 25;
+				if (stageCheck == "ballisticAlley")
+				{
+					gf.x += 15;
+					gf.y += 200;
+				}
+				else
+				{
+					gf.x -= 100;
+					gf.y += 50;
+				}
+			case 'militaryzone' | 'homedepot':
+				bf.x += 195;
+		}
 
         add(sick);
 
@@ -129,15 +243,13 @@ class GameplayCustomizeState extends MusicBeatState
         blackBorder = new FlxSprite(-30,FlxG.height + 40).makeGraphic((Std.int(text.width + 900)),Std.int(text.height + 600),FlxColor.BLACK);
 		blackBorder.alpha = 0.5;
 
-        background.cameras = [camHUD];
         text.cameras = [camHUD];
 
         text.scrollFactor.set();
-        background.scrollFactor.set();
 
-		add(blackBorder);
+		//add(blackBorder);
 
-		add(text);
+		//add(text);
 
 		FlxTween.tween(text,{y: FlxG.height - 18},2,{ease: FlxEase.elasticInOut});
 		FlxTween.tween(blackBorder,{y: FlxG.height - 18},2, {ease: FlxEase.elasticInOut});
@@ -166,7 +278,7 @@ class GameplayCustomizeState extends MusicBeatState
             FlxG.save.data.zoom = 0.8;
 
         if (FlxG.save.data.zoom > 1.2)
-            FlxG.save.data.zoom = 1.2;
+			FlxG.save.data.zoom = 1.2;
 
         FlxG.camera.zoom = FlxMath.lerp(0.9, FlxG.camera.zoom, 0.95);
         camHUD.zoom = FlxMath.lerp(FlxG.save.data.zoom, camHUD.zoom, 0.95);
@@ -194,6 +306,19 @@ class GameplayCustomizeState extends MusicBeatState
             camHUD.zoom = FlxG.save.data.zoom;
         }
 
+		if (FlxG.keys.pressed.W)
+			camFollow.y -= 100 * elapsed;
+
+		if (FlxG.keys.pressed.S)
+			camFollow.y += 100 * elapsed;
+
+		if (FlxG.keys.pressed.A)
+			camFollow.x -= 100 * elapsed;
+
+		if (FlxG.keys.pressed.D)
+			camFollow.x += 100 * elapsed;
+
+		camHUD.focusOn(camFollow.getPosition());
 
         if (FlxG.mouse.overlaps(sick) && FlxG.mouse.justReleased)
         {
@@ -246,7 +371,7 @@ class GameplayCustomizeState extends MusicBeatState
             {
                 // FlxG.log.add(i);
                 var babyArrow:FlxSprite = new FlxSprite(0, strumLine.y);
-                babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets', 'shared');
+                babyArrow.frames = Paths.getSparrowAtlas('noteskins/normal', 'shared');
                 babyArrow.animation.addByPrefix('green', 'arrowUP');
                 babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
                 babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
