@@ -5,6 +5,8 @@ import flixel.group.FlxSpriteGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import haxe.Json;
+import openfl.Assets;
 
 using StringTools;
 
@@ -16,15 +18,13 @@ class CreditText extends FlxSpriteGroup
     public var link:String;
 	public var menuIndex:Int = 0;
 
-	public function new(creditData:String, i:Int)
+	public function new(creditData:CreditData, i:Int)
 	{
 		super();
 		menuIndex = i;
-		var data = creditData.split("--");
-        link = data[0];
-        data.shift();
-		title = new FlxText(0, 0, 0, data[0]);
-		subtitle = new FlxText(0, 0, 0, data[1]);
+        link = creditData.link;
+		title = new FlxText(0, 0, 0, creditData.name);
+		subtitle = new FlxText(0, 0, 0, creditData.description);
 		title.setFormat(Paths.font("vcr.ttf"), 35, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		subtitle.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
 		title.borderSize = 2;
@@ -34,16 +34,16 @@ class CreditText extends FlxSpriteGroup
 		subtitle.screenCenter(X);
 		add(title);
 		add(subtitle);
-		if (data.length > 2)
+		if (creditData.icons.length > 0)
 		{
             var grpIcons = new FlxSpriteGroup();
-            for (i in 2...data.length)
+			for (i in 0...creditData.icons.length)
 			{
-				var spr = new HealthIcon(data[i]);
+				var spr = new HealthIcon(creditData.icons[i]);
 				spr.setGraphicSize(Std.int(spr.width * 0.5));
 				spr.updateHitbox();
 				spr.offset.set(spr.width / 2, spr.height * 0.3);
-                spr.x = 80 * (i-2);
+                spr.x = 80 * i;
 				spr.y = subtitle.y;
 				grpIcons.add(spr);
             }
@@ -64,18 +64,17 @@ class CreditText extends FlxSpriteGroup
 	}
 }
 
+typedef CreditData = 
+{
+	var name:String;
+	var description:String;
+	var link:String;
+	var icons:Array<String>;
+}
+
 class CreditsState extends MusicBeatState
 {
-	static var credits = [
-		"https://ninja-muffin24.itch.io/funkin--Original Devs--Please support the original game!",
-		"https://www.youtube.com/c/SiIvaGunner--SiIvagunner--All music and art",
-		"https://twitter.com/emmnyaa--MtH--SNIFF (Charting Tool)",
-		"https://www.youtube.com/c/KadeDev--KadeDev--Kade Engine, Whitty and Tricky code--whitty--tricky",
-		"https://www.youtube.com/channel/UCavjwViDNkpJGVbcr8qJacw--Banbuds--Tricky Assets--tricky",
-		"https://www.youtube.com/channel/UC9ORKA6WXIaa6oxlRLBJzrg--PaperKitty--Kapi mod--kapi",
-		"https://github.com/polybiusproxy--PolybiusProxy--MP4 Video Code",
-		"https://www.youtube.com/c/brightfyre--BrightFyre--Cool-ass modding tutorials"
-	];
+	var credits:Array<CreditData>;
 
 	var curSelected:Int = 0;
 
@@ -87,6 +86,14 @@ class CreditsState extends MusicBeatState
 		bg.screenCenter();
         bg.color = FlxColor.PURPLE;
 		add(bg);
+
+		var rawJson = Assets.getText(Paths.json("credits", "shared")).trim();
+
+		while (!rawJson.endsWith("}"))
+			rawJson = rawJson.substr(0, rawJson.length - 1);
+
+		credits = cast Json.parse(rawJson).credits;
+
 		for (index => data in credits)
 		{
 			var bruh = new CreditText(data, index);
@@ -97,7 +104,7 @@ class CreditsState extends MusicBeatState
 		title.setFormat(Paths.font("vcr.ttf"), 40, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
 		title.borderSize = 2;
 
-		var subtitle = new FlxText(80, 220, FlxG.width / 3, "Be sure to support all the people here who made this mod possible! (yes the buttons are links hit enter)");
+		var subtitle = new FlxText(80, 220, FlxG.width / 3, "Be sure to support all the people here who made this mod possible! (buttons are links, hit ENTER)");
 		subtitle.setFormat(Paths.font("vcr.ttf"), 25, FlxColor.WHITE, LEFT, OUTLINE, FlxColor.BLACK);
 		subtitle.borderSize = 2;
 
