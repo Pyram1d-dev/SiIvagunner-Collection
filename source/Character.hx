@@ -5,6 +5,7 @@ import flixel.FlxSprite;
 import flixel.animation.FlxBaseAnimation;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.system.FlxSound;
+import flixel.util.FlxColor;
 
 using StringTools;
 
@@ -18,6 +19,7 @@ class Character extends FlxSprite
 	public var baseCharacter:String = 'bf';
 	public var animationNotes:Array<Dynamic> = [];
 	public var animationSound:FlxSound;
+	public var charColor:Null<FlxColor>;
 
 	public var biDirectional = false;
 
@@ -45,8 +47,8 @@ class Character extends FlxSprite
 				frames = tex;
 				hasUniqueOffsets = true;
 
-			case 'gf-tankmen' | 'gf-homedepot' | 'gf-desync':
-				var adder = (curCharacter == 'gf-homedepot') ? 'HD' : (curCharacter == 'gf-desync') ? 'Desync' : '';
+			case 'gf-tankmen' | 'gf-homedepot' | 'gf-desync' | 'gf-twerkey':
+				var adder = (curCharacter == 'gf-homedepot') ? 'HD' : (curCharacter == 'gf-desync') ? 'Desync' : (curCharacter == 'gf-twerkey') ? 'Twerkey' : '';
 				tex = Paths.getSparrowAtlas('GFs/gfTankmen$adder', 'shared', true);
 				frames = tex;
 				animation.addByPrefix('sad', 'GF Crying at Gunpoint', 24, false);
@@ -90,7 +92,7 @@ class Character extends FlxSprite
 
 				loadOffsetFile(curCharacter);
 
-				if (PlayState.SONG.song.toLowerCase() != 'Ballistic')
+				if (PlayState.instance == null || PlayState.SONG.song.toLowerCase() != 'Ballistic')
 					playAnim('danceRight');
 				else
 					playAnim('scared');
@@ -153,8 +155,17 @@ class Character extends FlxSprite
 				tex = Paths.getSparrowAtlas('GFs/gfCarNeko', 'shared', true);
 				frames = tex;
 
+			case 'gf-christmas-nene':
+				tex = Paths.getSparrowAtlas('GFs/SpeakerNaeNaeChristmas', 'shared', true);
+				frames = tex;
+				hasUniqueOffsets = true;
+
 			case 'gf-pixel':
 				tex = Paths.getSparrowAtlas('GFs/gfPixel', 'shared', true);
+				frames = tex;
+
+			case 'gf-pixel-pain':
+				tex = Paths.getSparrowAtlas('GFs/gfPixelPain', 'shared', true);
 				frames = tex;
 
 			case 'gf-pixel-guide':
@@ -245,6 +256,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'big-chungus':
+				charColor = 0xFFFF6200;
 				baseCharacter = 'dad';
 				tex = Paths.getSparrowAtlas('Dads/BIG_CHUNGUS_assets', 'shared', true);
 				frames = tex;
@@ -259,6 +271,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'dad-amogus':
+				charColor = 0xFFFA0000;
 				tex = Paths.getSparrowAtlas('Dads/DADDY_DEAREST_amogus', 'shared', true);
 				frames = tex;
 				animation.addByPrefix('idle', 'Dad idle dance', 24, false);
@@ -346,6 +359,7 @@ class Character extends FlxSprite
 
 			case 'metalSonic':
 				baseCharacter = 'spooky';
+				charColor = 0xFF0000FF;
 				tex = Paths.getSparrowAtlas('metal_sonic', 'shared', true);
 				frames = tex;
 				animation.addByPrefix('singUP', 'spooky UP NOTE', 24, false);
@@ -424,6 +438,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'mom-ragyo':
+				charColor = 0xFFF2B3B3;
 				tex = Paths.getSparrowAtlas('Moms/momRagyo', 'shared', true);
 				frames = tex;
 
@@ -453,6 +468,18 @@ class Character extends FlxSprite
 
 			case 'monster-christmas':
 				tex = Paths.getSparrowAtlas('Monsters/monsterChristmas', 'shared', true);
+				frames = tex;
+				animation.addByPrefix('idle', 'monster idle', 24, false);
+				animation.addByPrefix('singUP', 'monster up note', 24, false);
+				animation.addByPrefix('singDOWN', 'monster down', 24, false);
+				animation.addByPrefix('singLEFT', 'Monster left note', 24, false);
+				animation.addByPrefix('singRIGHT', 'Monster Right note', 24, false);
+
+				loadOffsetFile(curCharacter);
+				playAnim('idle');
+
+			case 'chama-christmas':
+				tex = Paths.getSparrowAtlas('ChamaChristmas', 'shared', true);
 				frames = tex;
 				animation.addByPrefix('idle', 'monster idle', 24, false);
 				animation.addByPrefix('singUP', 'monster up note', 24, false);
@@ -506,6 +533,39 @@ class Character extends FlxSprite
 
 				flipX = true;
 
+			case 'lady':
+				tex = Paths.getSparrowAtlas('LADY', 'shared', true);
+				frames = tex;
+				animation.addByPrefix('idle', "Pico Idle Dance", 24, false);
+				animation.addByPrefix('singUP', 'pico Up note0', 24, false);
+				animation.addByPrefix('singDOWN', 'Pico Down Note0', 24, false);
+				if (isPlayer)
+				{
+					animation.addByPrefix('singLEFT', 'Pico NOTE LEFT0', 24, false);
+					animation.addByPrefix('singRIGHT', 'Pico Note Right0', 24, false);
+					animation.addByPrefix('singRIGHTmiss', 'Pico Note Right Miss', 24, false);
+					animation.addByPrefix('singLEFTmiss', 'Pico NOTE LEFT miss', 24, false);
+				}
+				else
+				{
+					// Need to be flipped! REDO THIS LATER!
+					animation.addByPrefix('singLEFT', 'Pico Note Right0', 24, false);
+					animation.addByPrefix('singRIGHT', 'Pico NOTE LEFT0', 24, false);
+					animation.addByPrefix('singRIGHTmiss', 'Pico NOTE LEFT miss', 24, false);
+					animation.addByPrefix('singLEFTmiss', 'Pico Note Right Miss', 24, false);
+				}
+
+				animation.addByPrefix('singUPmiss', 'pico Up note miss', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'Pico Down Note MISS', 24, false);
+
+				loadOffsetFile('pico');
+
+				playAnim('idle');
+
+				flipX = true;
+
+				baseCharacter = 'pico';
+
 			case 'pico-igor':
 				tex = Paths.getSparrowAtlas('Picos/Pico_FNF_igor', 'shared', true);
 				frames = tex;
@@ -538,6 +598,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'pico-cringe':
+				charColor = 0xFF737373;
 				tex = Paths.getSparrowAtlas('Picos/Pico_FNF_cringe', 'shared', true);
 				frames = tex;
 				animation.addByPrefix('idle', "Pico Idle Dance", 24, false);
@@ -631,6 +692,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'juiceWRLD':
+				charColor = 0xFFD0F2B3;
 				baseCharacter = 'pico';
 				tex = Paths.getSparrowAtlas('juiceWRLD', 'shared', true);
 				frames = tex;
@@ -663,6 +725,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'pico-grandpa':
+				charColor = 0xFFFFFFFF;
 				tex = Paths.getSparrowAtlas('Picos/Pico_FNF_grandpa', 'shared', true);
 				frames = tex;
 				animation.addByPrefix('idle', "Pico Idle Dance", 24, false);
@@ -742,7 +805,14 @@ class Character extends FlxSprite
 				frames = tex;
 				hasUniqueOffsets = true;
 
+			case 'bf-aloe':
+				charColor = 0xFFFC03A9;
+				var tex = Paths.getSparrowAtlas('BFs/Aloo', 'shared', true);
+				frames = tex;
+				hasUniqueOffsets = true;
+
 			case 'bf-hk':
+				charColor = 0xFFFFFFFF;
 				var tex = Paths.getSparrowAtlas('BFs/BOYFRIEND_hk', 'shared', true);
 				frames = tex;
 
@@ -760,6 +830,12 @@ class Character extends FlxSprite
 
 			case 'bf-kapi':
 				var tex = Paths.getSparrowAtlas('BFs/BOYFRIEND_kapi', 'shared', true);
+				frames = tex;
+				hasUniqueOffsets = true;
+
+			case 'bf-lady':
+				charColor = 0xFFF57E07;
+				var tex = Paths.getSparrowAtlas('BFs/BOYFRIEND_lady', 'shared', true);
 				frames = tex;
 				hasUniqueOffsets = true;
 
@@ -864,6 +940,17 @@ class Character extends FlxSprite
 				var tex = Paths.getSparrowAtlas('BFs/bfCarNeko', 'shared', true);
 				frames = tex;
 
+			case 'bf-christmas-aloe':
+				charColor = 0xFFFC03A9;
+				var tex = Paths.getSparrowAtlas('BFs/AlooChristmas', 'shared', true);
+				frames = tex;
+				animation.addByPrefix('idle-fard', 'BF idle fard', 24, false);
+				animation.addByPrefix('singUP-fard', 'BF NOTE UP alt0', 24, false);
+				animation.addByPrefix('singLEFT-fard', 'BF NOTE LEFT alt0', 24, false);
+				animation.addByPrefix('singRIGHT-fard', 'BF NOTE RIGHT alt0', 24, false);
+				animation.addByPrefix('singDOWN-fard', 'BF NOTE DOWN alt0', 24, false);
+				hasUniqueOffsets = true;
+
 			case 'bf-pixel':
 				frames = Paths.getSparrowAtlas('BFs/bfPixel', 'shared', true);
 
@@ -879,6 +966,7 @@ class Character extends FlxSprite
 				frames = Paths.getSparrowAtlas('BFs/bfPixelSquisherzDEAD', 'shared', true);
 
 			case 'bf-pixel-daft':
+				charColor = 0xFFF0BE69;
 				frames = Paths.getSparrowAtlas('BFs/bfPixelDaft', 'shared', true);
 			case 'bf-pixel-daft-dead':
 				frames = Paths.getSparrowAtlas('BFs/bfPixelDaftDEAD', 'shared', true);
@@ -892,6 +980,12 @@ class Character extends FlxSprite
 				frames = Paths.getSparrowAtlas('BFs/bfPixelNess', 'shared', true);
 			case 'bf-pixel-ness-dead':
 				frames = Paths.getSparrowAtlas('BFs/bfPixelNessDEAD', 'shared', true);
+
+			case 'bf-pixel-knuck':
+				frames = Paths.getSparrowAtlas('BFs/bfPixelKnuck', 'shared', true);
+				hasUniqueOffsets = true;
+			case 'bf-pixel-knuck-dead':
+				frames = Paths.getSparrowAtlas('BFs/bfPixelKnuckDEAD', 'shared', true);
 
 			case 'signDeath':
 				frames = PlayState.instance.songCache.fromSparrow("death", "characters/BFs/signDeath", "shared");
@@ -927,6 +1021,25 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 
+			case 'monika':
+				frames = Paths.getSparrowAtlas('Senpais/monika', 'shared', true);
+				animation.addByPrefix('idle', 'Monika Idle', 24, false);
+				animation.addByPrefix('singUP', 'Monika UP NOTE', 24, false);
+				animation.addByPrefix('singLEFT', 'Monika LEFT NOTE', 24, false);
+				animation.addByPrefix('singRIGHT', 'Monika RIGHT NOTE', 24, false);
+				animation.addByPrefix('singDOWN', 'Monika DOWN NOTE', 24, false);
+
+				loadOffsetFile('senpai');
+
+				playAnim('idle');
+
+				setGraphicSize(Std.int(width * 6));
+				updateHitbox();
+
+				antialiasing = false;
+
+				baseCharacter = 'senpai';
+
 			case 'senpai-helper':
 				frames = Paths.getSparrowAtlas('Senpais/senpaiHelper', 'shared', true);
 				animation.addByPrefix('idle', 'Senpai Idle', 24, false);
@@ -961,6 +1074,7 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 			case 'senpai-punk':
+				charColor = 0xFFD9D9D9;
 				frames = Paths.getSparrowAtlas('Senpais/senpaiPunk', 'shared', true);
 				animation.addByPrefix('idle', 'Angry Senpai Idle', 24, false);
 				animation.addByPrefix('singUP', 'Angry Senpai UP NOTE', 24, false);
@@ -1026,6 +1140,7 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 			case 'spirit-gariwald':
+				charColor = 0xFFBFE8FF;
 				frames = Paths.getPackerAtlas('Senpais/spiritGariwald', 'shared', true);
 				animation.addByPrefix('idle', "idle spirit_", 24, false);
 				animation.addByPrefix('singUP', "up_", 24, false);
@@ -1127,7 +1242,7 @@ class Character extends FlxSprite
 				loadOffsetFile(curCharacter);
 
 			case 'tankman':
-				tex = Paths.getSparrowAtlas('tankmanCaptain', 'shared', true);
+				tex = Paths.getSparrowAtlas('Tankmen/tankmanCaptain', 'shared', true);
 				frames = tex;
 				animation.addByPrefix('idle', 'Tankman Idle Dance', 24, false);
 				animation.addByPrefix('singUP', 'Tankman UP note', 24, false);
@@ -1141,7 +1256,7 @@ class Character extends FlxSprite
 				loadOffsetFile(curCharacter);
 
 			case 'tankman-homedepot':
-				tex = Paths.getSparrowAtlas('tankmanCaptainHomeDepot', 'shared', true);
+				tex = Paths.getSparrowAtlas('Tankmen/tankmanCaptainHomeDepot', 'shared', true);
 				frames = tex;
 				animation.addByPrefix('idle', 'Tankman Idle Dance', 24, false);
 				animation.addByPrefix('singUP', 'Tankman UP note', 24, false);
@@ -1156,7 +1271,22 @@ class Character extends FlxSprite
 
 			case 'psy':
 				baseCharacter = 'tankman';
-				tex = Paths.getSparrowAtlas('psy', 'shared', true);
+				tex = Paths.getSparrowAtlas('Tankmen/psy', 'shared', true);
+				frames = tex;
+				animation.addByPrefix('idle', 'Tankman Idle Dance', 24, false);
+				animation.addByPrefix('singUP', 'Tankman UP note', 24, false);
+				animation.addByPrefix('singLEFT', 'Tankman Right Note', 24, false);
+				animation.addByPrefix('singDOWN', 'Tankman DOWN note', 24, false);
+				animation.addByPrefix('singRIGHT', 'Tankman Note Left', 24, false);
+				animation.addByPrefix('singUP-alt', 'TANKMAN UGH', 24, false);
+				flipX = true;
+
+				loadOffsetFile(curCharacter);
+
+			case 'maskedWolf':
+				charColor = 0xFFFFFFFF;
+				baseCharacter = 'tankman';
+				tex = Paths.getSparrowAtlas('Tankmen/maskedWolf', 'shared', true);
 				frames = tex;
 				animation.addByPrefix('idle', 'Tankman Idle Dance', 24, false);
 				animation.addByPrefix('singUP', 'Tankman UP note', 24, false);
@@ -1187,6 +1317,33 @@ class Character extends FlxSprite
 			biDirectional = true;
 
 		var nameSplit:Array<String> = curCharacter.split('-');
+
+		if (charColor == null)
+		{
+			switch (character.split('-')[0])
+			{
+				case 'dad' | 'dads' | 'mom' | 'parents':
+					charColor = 0xFF5A07F5;
+				case 'spooky' | 'lady':
+					charColor = 0xFFF57E07;
+				case 'monster' | 'chama':
+					charColor = 0xFFF5DD07;
+				case 'pico':
+					charColor = 0xFF52B514;
+				case 'senpai':
+					charColor = 0xFFF76D6D;
+				case 'spirit':
+					charColor = 0xFFAD0505;
+				case 'whitty' | 'whittyCrazy':
+					charColor = 0xFFFF6200;
+				case 'kapi' | 'remilia' | 'childishgambino':
+					charColor = 0xFFFC03A9;
+				case 'tankman' | 'psy':
+					charColor = 0xFFFFFFFF;
+				default:
+					charColor = (character.startsWith('bf')) ? 0xFF0097C4 : 0xFFFA0000;
+			}
+		}
 
 		// Since this is a special case where I have a SHIT TON of character skins mostly of GF and BF, I had to type out this fucking code so that it sets up pretty much any BF sprite since they all have the same animations
 		// Could do it for other characters but... NO
@@ -1385,7 +1542,7 @@ class Character extends FlxSprite
 			}
 		}
 
-		if (curCharacter != 'gf-cow' && !(curCharacter == 'gf-whitty' && PlayState.SONG.song.toLowerCase() == 'Ballistic'))
+		if (curCharacter != 'gf-cow' && !(curCharacter == 'gf-whitty' && PlayState.SONG != null && PlayState.SONG.song.toLowerCase() == 'Ballistic'))
 			dance();
 
 		if (isPlayer)
@@ -1428,7 +1585,7 @@ class Character extends FlxSprite
 	{
 		// trace(curCharacter);
 		@:privateAccess
-		if (!PlayState.inCutscene && PlayState.instance.songStarted)
+		if (PlayState.instance == null || (!PlayState.inCutscene && PlayState.instance.songStarted))
 		{
 			if (PlayState.instance == null || PlayState.instance.currentEnemy == this)
 			{
@@ -1550,6 +1707,14 @@ class Character extends FlxSprite
 			FlxG.log.warn(['Such alt animation doesnt exist: ' + AnimName]);
 			#end
 			AnimName = AnimName.split('-')[0];
+		}
+
+		if (PlayState.instance != null && curCharacter == 'bf-christmas-aloe'
+			&& (FlxG.save.data.playEnemy ? PlayState.instance.health > 1 : PlayState.instance.health < 1)
+			&& !AnimName.endsWith('alt')
+			&& !AnimName.endsWith('miss') && (AnimName.startsWith('sing') || AnimName.startsWith('idle')))
+		{
+			AnimName += '-fard';
 		}
 
 		animation.play(AnimName, Force, Reversed, Frame);
