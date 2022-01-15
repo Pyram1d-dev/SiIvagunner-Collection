@@ -1,19 +1,19 @@
-import flixel.FlxState;
-import flixel.input.gamepad.FlxGamepad;
-import flixel.util.FlxColor;
-import flixel.text.FlxText;
+import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.FlxState;
+import flixel.addons.transition.FlxTransitionableState;
+import flixel.input.gamepad.FlxGamepad;
+import flixel.text.FlxText;
+import flixel.util.FlxColor;
+import flixel.util.FlxTimer;
+
+using StringTools;
 #if cpp
 import sys.thread.Thread;
 #end
-import flixel.util.FlxTimer;
-import flixel.FlxG;
 
-using StringTools;
-
-class UpdaterState extends FlxState
+class UpdaterState extends FlxTransitionableState
 {
-
     var skip:Bool = false;
     var infoText:FlxText;
     var controlText:String = "ENTER";
