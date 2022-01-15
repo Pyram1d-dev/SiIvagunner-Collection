@@ -1,5 +1,6 @@
 package;
 
+import haxe.Json;
 import Song.SwagSong;
 import flash.text.TextField;
 import flixel.FlxG;
@@ -27,6 +28,14 @@ import sys.io.File;
 import Discord.DiscordClient;
 #end
 
+typedef CategoryData = 
+{
+	public var title:String;
+	public var icon:String;
+	public var color:String;
+	public var songs:Array<String>;
+}
+
 class FreeplayState extends MusicBeatState
 {
 	public static var songs:Array<SongMetadata> = [];
@@ -43,11 +52,7 @@ class FreeplayState extends MusicBeatState
 
 	var bg:FlxSprite;
 
-	var weekColors:Array<FlxColor> = [
-		FlxColor.WHITE, FlxColor.PURPLE, FlxColor.ORANGE, FlxColor.LIME, FlxColor.MAGENTA, FlxColor.PURPLE,
-		FlxColor.YELLOW, FlxColor.ORANGE, FlxColor.RED,
-		FlxColor.PINK, 0xFF5E0000, FlxColor.GRAY, FlxColor.BLACK
-	];
+	var curColor:FlxColor = FlxColor.WHITE;
 
 	var scoreText:FlxText;
 	var comboText:FlxText;
@@ -67,6 +72,8 @@ class FreeplayState extends MusicBeatState
 	public static var blockInputs = false;
 
 	public static var songData:Map<String, Array<SwagSong>> = [];
+
+	public static var categories:Array<CategoryData> = [];
 
 	public static function loadDiff(diff:Int, format:String, name:String, array:Array<SwagSong>)
 	{
@@ -111,15 +118,20 @@ class FreeplayState extends MusicBeatState
 		songData = [];
 		songs = [];
 
+		curColor = Std.parseInt(categories[week].color);
+
 		for (i in 0...initSonglist.length)
 		{
 			var data:Array<String> = initSonglist[i].split(':');
-			var inCategory = Std.parseInt(data[data.length - 1]) != week;
+			var inCategory = categories[week].songs.contains(data[0]);
 			if (FlxG.save.data.noCopyright == 2 && h.contains(data[0]))
 				continue;
-			if (week != null && inCategory)
+			if (week != null && !inCategory)
 				continue;
-			var meta = new SongMetadata(data[0], Std.parseInt(data[2]), data[1]);
+			var weekInfo:Dynamic = data[2];
+			if (Std.parseInt(weekInfo) != null)
+				weekInfo = Std.parseInt(weekInfo);
+			var meta = new SongMetadata(data[0], weekInfo, data[1]);
 			var format = StringTools.replace(meta.songName, " ", "-");
 			switch (format)
 			{
@@ -239,25 +251,15 @@ class FreeplayState extends MusicBeatState
 		inSection = false;
 		grpSongs.clear();
 		curSelected = curSection;
-		var weekNames = [
-			"Misc Songs", "Week One", "Week Two", "Week Three", "Week Four", "Week Five", "Week Six", "Week Seven", "Back Alley Blitz", "Arcade Showdown",
-			"CLOWN", "Extras", "Unbeatable"
-		];
-		var iconPenis = [
-			'gf', 'dad', 'spooky', 'pico', 'mom', 'parents-christmas', 'senpai', 'tankman', 'whitty', 'kapi', 'tricky', 'face', 'pain'
-		];
-		var initSonglist = CoolUtil.coolTextFile(Paths.txt('data/freeplaySonglist'));
-		var data:Array<String> = initSonglist[initSonglist.length - 1].split(':');
-		var numWeeks = Std.parseInt(data[data.length - 1]) + 1;
-		for (i in 0...numWeeks)
+		for (i => data in categories)
 		{
-			var sectionName = weekNames[i];
+			var sectionName = data.title;
 			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, sectionName, true, false, true);
 			songText.isMenuItem = true;
 			songText.targetY = i;
 			grpSongs.add(songText);
 
-			var icon:HealthIcon = new HealthIcon(iconPenis[i]);
+			var icon:HealthIcon = new HealthIcon(data.icon);
 			icon.sprTracker = songText;
 
 			iconArray.push(icon);
@@ -327,7 +329,7 @@ class FreeplayState extends MusicBeatState
 
 		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'), false);
 		bg.screenCenter();
-		bg.color = weekColors[0];
+		bg.color = FlxColor.WHITE;
 		bg.updateHitbox();
 		bg.antialiasing = FlxG.save.data.antialiasing;
 		add(bg);
@@ -361,6 +363,17 @@ class FreeplayState extends MusicBeatState
 		add(comboText);
 
 		add(scoreText);
+
+		if (categories.length <= 0)
+		{
+			trace("Loading category data...");
+			var rawJson = Assets.getText(Paths.json("freeplayCategoryData")).trim();
+
+			while (!rawJson.endsWith("}"))
+				rawJson = rawJson.substr(0, rawJson.length - 1);
+
+			categories = cast Json.parse(rawJson).list;
+		}
 
 		if (fromSong)
 			listSongs(curSection);
@@ -400,7 +413,7 @@ class FreeplayState extends MusicBeatState
 		super.create();
 	}
 
-	public function addSong(songName:String, weekNum:Int, songCharacter:String)
+	public function addSong(songName:String, weekNum:Dynamic, songCharacter:String)
 	{
 		songs.push(new SongMetadata(songName, weekNum, songCharacter));
 	}
@@ -440,7 +453,7 @@ class FreeplayState extends MusicBeatState
 			FlxG.sound.music.volume -= 0.5 * FlxG.elapsed;
 		}
 
-		bg.color = FlxColor.interpolate(bg.color, (inSection) ? weekColors[curSection] : FlxColor.CYAN, 0.05);
+		bg.color = FlxColor.interpolate(bg.color, (inSection) ? curColor : FlxColor.CYAN, 0.05);
 
 		if (inSection)
 		{
@@ -731,7 +744,7 @@ class FreeplayState extends MusicBeatState
 class SongMetadata
 {
 	public var songName:String = "";
-	public var week:Int = 0;
+	public var week:Dynamic = 0;
 	#if sys
 	public var sm:SMFile;
 	public var path:String;
@@ -741,7 +754,7 @@ class SongMetadata
 	public var diffs = [];
 
 	#if sys
-	public function new(song:String, week:Int, songCharacter:String, ?sm:SMFile = null, ?path:String = "")
+	public function new(song:String, week:Dynamic, songCharacter:String, ?sm:SMFile = null, ?path:String = "")
 	{
 		this.songName = song;
 		this.week = week;
@@ -750,7 +763,7 @@ class SongMetadata
 		this.path = path;
 	}
 	#else
-	public function new(song:String, week:Int, songCharacter:String)
+	public function new(song:String, week:Dynamic, songCharacter:String)
 	{
 		this.songName = song;
 		this.week = week;
