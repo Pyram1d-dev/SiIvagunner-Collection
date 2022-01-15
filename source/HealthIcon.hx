@@ -17,7 +17,7 @@ class HealthIcon extends FlxSprite
 		'bf-pixel', 'bf-old', 'bf-amogus', 'big-chungus', 'dad-amogus', 'dad-king', 'spooky-slam', 'bf-slam', 'bf-ryuko', 'mom-ragyo', 'spooky-tetris',
 		'pico-grandpa', 'pico-igor', 'bf-igor', 'bf-richter', 'pico-cringe', 'pico-fw', 'bf-pixel-squisherz', 'bf-pixel-daft', 'senpai-punk',
 		'senpai-punk-full', 'senpai-will', 'senpai-skeletron', 'spirit-gariwald', 'spirit-giygas', 'mario-ded', 'bf-pixel-terraria', 'tankman-homedepot',
-		'bf-sockdude', 'parents-games', 'bf-sonic', 'bf-reimu', 'bf-hk', 'mom-car-neko'
+		'bf-sockdude', 'parents-games', 'bf-sonic', 'bf-reimu', 'bf-hk', 'mom-car-neko', 'bf-lady', 'bf-pixel-knuck', 'bf-christmas-aloe'
 	];
 
 	/**
