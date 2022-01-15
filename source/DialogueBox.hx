@@ -39,18 +39,20 @@ class DialogueBox extends FlxSpriteGroup
 
 	var sound:FlxSound;
 
+	var isKapi:Bool = false;
+
 	public function new(talkingRight:Bool = true, ?dialogueList:Array<String>)
 	{
 		super();
 
 		var songLowercase = StringTools.replace(PlayState.SONG.song, " ", "-").toLowerCase();
 
-		rootSong = (songLowercase != 'lo-fight') ? songLowercase.split('-')[0] : songLowercase;
+		rootSong = PlayState.instance.rootSong;
 
 		var tempLol:Map<String, String> = [
 			'senpai' => 'weeb/pixelUI/dialogueBox-pixel',
 			'roses' => 'weeb/pixelUI/dialogueBox-senpaiMad',
-			'thorns' => 'weeb/pixelUI/dialogueBox-evil'
+			'thorns' => 'weeb/pixelUI/dialogueBox-evil',
 		];
 
 		var paths:Map<String, String> = [
@@ -182,6 +184,12 @@ class DialogueBox extends FlxSpriteGroup
 				face.setGraphicSize(Std.int(face.width * 6));
 				add(face);
 
+			case 'high-school-conflict':
+				hasDialog = true;
+				box.frames = Paths.getSparrowAtlas('dialogue/monika/dialogueBox', 'shared');
+				box.animation.addByPrefix('normalOpen', 'Text Box Appear', 24, false);
+				box.animation.addByIndices('normal', 'Text Box Appear', [4], "", 24);
+
 			case 'lo-fight' | 'overhead' | 'ballistic':
 				hasDialog = true;
 				box.frames = Paths.getSparrowAtlas('speech_bubble_talking', 'shared');
@@ -211,6 +219,26 @@ class DialogueBox extends FlxSpriteGroup
 
 		if (gaming)
 		{
+			if (rootSong == 'high-school-conflict')
+			{
+				portraitLeft = new FlxSprite(-20, 40);
+				portraitLeft.frames = Paths.getSparrowAtlas('dialogue/monika/monika', 'shared');
+				portraitLeft.animation.addByPrefix('enter', 'Portrait Enter', 24, false);
+				portraitLeft.setGraphicSize(Std.int(portraitLeft.width * PlayState.daPixelZoom * 0.9));
+				portraitLeft.updateHitbox();
+				portraitLeft.scrollFactor.set();
+				add(portraitLeft);
+				portraitLeft.visible = false;
+
+				portraitRight = new FlxSprite(0, 40);
+				portraitRight.frames = Paths.getSparrowAtlas('dialogue/monika/bf', 'shared');
+				portraitRight.animation.addByPrefix('enter', 'Portrait Enter', 24, false);
+				portraitRight.setGraphicSize(Std.int(portraitRight.width * PlayState.daPixelZoom * 0.9));
+				portraitRight.updateHitbox();
+				portraitRight.scrollFactor.set();
+				add(portraitRight);
+				portraitRight.visible = false;
+			}
 			if (PlayState.SONG.stage != "arcade")
 			{
 				portraitLeft = new FlxSprite(-20, 40);
@@ -303,10 +331,14 @@ class DialogueBox extends FlxSpriteGroup
 
 		box.screenCenter(X);
 
-		if (gaming && PlayState.SONG.stage != "arcade")
+		isKapi = PlayState.storyWeek == 'arcade' || PlayState.storyWeek == 9;
+
+		if (gaming && !isKapi)
 		{
 			portraitLeft.screenCenter(X);
-			handSelect = new FlxSprite(FlxG.width * 0.9, FlxG.height * 0.9).loadGraphic(Paths.image(paths.get('hS')));
+			handSelect = new FlxSprite(FlxG.width * 0.8, FlxG.height * 0.85).loadGraphic(Paths.image(paths.get('hS'), 'week6'));
+			handSelect.setGraphicSize(Std.int(handSelect.width * 3.5));
+			handSelect.updateHitbox();
 			add(handSelect);
 		}
 
@@ -314,12 +346,11 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			// box.flipX = true;
 		}
-
-		dropText = new FlxText(242, 502, Std.int(FlxG.width * 0.6), "", (PlayState.storyWeek == 9) ? 48 : 32);
+		dropText = new FlxText(242, 502, Std.int(FlxG.width * 0.6), "", (isKapi) ? 48 : 32);
 		if (gaming)
 		{
-			dropText.font = (PlayState.storyWeek == 9) ? 'Delfino' : 'Pixel Arial 11 Bold';
-			dropText.color = (PlayState.storyWeek == 9) ? 0x00000000 : 0xFFD89494;
+			dropText.font = (isKapi) ? 'Delfino' : 'Pixel Arial 11 Bold';
+			dropText.color = (isKapi) ? 0x00000000 : 0xFFD89494;
 		}
 		else
 		{
@@ -333,7 +364,7 @@ class DialogueBox extends FlxSpriteGroup
 		swagDialogue.font = dropText.font;
 		if (gaming)
 		{
-			swagDialogue.color = (PlayState.storyWeek == 9) ? 0xFFFFFFFF : 0xFF3F2021;
+			swagDialogue.color = (isKapi) ? 0xFFFFFFFF : 0xFF3F2021;
 		}
 		else
 		{
@@ -391,11 +422,15 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			remove(dialogue);
 
-			var pebis = (PlayState.storyWeek == 9) ? '-kapi' : '';
+			@:privateAccess
+			if (!swagDialogue._typing)
+			{
+				var pebis = (isKapi) ? '-kapi' : '';
+				FlxG.sound.play(Paths.sound('clickText' + pebis), 0.8);
+			}
 
-			FlxG.sound.play(Paths.sound('clickText' + pebis), 0.8);
-
-			if (dialogueList[1] == null && dialogueList[0] != null)
+			@:privateAccess
+			if (!swagDialogue._typing && dialogueList[1] == null && dialogueList[0] != null)
 			{
 				if (!isEnding)
 				{
@@ -404,12 +439,12 @@ class DialogueBox extends FlxSpriteGroup
 					if (rootSong == 'senpai' || rootSong == 'thorns')
 						sound.fadeOut(2.2, 0);
 
-
-
 					new FlxTimer().start(0.2, function(tmr:FlxTimer)
 					{
-						if (PlayState.storyWeek == 9)
+						if (isKapi)
 							portraitMiddle.visible = false;
+						if (handSelect != null)
+							handSelect.alpha -= 1 / 5;
 						box.alpha -= 1 / 5;
 						bgFade.alpha -= 1 / 5 * 0.7;
 						portraitLeft.visible = false;
@@ -427,8 +462,14 @@ class DialogueBox extends FlxSpriteGroup
 			}
 			else
 			{
-				dialogueList.remove(dialogueList[0]);
-				startDialogue();
+				@:privateAccess
+				if (!swagDialogue._typing)
+				{
+					dialogueList.remove(dialogueList[0]);
+					startDialogue();
+				}
+				else 
+					swagDialogue.skip();
 			}
 		}
 
@@ -448,39 +489,62 @@ class DialogueBox extends FlxSpriteGroup
 		swagDialogue.resetText(dialogueList[0]);
 		swagDialogue.start(0.04, true);
 
-		if (PlayState.storyWeek == 9)
+		if (isKapi)
 		{
 			if (curCharacter.startsWith('bf'))
 			{
 				portraitLeft.visible = false;
 				portraitMiddle.visible = false;
-				portraitRight.frames = Paths.getSparrowAtlas('kapiUI/${curCharacter}', 'arcadeWeek');
+				portraitRight.setFrames(Paths.getSparrowAtlas('kapiUI/${curCharacter}', 'arcadeWeek'), true);
 				if (!portraitRight.visible)
 				{
 					portraitRight.visible = true;
-					portraitRight.animation.play('enter');
+					portraitRight.animation.play('enter', true);
 				}
 			}
 			if (curCharacter.startsWith('kapi') || curCharacter.startsWith('remilia'))
 			{
 				portraitRight.visible = false;
 				portraitMiddle.visible = false;
-				portraitLeft.frames = Paths.getSparrowAtlas('kapiUI/${curCharacter}', 'arcadeWeek');
+				portraitLeft.setFrames(Paths.getSparrowAtlas('kapiUI/${curCharacter}', 'arcadeWeek'), true);
 				if (!portraitLeft.visible)
 				{
 					portraitLeft.visible = true;
-					portraitLeft.animation.play('enter');
+					portraitLeft.animation.play('enter', true);
 				}
 			}
 			if (curCharacter.startsWith('gf') || curCharacter.startsWith('marisa'))
 			{
 				portraitLeft.visible = false;
 				portraitRight.visible = false;
-				portraitMiddle.frames = Paths.getSparrowAtlas('kapiUI/${curCharacter}', 'arcadeWeek');
+				portraitMiddle.setFrames(Paths.getSparrowAtlas('kapiUI/${curCharacter}', 'arcadeWeek'), true);
 				if (!portraitMiddle.visible)
 				{
 					portraitMiddle.visible = true;
-					portraitMiddle.animation.play('enter');
+					portraitMiddle.animation.play('enter', true);
+				}
+			}
+		}
+		else if (rootSong == 'high-school-conflict')
+		{
+			if (curCharacter.startsWith('bf'))
+			{
+				portraitLeft.visible = false;
+				portraitRight.setFrames(Paths.getSparrowAtlas('dialogue/monika/$curCharacter', 'shared'), true);
+				if (!portraitRight.visible)
+				{
+					portraitRight.visible = true;
+					portraitRight.animation.play('enter', true);
+				}
+			}
+			if (curCharacter.startsWith('monika'))
+			{
+				portraitRight.visible = false;
+				portraitLeft.setFrames(Paths.getSparrowAtlas('dialogue/monika/$curCharacter', 'shared'), true);
+				if (!portraitLeft.visible)
+				{
+					portraitLeft.visible = true;
+					portraitLeft.animation.play('enter', true);
 				}
 			}
 		}
