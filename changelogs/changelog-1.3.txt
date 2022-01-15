@@ -1,0 +1,10 @@
+WHAT'S NEW:
+- 8 new rips!
+- New Erect remix for Dad Battle In-Game Version!
+- Added camera sway (because all the big boy mods do that I guess)
+- Converted a lot of things to be softcoded so that they're a lot easier to add
+- Added support for hscript (only useful for creating stages as of now)
+- Categories are not week-based anymore and are completely softcoded
+- Complete story menu overhaul, now also softcoded
+- Added more health bar colors for unique characters
+- "New Songs" category added to make finding new content between updates easier
