@@ -1,5 +1,6 @@
 package;
 
+import sys.FileSystem;
 #if sys
 import smTools.SMFile;
 #end
@@ -81,9 +82,15 @@ class TitleState extends MusicBeatState
 
 		#if sys
 		var importantAssets:Map<String, Array<String>> = [];
-		importantAssets.set('noteSplashes', ['noteSplashes', 'shared']);
-		importantAssets.set('pixelNoteSplashes', ['weeb/pixelUI/noteSplashes-pixel', 'week6']);
-		importantAssets.set('yellowNoteSplashes', ['weeb/clubpenguin/pixelUI/yellowsplashlmao', 'week6']);
+		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/shared/images/splats")))
+		{
+			if (!i.endsWith(".png"))
+				continue;
+			var noExtension = i.replace(".png", "");
+			importantAssets.set(noExtension, ["splats/" + noExtension, 'shared']);
+		}
+
+		trace(importantAssets);
 
 		GameCache.initialize(importantAssets);
 		#end
