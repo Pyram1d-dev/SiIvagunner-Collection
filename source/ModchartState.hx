@@ -626,6 +626,12 @@ class ModchartState
 				FlxG.camera.zoom = zoomAmount;
 		});
 
+		Lua_helper.add_callback(lua, "setDefaultCamZoom", function(zoomAmount:Float)
+		{
+			if (FlxG.save.data.camzoom)
+				PlayState.instance.defaultCamZoom = zoomAmount;
+		});
+
 		Lua_helper.add_callback(lua, "setHudZoom", function(zoomAmount:Float)
 		{
 			if (FlxG.save.data.camzoom)
@@ -1012,44 +1018,97 @@ class ModchartState
 
 		Lua_helper.add_callback(lua, "tweenPosXAngle", function(id:String, toX:Int, toAngle:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(getActorByName(id), {x: toX, angle: toAngle}, time, {
-				ease: FlxEase.linear,
-				onComplete: function(flxTween:FlxTween)
-				{
-					if (onComplete != '' && onComplete != null)
+			if (Reflect.hasField(getActorByName(id), "modAngle"))
+			{
+				FlxTween.tween(getActorByName(id), {x: toX, modAngle: toAngle}, time, {
+					ease: FlxEase.linear,
+					onComplete: function(flxTween:FlxTween)
 					{
-						callLua(onComplete, [id]);
+						if (onComplete != '' && onComplete != null)
+						{
+							callLua(onComplete, [id]);
+						}
 					}
-				}
-			});
+				});
+			}
+			else
+			{
+				FlxTween.tween(getActorByName(id), {x: toX, angle: toAngle}, time, {
+					ease: FlxEase.linear,
+					onComplete: function(flxTween:FlxTween)
+					{
+						if (onComplete != '' && onComplete != null)
+						{
+							callLua(onComplete, [id]);
+						}
+					}
+				});
+			}
 		});
 
 		Lua_helper.add_callback(lua, "tweenPosYAngle", function(id:String, toY:Int, toAngle:Float, time:Float, onComplete:String)
 		{
-			FlxTween.tween(getActorByName(id), {y: toY, angle: toAngle}, time, {
-				ease: FlxEase.linear,
-				onComplete: function(flxTween:FlxTween)
-				{
-					if (onComplete != '' && onComplete != null)
+			var actor:Dynamic = getActorByName(id);
+
+			if (Reflect.hasField(actor, "modAngle"))
+			{
+				FlxTween.tween(actor, {y: toY, modAngle: toAngle}, time, {
+					ease: FlxEase.linear,
+					onComplete: function(flxTween:FlxTween)
 					{
-						callLua(onComplete, [id]);
+						if (onComplete != '' && onComplete != null)
+						{
+							callLua(onComplete, [id]);
+						}
 					}
-				}
-			});
+				});
+
+			}
+			else
+			{
+				FlxTween.tween(actor, {y: toY, angle: toAngle}, time, {
+					ease: FlxEase.linear,
+					onComplete: function(flxTween:FlxTween)
+					{
+						if (onComplete != '' && onComplete != null)
+						{
+							callLua(onComplete, [id]);
+						}
+					}
+				});
+			}
 		});
 
 		Lua_helper.add_callback(lua, "tweenAngle", function(id:String, toAngle:Int, time:Float, onComplete:String)
 		{
-			FlxTween.tween(getActorByName(id), {angle: toAngle}, time, {
-				ease: FlxEase.linear,
-				onComplete: function(flxTween:FlxTween)
-				{
-					if (onComplete != '' && onComplete != null)
+			var actor:Dynamic = getActorByName(id);
+
+			if (Reflect.hasField(actor, "modAngle"))
+			{
+				FlxTween.tween(getActorByName(id), {modAngle: toAngle}, time, {
+					ease: FlxEase.linear,
+					onComplete: function(flxTween:FlxTween)
 					{
-						callLua(onComplete, [id]);
+						if (onComplete != '' && onComplete != null)
+						{
+							callLua(onComplete, [id]);
+						}
 					}
-				}
-			});
+				});
+			}
+			else
+			{
+				FlxTween.tween(getActorByName(id), {angle: toAngle}, time, {
+					ease: FlxEase.linear,
+					onComplete: function(flxTween:FlxTween)
+					{
+						if (onComplete != '' && onComplete != null)
+						{
+							callLua(onComplete, [id]);
+						}
+					}
+				});
+			}
 		});
 
 		Lua_helper.add_callback(lua, "tweenCameraPosOut", function(toX:Int, toY:Int, time:Float, onComplete:String)
@@ -1385,7 +1444,11 @@ class ModchartState
 			Lua_helper.add_callback(lua,"setFilterCam", function(shaderIndex:Int) {
 				FlxG.camera.setFilters([new ShaderFilter(shaders[shaderIndex])]);
 		});*/
+		setDefaultStrumPos();
+	}
 
+	public function setDefaultStrumPos()
+	{
 		// default strums
 
 		for (i in 0...PlayState.strumLineNotes.length)
