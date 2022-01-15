@@ -45,7 +45,7 @@ class OptionsSubState extends MusicBeatSubstate
 			new Judgement("Customize your Hit Timings. (LEFT or RIGHT)"),
 			#if desktop new FPSCapOption("Change your FPS Cap."),
 			#end
-			new ScrollSpeedOption("Change your scroll speed. (LEFT or RIGHT)"),
+			new ScrollSpeedOption("Change your scroll speed. (LEFT or RIGHT) - NOTE: Not recommended over 4 unless it's for the funny."),
 			new AccuracyDOption("Change how accuracy is calculated. (Accurate = Simple, Complex = Milisecond Based)"),
 			new ResetButtonOption("Toggle pressing R to gameover."),
 			new InstantRespawn("Toggle if you instantly respawn after dying."),
@@ -56,7 +56,9 @@ class OptionsSubState extends MusicBeatSubstate
 			new EditorRes("Not showing the editor grid will greatly increase editor performance"),
 			new MidscrollOption("Toggle placing the notes in the center or above your player."),
 			new DistractionsAndEffectsOption("Toggle stage distractions that can hinder your gameplay."),
-			new CamZoomOption("Toggle the camera zoom in-game."), new NoteSplatsOption("Toggles the note splat effect when you hit a sick."),
+			new CamZoomOption("Toggle the camera zoom in-game."),
+			new CamSwayOption("Toggle the camera swaying in the direction a note is pressed."),
+			new NoteSplatsOption("Toggles the note splat effect when you hit a sick."),
 			new MissGFXOption("Toggles the miss gradient effect when a note exits the top of the screen."),
 			new StepManiaOption("Sets the colors of the arrows depending on quantization instead of direction."),
 			new AccuracyOption("Display accuracy information on the info bar."),
@@ -385,7 +387,7 @@ class OptionsSubState extends MusicBeatSubstate
 				else
 				{
 					// disable the changing of offset during play because fuck you
-					if (!inPlay)
+					if (!inPlay && !curOption.getAccept())
 					{
 						changedSetting = getOffsetChange(pressArray, justPressed);
 
@@ -396,15 +398,6 @@ class OptionsSubState extends MusicBeatSubstate
 					{
 						versionShit.text = "Description - " + currentDescription;
 					}
-				}
-				if (!inPlay)
-				{
-					versionShit.text = "Offset (Left, Right, Shift for slow): " + HelperFunctions.truncateFloat(FlxG.save.data.offset, 2)
-						+ " - Description - " + currentDescription;
-				}
-				else
-				{
-					versionShit.text = "Description - " + currentDescription;
 				}
 			}
 			else
@@ -522,7 +515,7 @@ class OptionsSubState extends MusicBeatSubstate
 			var curOption = options[curSection].getOptions()[curSelected];
 			// updateText();
 			currentDescription = curOption.getDescription();
-			if (!inPlay)
+			if (!inPlay && !curOption.getAccept())
 				versionShit.text = "Offset (Left, Right, Shift for slow): " + HelperFunctions.truncateFloat(FlxG.save.data.offset, 2) + " - Description - "
 					+ currentDescription;
 			else
