@@ -23,8 +23,9 @@ class RollingTank extends FlxSprite
     override function update(elapsed:Float)
     {
 	    super.update(elapsed);
-        if (!PlayState.inCutscene)
+		if (PlayState.instance != null && !PlayState.inCutscene && PlayState.instance.songStarted)
 		{
+			visible = true;
 			counter += elapsed * speed;
 			angle = counter - 90 + 15;
 			x = 400 + 1400 * FlxMath.fastCos(FlxAngle.asRadians(counter + 180));
