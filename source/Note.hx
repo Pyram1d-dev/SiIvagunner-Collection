@@ -14,6 +14,38 @@ using StringTools;
 import polymod.format.ParseRules.TargetSignatureElement;
 #end
 
+typedef AnimData = 
+{
+	var prefix:String;
+	var frameRate:Int;
+	var directional:Bool;
+	var offset:Array<Int>;
+	var variation:Int;
+	var sound:String;
+	var scale:Float;
+}
+
+typedef MineData = 
+{
+	var name:String;
+	var effect:String; 
+	var effectAnimation:AnimData;
+	var animations:Array<String>;
+	var offsets:Array<Array<Array<Int>>>;
+	var flipDownscroll:Bool;
+}
+
+typedef NoteSkinData =
+{
+	var name:String;
+	var type:String;
+	var splats:String;
+	var uiSkin:String;
+	var mineSkin:String;
+	var colors:Array<String>;
+	var mineData:MineData;
+}
+
 class Note extends FlxSprite
 {
 	public var strumTime:Float = 0;
@@ -69,6 +101,8 @@ class Note extends FlxSprite
 	public var sustainActive:Bool = true;
 
 	public var children:Array<Note> = [];
+
+	public var noteSkinData:NoteSkinData = null;
 
 	var mineOffsets:Array<Array<Array<Int>>> = null;
 
@@ -153,13 +187,14 @@ class Note extends FlxSprite
 				noteTypeCheck = PlayState.SONG.noteStyle;
 			}
 
-			switch (noteTypeCheck)
+			noteSkinData = PlayState.instance.noteSkinData;
+
+			switch (noteSkinData.type)
 			{
-				case 'pixel' | 'clubpenguin':
-					var myPainIsImmesurable = (/*PlayState.SONG.song.toLowerCase() == 'thorns' ||*/ noteTypeCheck == 'clubpenguin') ? '/clubpenguin' : '';
-					loadGraphic(Paths.image('weeb${myPainIsImmesurable}/pixelUI/arrows-pixels', 'week6'), true, 17, 17);
+				case 'pixel':
+					loadGraphic(Paths.image('noteskins/' + noteSkinData.name, 'shared'), true, 17, 17);
 					if (isSustainNote)
-						loadGraphic(Paths.image('weeb${myPainIsImmesurable}/pixelUI/arrowEnds', 'week6'), true, 7, 6);
+						loadGraphic(Paths.image('noteskins/' + noteSkinData.name + '-ends', 'shared'), true, 7, 6);
 
 					// Pixel mines?!?!?
 					if (isMine)
@@ -203,56 +238,61 @@ class Note extends FlxSprite
 					setGraphicSize(Math.floor(widthSize * (isMine ? 1.5 : 1)));
 					updateHitbox();
 				default:
-					var thisBetterBeTheLastTime = (noteTypeCheck == 'kapi' ? '_kapi' : '');
-
 					if (!isMine)
 					{
-						frames = Paths.getSparrowAtlas('NOTE_assets' + thisBetterBeTheLastTime);
-
-						if (noteTypeCheck == 'kapi')
+						frames = Paths.getSparrowAtlas('noteskins/' + noteSkinData.name, 'shared');
+						for (i in 0...4)
 						{
-							for (i in 0...4)
-							{
-								animation.addByPrefix(dataColor[i] + 'Scroll', dataColor[i] + '0'); // Normal notes
-								animation.addByPrefix(dataColor[i] + 'hold', dataColor[i] + ' hold piece'); // Hold
-								animation.addByPrefix(dataColor[i] + 'holdend', dataColor[i] + ' hold end'); // Tails
-							}
-						}
-						else
-						{
-							for (i in 0...4)
-							{
-								animation.addByPrefix(dataColor[i] + 'Scroll', dataColor[i] + ' alone'); // Normal notes
-								animation.addByPrefix(dataColor[i] + 'hold', dataColor[i] + ' hold'); // Hold
-								animation.addByPrefix(dataColor[i] + 'holdend', dataColor[i] + ' tail'); // Tails
-							}
+							animation.addByPrefix(dataColor[i] + 'Scroll', dataColor[i] + ' alone'); // Normal notes
+							animation.addByPrefix(dataColor[i] + 'hold', dataColor[i] + ' hold'); // Hold
+							animation.addByPrefix(dataColor[i] + 'holdend', dataColor[i] + ' tail'); // Tails
 						}
 					}
 					else
 					{
 						if (PlayState.SONG.song == 'Madness')
 						{
-							frames = Paths.getSparrowAtlas('NOTE_fire_hk', "clown");
+							// THESE. FUCKING. MINES. I CANNOT STRESS HOW FUCKING LONG GUESSING THE OFFSETS TOOK. THIS IS BEFORE I MADE MINE SKINS INTO A JSON FORMAT.
+							frames = Paths.getSparrowAtlas('mines/fireNoteHK', "shared");
 							mineOffsets = [
 								[[-3, -22], [-12, -24], [-13, -3], [-2, -19]],
 								[[-10, -4], [-14, -6], [-16, -8], [4, -10]]
 							];
+							for (index => scrollOffsets in mineOffsets)
+								for (i in scrollOffsets)
+								{
+									i[0] += 43;
+									switch (index)
+									{
+										case 0:
+											i[1] += 60;
+										case 1:
+											i[1] += 195;
+									}
+								}
 						}
 						else
-							frames = Paths.getSparrowAtlas('NOTE_fire', "shared");
-						if (!FlxG.save.data.downscroll)
 						{
-							animation.addByPrefix('blueScroll', 'blue fire');
-							animation.addByPrefix('greenScroll', 'green fire');
+							frames = Paths.getSparrowAtlas('mines/' + noteSkinData.mineData.name, "shared");
+							mineOffsets = noteSkinData.mineData.offsets;
 						}
-						else
+
+						var mineAnim = noteSkinData.mineData.animations;
+						if (mineAnim != null)
 						{
-							animation.addByPrefix('greenScroll', 'blue fire');
-							animation.addByPrefix('blueScroll', 'green fire');
+							animation.addByPrefix('purpleScroll', mineAnim[0]);
+							animation.addByPrefix('blueScroll', mineAnim[1]);
+							animation.addByPrefix('greenScroll', mineAnim[2]);
+							animation.addByPrefix('redScroll', mineAnim[3]);
+						}
+
+						if (noteSkinData.mineData.flipDownscroll && FlxG.save.data.downscroll)
+						{
+							var oldDown = animation.getByName('blueScroll').frames;
+							animation.getByName('blueScroll').frames = animation.getByName('greenScroll').frames;
+							animation.getByName('greenScroll').frames = oldDown;
 							flipY = true;
 						}
-						animation.addByPrefix('redScroll', 'red fire');
-						animation.addByPrefix('purpleScroll', 'purple fire');
 					}
 
 					setGraphicSize(Std.int(width * 0.7));
@@ -279,18 +319,22 @@ class Note extends FlxSprite
 		originColor = noteData; // The note's origin color will be checked by its sustain notes
 		localAngle = 0;
 
-		switch (PlayState.SONG.noteStyle)
+		if (!inCharter)
 		{
-			case 'pixel' | 'clubpenguin':
-				setSize(17, 17);
-				if (isSustainNote)
-					setSize(7, 6);
-				var widthSize = Std.int(PlayState.curStage.startsWith('school') ? (width * PlayState.daPixelZoom) : (isSustainNote ? (width * (PlayState.daPixelZoom
-					- 1.5)) : (width * PlayState.daPixelZoom)));
+			switch (noteSkinData.type)
+			{
+				case 'pixel':
+					setSize(17, 17);
+					if (isSustainNote)
+						setSize(7, 6);
+					var widthSize = Std.int(PlayState.curStage.startsWith('school') ? (width * PlayState.daPixelZoom) : (isSustainNote ? (width * (PlayState.daPixelZoom
+						- 1.5)) : (width * PlayState.daPixelZoom)));
 
-				setGraphicSize(widthSize);
-			default:
-				scale.set(0.7, 0.7);
+					setGraphicSize(widthSize);
+					updateHitbox();
+				default:
+					scale.set(0.7, 0.7);
+			}
 		}
 
 		if (isMine && mineOffsets != null)
@@ -322,7 +366,7 @@ class Note extends FlxSprite
 
 			// I did fix the receptor colors in this version so they don't have to cry about that ;D
 
-			var strumStep = (beat != null ? beat * 8 : strumCheck / (Conductor.stepCrochet / 2));
+			var strumStep = (beat != null ? beat * 8 : strumCheck / (Conductor.stepCrochet / 2)) + 0.0001;
 
 			var ind:Int = Std.int(Math.round(strumStep));
 
