@@ -16,8 +16,7 @@ class GameOverSubstate extends MusicBeatSubstate
 {
 	var bf:Boyfriend;
 	var camFollow:FlxObject;
-
-	var stageSuffix:String = "";
+	var musicSuffix:String = "";
 	var soundSuffix:String = ""; // Was there a better way than to add all these variables? Maybe. Do I care? No lol
 	var confirmSuffix:String = "";
 	var folder:String = null;
@@ -61,28 +60,37 @@ class GameOverSubstate extends MusicBeatSubstate
 		trace(p1);
 		if (p1.startsWith('bf-pixel'))
 		{
-			stageSuffix = '-pixel';
-			soundSuffix = stageSuffix + (p1 == 'bf-pixel-terraria' ? '-terraria' : '');
-			confirmSuffix = stageSuffix;
+			soundSuffix = musicSuffix = confirmSuffix = '-pixel';
 			daBf = p1 + '-dead';
 			if (PlayState.SONG.song.toLowerCase() == 'thorns')
 				daBf = 'bf-pixel-dead-clp';
+			switch (p1)
+			{
+				case "bf-pixel-terraria":
+					soundSuffix = musicSuffix + '-terraria';
+				case "bf-pixel-knuck":
+					musicSuffix = "-monika";
+			}
 		}
 		else
 		{
 			switch (p1)
 			{
 				case 'bf-slam':
-					stageSuffix = '-slam';
+					musicSuffix = '-slam';
 					daBf = p1;
 					folder = 'week2';
 				case 'bf-samsung':
-					stageSuffix = '-samsung';
-					soundSuffix = stageSuffix;
+					musicSuffix = '-samsung';
+					soundSuffix = musicSuffix;
 					daBf = p1;
 				case 'bf-quote':
-					stageSuffix = '-cs';
-					soundSuffix = stageSuffix;
+					musicSuffix = '-cs';
+					soundSuffix = musicSuffix;
+					daBf = p1;
+				case 'bf-lady':
+					musicSuffix = '-pain';
+					soundSuffix = '-yank';
 					daBf = p1;
 				case 'bf-richter':
 					soundSuffix = '-richter';
@@ -90,26 +98,29 @@ class GameOverSubstate extends MusicBeatSubstate
 				case 'bf-sockdude':
 					soundSuffix = '-games';
 					daBf = p1;
+				case 'bf-aloe':
+					musicSuffix = '-holo';
+					daBf = p1;
 				case 'bf-reimu':
 					soundSuffix = '-reimu';
 					daBf = p1;
 				case 'bf-hk':
 					soundSuffix = '-hk';
-					stageSuffix = '-tricky';
-					confirmSuffix = stageSuffix;
+					musicSuffix = '-tricky';
+					confirmSuffix = musicSuffix;
 					daBf = 'signDeath';
 				default:
 					daBf = (p1.startsWith('bf')) ? p1 : 'bf';
 					if (FlxG.random.bool(10)) // Oh shit is that a random chance to listen to a certified banger
 					{
-						stageSuffix = '-porter';
-						confirmSuffix = stageSuffix;
+						musicSuffix = '-porter';
+						confirmSuffix = musicSuffix;
 					}
 			}
 		}
 
 		if (daSong == 'guns-short-version')
-			stageSuffix = '-pain';
+			musicSuffix = '-pain';
 
 		trace(daBf);
 
@@ -212,15 +223,23 @@ class GameOverSubstate extends MusicBeatSubstate
 		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished)
 		{
 			// Death lines yeah baby
-			if (PlayState.SONG.player2.startsWith("tankman"))
+			if (PlayState.storyWeek == 7 || PlayState.dad.curCharacter == 'chama-christmas')
 			{
 				trace('burh');
-				FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix), 0.2);
-				var poop = (daSong == 'ugh-alterneeyyytive-mix') ? 'psy/' : (daSong == 'ugh') ? 'homedepot/' : '';
-				var max:Map<String, Int> = ['homedepot/' => 13, '' => 24];
-				var lineNum = (max.exists(poop)) ?	(FlxG.random.int(0, max.get(poop)) + 1) : 1;
-				deathLine = new FlxSound().loadEmbedded(Paths.sound('${poop}jeffGameover/jeffGameover-${lineNum}', 'week7'), true);
-				trace('${poop}jeffGameOver/jeffGameover-${lineNum}', 'week7');
+				FlxG.sound.playMusic(Paths.music('gameOver' + musicSuffix), 0.2);
+				deathLine = new FlxSound();
+				if (PlayState.storyWeek == 7)
+				{
+					var poop = (daSong == 'ugh-alterneeyyytive-mix') ? 'psy/' : (daSong == 'ugh') ? 'homedepot/' : (daSong == 'ugh-in-game-version') ? 'astro/' : '';
+					var max:Map<String, Int> = ['homedepot/' => 14, '' => 25, 'astro/' => 25];
+					var lineNum = (max.exists(poop)) ? (FlxG.random.int(1, max.get(poop))) : 1;
+					deathLine.loadEmbedded(Paths.sound('${poop}jeffGameover/jeffGameover-${lineNum}', 'week7'));
+					trace('${poop}jeffGameOver/jeffGameover-${lineNum}', 'week7');
+				}
+				else
+				{
+					deathLine.loadEmbedded(Paths.sound('haachamataunt${FlxG.random.int(1, 7)}', 'holoWeek'));
+				}
 				deathLine.onComplete = function() {
 					FlxTween.tween(FlxG.sound.music, {volume: 1}, 0.5, {ease: FlxEase.linear});
 				}
@@ -229,7 +248,7 @@ class GameOverSubstate extends MusicBeatSubstate
 				deathLine.looped = false;
 			}
 			else
-				FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix));
+				FlxG.sound.playMusic(Paths.music('gameOver' + musicSuffix));
 			startVibin = true;
 			bf.playAnim('deathLoop', true);
 		}
