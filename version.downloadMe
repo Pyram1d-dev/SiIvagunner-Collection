@@ -1,5 +1,6 @@
-1.2;
-- New non-FNF rips charted
-- Auto-checking updates
-- BPM Change fixes
-- Remaining songs counter
+1.3;
+- 8 new rips
+- New Erect remix for Dad Battle In-Game Version
+- Categories are not week-based anymore and are completely softcoded
+- Complete story menu overhaul, now also softcoded
+- "New Songs" category added to make finding new content between updates easier
