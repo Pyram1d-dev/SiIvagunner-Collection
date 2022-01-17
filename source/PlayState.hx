@@ -5123,10 +5123,7 @@ class PlayState extends MusicBeatState
 			for (i in seperatedScore)
 			{
 				var numScore:FlxSprite = new FlxSprite();
-				if (jamShit != "" && ratingCheck != "gold")
-					numScore.loadGraphic(Paths.image(jamShit + 'num' + Std.int(i), library));
-				else
-					numScore.loadGraphic(Paths.image('uiskins/${noteSkinData.uiSkin}/num' + Std.int(i), 'shared'));
+				numScore.loadGraphic(Paths.image('uiskins/${noteSkinData.uiSkin}/num' + Std.int(i), 'shared'));
 				numScore.screenCenter();
 				numScore.x = rating.x + (43 * daLoop) - 50;
 				numScore.y = rating.y + 100;
