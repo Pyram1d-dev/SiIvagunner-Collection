@@ -108,8 +108,7 @@
             "songs":[
                 "Cocoa Short Version",
                 "Eggnog",
-                "Eggnog Short Version",
-                "Winter Horrorland Short Version"
+                "Eggnog Short Version"
             ]
         },
         {
@@ -151,7 +150,8 @@
             "songs":[
                 "Lo-Fight",
                 "Overhead",
-                "Ballistic"
+                "Ballistic",
+                "Ballistic Beta Mix"
             ]
         },
         {
@@ -204,6 +204,17 @@
             "songs":[
                 "Fresh Itch io Build",
                 "Winter Horrorland Short Version"
+            ]
+        },
+        {
+            "title":"Erect",
+            "subtitle":"Erect remixes",
+            "preview":"erect",
+            "color":"0xFFFF6200",
+            "week":"erect",
+            "songs":[
+                "Dad Battle In-Game Version",
+                "Thorns Beta Mix"
             ]
         },
         {
