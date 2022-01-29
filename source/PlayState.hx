@@ -1,8 +1,6 @@
 package;
 
-import flixel.group.FlxSpriteGroup;
 import Note.MineData;
-import Type.ValueType;
 import Note.NoteSkinData;
 import Options.CpuStrums;
 import Replay.Ana;
@@ -11,6 +9,7 @@ import Section.SwagSection;
 import Song.Event;
 import Song.SwagSong;
 import StoryMenuState;
+import Type.ValueType;
 import WiggleEffect.WiggleEffectType;
 import flixel.FlxBasic;
 import flixel.FlxCamera;
@@ -32,6 +31,7 @@ import flixel.graphics.FlxGraphic;
 import flixel.graphics.atlas.FlxAtlas;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.group.FlxSpriteGroup;
 import flixel.input.keyboard.FlxKey;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
@@ -521,8 +521,9 @@ class PlayState extends MusicBeatState
 				rootSong = i;
 
 		var songsWithDialogue = ['senpai', 'roses', 'thorns', 'lo-fight', 'overhead', 'ballistic', 'wocky', 'beathoven', 'high-school-conflict'];
+		var ignoreThisShit = ['ballistic-beta-mix'];
 
-		if (songsWithDialogue.contains(rootSong))
+		if (songsWithDialogue.contains(rootSong) && !ignoreThisShit.contains(songLowercase))
 		{
 			// if the song has dialogue, so we don't accidentally try to load a nonexistant file and crash the game
 			dialogue = CoolUtil.coolTextFile(Paths.txt('data/' + songLowercase + '/dialogue'));
@@ -600,7 +601,7 @@ class PlayState extends MusicBeatState
 		}
 		if (songLowercase == 'madness')
 		{
-			// Not to suck my own dick but the song cache is actually very nice. I sure hope I didn't fuck part of it up and leak a bunch of memory, but I might be paranoid (cuz I'm learning C++ lmao)
+			// Not to suck my own dick but the song cache is actually very nice. I sure hope I didn't fuck part of it up and leak a bunch of memory, but I might be paranoid
 			songCache = new GameCache();
 			songCache.loadFrames(['death' => ['characters/BFs/signDeath', 'shared']], false);
 		}
@@ -862,6 +863,9 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		if (noteSkinData == null)
+			noteSkinData = rawNoteSkinData[0];
+
 		if (noteSkinData.mineSkin != null)
 		{
 			var rawJson = Assets.getText(Paths.file("images/mines/mineData.json", "shared", TEXT)).trim();
@@ -1085,7 +1089,7 @@ class PlayState extends MusicBeatState
 				nwBg.animation.play("gameButMove");
 				remove(stage.swagBacks.get('wstageFront'));
 			}
-			switch (curSong.toLowerCase())
+			switch (curSong.toLowerCase().split(" ")[0])
 			{
 				case 'ballistic':
 					gf.playAnim('scared');
@@ -1934,7 +1938,7 @@ class PlayState extends MusicBeatState
 		var howManyMoreFuckingAddersDoIHaveToMake = (SONG.song.toLowerCase() == 'thorns') ? '/clubpenguin' : '';
 
 		var senpaiEvil:FlxSprite = new FlxSprite();
-		senpaiEvil.frames = Paths.getSparrowAtlas('weeb$howManyMoreFuckingAddersDoIHaveToMake/senpaiCrazy');
+		senpaiEvil.frames = Paths.getSparrowAtlas('weeb$howManyMoreFuckingAddersDoIHaveToMake/senpaiCrazy', 'week6');
 		senpaiEvil.animation.addByPrefix('idle', 'Senpai Pre Explosion', 24, false);
 		senpaiEvil.setGraphicSize(Std.int(senpaiEvil.width * 6));
 		senpaiEvil.scrollFactor.set();
@@ -2070,7 +2074,7 @@ class PlayState extends MusicBeatState
 			if (!PlayStateChangeables.Optimize && FlxG.save.data.distractions)
 				for (i in stage.swagDancers)
 					i.dance();
-			if (!(gf.curCharacter == 'gf-whitty' && curSong == 'Ballistic'))
+			if (!(gf.curCharacter == 'gf-whitty' && curSong.startsWith('Ballistic')))
 				gf.dance();
 			boyfriend.playAnim('idle');
 
@@ -2119,6 +2123,9 @@ class PlayState extends MusicBeatState
 					});
 					FlxG.sound.play(Paths.sound('intro1' + altSuffix), 0.6);
 				case 3:
+					var filepath = 'uiskins/' + noteSkinData.uiSkin + '/' + 'go';
+					if (SONG.song == "Spookeez In-Game Version" || SONG.song == "Ballistic Beta Mix")
+						filepath = 'slam';
 					var go:FlxSprite = new FlxSprite().loadGraphic(Paths.image('uiskins/' + noteSkinData.uiSkin + '/' + 'go', 'shared'));
 					go.scrollFactor.set();
 
@@ -2427,7 +2434,7 @@ class PlayState extends MusicBeatState
 		Conductor.songPosition = startTime;
 		startTime = 0;
 
-		if (notes.members.length > 0 && notes.members[0].strumTime > 5000)
+		if (notes.members.length > 0 && notes.members[0].strumTime > 4500)
 		{
 			skipIntroText = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (PlayStateChangeables.useDownscroll ? 150 : -150), 0,
 				"Press SPACE to skip intro");
@@ -2599,7 +2606,7 @@ class PlayState extends MusicBeatState
 				// slow maths (it took me a good hour lmao, I figured it out mostly thanks to how SNIFF handles BPM changes)
 				// I don't even know why I wanted to fix this lol barely anyone uses quantization. I suppose it was just for the challenge.
 				// Basically just adds the beat at which the BPM changed last and recounts the beats using the new BPM. If that makes sense.
-				// TODO: kinda fucky with a bunch of BPM changes. Solution: cry about it for now
+				// TODO: Still kinda fucky sometimes. Solution: cry about it for now
 				var daNoteBeatStrum = lastBPMChange[1] + (curBPM/60) * (daStrumTime - lastBPMChange[0]) / 1000;
 
 				if (nearestBPMChange != null && nearestBPMChange[0] < daNoteBeatStrum)
@@ -2619,7 +2626,8 @@ class PlayState extends MusicBeatState
 					daNoteBeatStrum = lastBPMChange[1] + (curBPM / 60) * (daStrumTime - lastBPMChange[0]) / 1000;
 				}
 
-				// Technically speaking with all this effort I put into BPM changes I could just calculate the strumTime changes in-game rather than in the chart editor but also fuck you
+				// Technically speaking with all this effort I put into BPM changes I could just calculate the strumTime changes in-game rather than in the chart editor 
+				// but that's already how FNF notes work and I don't wanna change that for the sake of modding
 
 				var daNoteData:Int = Std.int(songNotes[1]);
 
@@ -2636,6 +2644,10 @@ class PlayState extends MusicBeatState
 				else
 					oldNote = null;
 
+				// Shitty inclusion of Haato notes from Holofunk but let's be honest here, they're just mines and I already have mines programmed in. Not doing that shit again, especially because the devs refuse to release the source code.
+				// Thanks, guys.
+				// I also still don't want to change how FNF notes work because there are like 70 songs (210 charts for each difficulty) in this fucking mod and
+				// I'm not gonna go back and convert every damn chart or spend hours writing a script that would probably break them (and me) anyway
 				if (songNotes.length > 3)
 				{
 					switch (Type.typeof(songNotes[3]))
@@ -2647,10 +2659,10 @@ class PlayState extends MusicBeatState
 					}
 				}
 
-				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote, false, false, false, FlxMath.roundDecimal(daNoteBeatStrum, 2));
+				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote, false, false, false, daNoteBeatStrum);
 
-				if ((PlayStateChangeables.Optimize)
-					&& ((gottaHitNote && FlxG.save.data.playEnemy) || (!gottaHitNote && !FlxG.save.data.playEnemy)))
+				if (PlayStateChangeables.Optimize
+					&& (FlxG.save.data.playEnemy ? gottaHitNote : !gottaHitNote))
 					continue;
 
 				swagNote.sustainLength = songNotes[2];
@@ -4974,7 +4986,7 @@ class PlayState extends MusicBeatState
 			var jamShit:String = "";
 			var library:String = 'shared';
 
-			if (SONG.song == 'Spookeez In-Game Version')
+			if (SONG.song == "Spookeez In-Game Version" || SONG.song == "Ballistic Beta Mix")
 			{
 				jamShit = 'JAM/';
 				library = 'week2';
@@ -5621,7 +5633,7 @@ class PlayState extends MusicBeatState
 			// health -= 0.2;
 			if (combo > 5 && gf.animOffsets.exists('sad') && !FlxG.save.data.playEnemy)
 			{
-				if (gf.curCharacter != "gf-sus" && !(gf.curCharacter == 'gf-whitty' && curSong == 'Ballistic'))
+				if (gf.curCharacter != "gf-sus" && !(gf.curCharacter == 'gf-whitty' && curSong.startsWith('Ballistic')))
 					gf.playAnim('sad');
 			}
 			combo = 0;
@@ -6062,9 +6074,6 @@ class PlayState extends MusicBeatState
 						switch (curBeat)
 						{
 							case 24:
-								// Thank the lawd for the setFrames method, I was about to give up on saving the animations and
-								// just do some funky shit where I make gf a different character and then re-add every object but
-								// this works much better
 								#if sys
 								dad.setFrames(songCache.fromSparrow('BEANED', 'characters/Monsters/monsterChristmas_bean', 'shared'), true);
 								#else
@@ -6182,7 +6191,7 @@ class PlayState extends MusicBeatState
 		iconP2.updateHitbox();
 
 		if (curBeat % gfSpeed == 0)
-			if (!(gf.curCharacter == 'gf-whitty' && curSong == 'Ballistic'))
+			if (!(gf.curCharacter == 'gf-whitty' && curSong.startsWith('Ballistic')))
 				gf.dance();
 
 		if (!currentPlayer.animation.curAnim.name.startsWith("sing")
@@ -6193,10 +6202,6 @@ class PlayState extends MusicBeatState
 				&& currentPlayer.animation.getByName('idle-alt') != null)));
 		}
 
-		/*if (!dad.animation.curAnim.name.startsWith("sing"))
-			{
-				dad.dance();
-		}*/
 		if (curSong.startsWith('Bopeebo'))
 		{
 			var inBetween = function(a:Int, b:Int):Bool
