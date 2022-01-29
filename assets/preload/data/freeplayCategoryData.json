@@ -5,15 +5,17 @@
             "icon":"alert",
             "color":"0xFF00FFFF",
             "songs":[
+                "Ballistic Beta Mix",
+                "Thorns Beta Mix"
+            ]
+        },
+        {
+            "title":"Erect Remixes",
+            "icon":"face",
+            "color":"0xFF00FFFF",
+            "songs":[
                 "Dad Battle In-Game Version",
-                "Philly Nice In-Game Version",
-                "Blammed In-Game Mix",
-                "Ugh In-Game Version",
-                "High JP Version",
-                "Cocoa Short Version",
-                "Eggnog",
-                "High School Conflict",
-                "Red and Black"
+                "Thorns Beta Mix"
             ]
         },
         {
@@ -152,7 +154,8 @@
             "songs":[
                 "Lo-Fight",
                 "Overhead",
-                "Ballistic"
+                "Ballistic",
+                "Ballistic Beta Mix"
             ]
         },
         {
