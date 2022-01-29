@@ -1,26 +1,26 @@
 package;
 
-import flixel.effects.FlxFlicker;
-import flixel.ui.FlxButton.FlxTypedButton;
-import flixel.system.macros.FlxMacroUtil;
-import haxe.Json;
-import openfl.Assets;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.plugin.taskManager.FlxTask;
 import flixel.addons.transition.FlxTransitionableState;
+import flixel.effects.FlxFlicker;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.group.FlxGroup;
 import flixel.group.FlxSpriteGroup;
 import flixel.input.gamepad.FlxGamepad;
 import flixel.math.FlxMath;
+import flixel.system.macros.FlxMacroUtil;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import flixel.ui.FlxButton.FlxTypedButton;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import haxe.Json;
 import lime.net.curl.CURLCode;
+import openfl.Assets;
 
 using StringTools;
 
@@ -70,6 +70,7 @@ class UnlockedWeekPog extends MusicBeatSubstate
 	{
 		if (FlxG.keys.justPressed.ENTER && !closing)
 		{
+			closing = true;
 			FlxTween.tween(uiShit, {alpha: 0}, 1, {
 				ease: FlxEase.quadIn,
 				onComplete: function(twn:FlxTween)
@@ -87,7 +88,7 @@ class WeekItem extends FlxTypedSpriteGroup<FlxSprite>
 {
 	public var targetY:Int;
 	var bg:FlxSprite;
-	static var boxHeight = 80;
+	static var boxHeight = 100;
 	var stopTweeningLol = false;
 	var fakeTargetY:Int;
 
@@ -268,11 +269,12 @@ class StoryMenuState extends MusicBeatState
 			grpWeekText.add(new WeekItem(0, yellowBG.y + yellowBG.height + 10, weekData[i].title, i));
 
 		trace("Line 96");
-		var diffBG = new FlxSprite(FlxG.width - 530, FlxG.height - 185).makeGraphic(1000, 500, FlxColor.BLACK);
-		diffBG.alpha = 0.8;
-		add(diffBG);
 		difficultySelectors = new FlxGroup();
 		add(difficultySelectors);
+
+		var diffBG = new FlxSprite(FlxG.width - 530, FlxG.height - 185).makeGraphic(1000, 500, FlxColor.BLACK);
+		diffBG.alpha = 0.8;
+		difficultySelectors.add(diffBG);
 
 		trace("Line 124");
 
@@ -327,7 +329,7 @@ class StoryMenuState extends MusicBeatState
 
 		trace(unlockedExtras, beatWeek);
 
-		if (unlockedExtras.length > 0 && beatWeek)
+		if (unlockedExtras.length > 0 && beatWeek && PlayState.storyWeek != "erect")
 			acceptInput = false;
 		else
 		{
@@ -364,7 +366,7 @@ class StoryMenuState extends MusicBeatState
 
 		// FlxG.watch.addQuick('font', scoreText.font);
 
-		difficultySelectors.visible = true;
+		difficultySelectors.visible = weekData[curWeek].title.toLowerCase().trim() != "erect";
 
 		if (!movedBack && acceptInput)
 		{
@@ -478,8 +480,12 @@ class StoryMenuState extends MusicBeatState
 		{
 			flash.alpha = 1;
 			FlxTween.tween(flash, {alpha: 0}, 1.5);
-			FlxTween.tween(FlxG.camera, {zoom: 1.25}, 3, {ease: FlxEase.cubeInOut});
 		}
+
+		FlxTween.tween(FlxG.camera, {zoom: 1.25}, 3, {ease: FlxEase.cubeInOut});
+
+		if (weekData[curWeek].title.toLowerCase().trim() == "erect")
+			curDifficulty = 3;
 
 		PlayState.storyDifficulty = curDifficulty;
 
@@ -510,6 +516,8 @@ class StoryMenuState extends MusicBeatState
 
 	function changeDifficulty(change:Int = 0):Void
 	{
+		if (!difficultySelectors.visible)
+			return;
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
