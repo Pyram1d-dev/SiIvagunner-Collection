@@ -101,12 +101,12 @@ class DialogueBox extends FlxSpriteGroup
 		switch (rootSong)
 		{
 			case 'senpai':
-				sound = new FlxSound().loadEmbedded(Paths.music(paths.get('lB')), true);
+				sound = new FlxSound().loadEmbedded(Paths.music(paths.get('lB'), 'week6'), true);
 				sound.volume = 0;
 				FlxG.sound.list.add(sound);
 				sound.fadeIn(1, 0, 0.8);
 			case 'thorns':
-				sound = new FlxSound().loadEmbedded(Paths.music(paths.get('lBS')), true);
+				sound = new FlxSound().loadEmbedded(Paths.music(paths.get('lBS'), 'week6'), true);
 				sound.volume = 0;
 				FlxG.sound.list.add(sound);
 				sound.fadeIn(1, 0, 0.8);
@@ -180,7 +180,7 @@ class DialogueBox extends FlxSpriteGroup
 				box.animation.addByPrefix('normalOpen', 'Spirit Textbox spawn', 24, false);
 				box.animation.addByIndices('normal', 'Spirit Textbox spawn', [11], "", 24);
 
-				var face:FlxSprite = new FlxSprite(320, 170).loadGraphic(Paths.image(paths.get('sF')));
+				var face:FlxSprite = new FlxSprite(320, 170).loadGraphic(Paths.image(paths.get('sF'), 'week6'));
 				face.setGraphicSize(Std.int(face.width * 6));
 				add(face);
 
