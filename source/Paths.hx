@@ -196,7 +196,7 @@ class Paths
 				return null;
 				#end
 			else
-				return FlxAtlasFrames.fromSpriteSheetPacker(image('characters/$key'), file('images/characters/$key.txt', library));
+				return FlxAtlasFrames.fromSpriteSheetPacker(image('characters/$key', library), file('images/characters/$key.txt', library));
 		return FlxAtlasFrames.fromSpriteSheetPacker(image(key, library), file('images/$key.txt', library));
 	}
 }
