@@ -1327,6 +1327,8 @@ class Character extends FlxSprite
 				playAnim('idle');
 		}
 
+		trace(curCharacter);
+
 		if (baseCharacter.split('-')[0] == 'spooky')
 			biDirectional = true;
 
