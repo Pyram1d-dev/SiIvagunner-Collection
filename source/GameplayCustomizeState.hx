@@ -247,9 +247,9 @@ class GameplayCustomizeState extends MusicBeatState
 
         text.scrollFactor.set();
 
-		//add(blackBorder);
+		add(blackBorder);
 
-		//add(text);
+		add(text);
 
 		FlxTween.tween(text,{y: FlxG.height - 18},2,{ease: FlxEase.elasticInOut});
 		FlxTween.tween(blackBorder,{y: FlxG.height - 18},2, {ease: FlxEase.elasticInOut});
