@@ -92,7 +92,7 @@ class Character extends FlxSprite
 
 				loadOffsetFile(curCharacter);
 
-				if (PlayState.instance == null || PlayState.SONG.song.toLowerCase() != 'Ballistic')
+				if (PlayState.instance == null || !PlayState.SONG.song.toLowerCase().startsWith('ballistic'))
 					playAnim('danceRight');
 				else
 					playAnim('scared');
@@ -988,8 +988,11 @@ class Character extends FlxSprite
 				frames = Paths.getSparrowAtlas('BFs/bfPixelKnuckDEAD', 'shared', true);
 
 			case 'signDeath':
+				#if sys
 				frames = PlayState.instance.songCache.fromSparrow("death", "characters/BFs/signDeath", "shared");
-				//frames = Paths.getSparrowAtlas('BFs/signDeath', 'shared', true);
+				#else
+				frames = Paths.getSparrowAtlas('BFs/signDeath', 'shared', true);
+				#end
 				animation.addByPrefix('firstDeath', 'BF dies', 24, false);
 				animation.addByPrefix('deathLoop', 'BF Dead Loop', 24, false);
 				animation.addByPrefix('deathConfirm', 'BF Dead confirm', 24, false);
@@ -1240,6 +1243,17 @@ class Character extends FlxSprite
 				animation.addByPrefix('singLEFT', 'Whitty Sing Note LEFT', 24, false);
 
 				loadOffsetFile(curCharacter);
+
+			case 'whittyCrazySlam':
+				tex = Paths.getSparrowAtlas('Whitty/WhittyCrazySlam', 'shared', true);
+				frames = tex;
+				animation.addByPrefix('idle', 'Whitty idle dance', 24, false);
+				animation.addByPrefix('singUP', 'Whitty Sing Note UP', 24, false);
+				animation.addByPrefix('singRIGHT', 'whitty sing note right', 24, false);
+				animation.addByPrefix('singDOWN', 'Whitty Sing Note DOWN', 24, false);
+				animation.addByPrefix('singLEFT', 'Whitty Sing Note LEFT', 24, false);
+
+				loadOffsetFile("whittyCrazy");
 
 			case 'tankman':
 				tex = Paths.getSparrowAtlas('Tankmen/tankmanCaptain', 'shared', true);
@@ -1542,7 +1556,8 @@ class Character extends FlxSprite
 			}
 		}
 
-		if (curCharacter != 'gf-cow' && !(curCharacter == 'gf-whitty' && PlayState.SONG != null && PlayState.SONG.song.toLowerCase() == 'Ballistic'))
+		if (curCharacter != 'gf-cow'
+			&& !(curCharacter == 'gf-whitty' && PlayState.SONG != null && PlayState.SONG.song.toLowerCase().startsWith('ballistic')))
 			dance();
 
 		if (isPlayer)
