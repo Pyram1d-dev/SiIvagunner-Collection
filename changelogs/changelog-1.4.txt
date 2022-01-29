@@ -1,0 +1,10 @@
+WHAT'S NEW:
+- New Whitty rip
+- New Erect remix for Thorns (Beta Mix)
+- Added "Erect Remixes" category and week
+- Removed "Winter Horrorland Short Version" from week 5 (because it's impossible lol)
+- Removed story mode selection flash if flashing lights are disabled
+- Fixed week 6 dialogue boxes
+- 4.5 seconds of no notes are now required to skip the intro of a song rather than 5
+- Fixed Extra difficulty displays not showing the right text when switching between songs in free play
+- Fixed game crashing if enter is spammed during the extra difficulty unlock screen
