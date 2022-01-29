@@ -686,10 +686,14 @@ class FreeplayState extends MusicBeatState
 			combo = Highscore.getCombo(songHighscore, curDifficulty);
 			// lerpScore = 0;
 			#end
-
+			
+			var diffData = songData.get(songs[curSelected].songName)[songs[curSelected].diffs.indexOf(CoolUtil.difficultyFromInt(curDifficulty))];
 			diffCalcText.text = 'RATING: ${DiffCalc.CalculateDiff(songData.get(songs[curSelected].songName)[songs[curSelected].diffs.indexOf(CoolUtil.difficultyFromInt(curDifficulty))])}';
-
-			diffText.text = CoolUtil.difficultyFromInt(curDifficulty).toUpperCase();
+			var newtext = CoolUtil.difficultyFromInt(curDifficulty).toUpperCase();
+			if (newtext == "EXTRA")
+				if (diffData.extraDiffDisplay != null)
+					newtext = diffData.extraDiffDisplay.toUpperCase();
+			diffText.text = newtext;
 
 			/*#if PRELOAD_ALL
 				if (songs[curSelected].songCharacter == "sm")
