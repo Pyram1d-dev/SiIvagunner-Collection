@@ -114,6 +114,7 @@ class Character extends FlxSprite
 			case 'gf-yankin':
 				tex = Paths.getSparrowAtlas('GFs/GF_yankin', 'shared', true);
 				frames = tex;
+				charColor = 0xFFF57E07;
 
 			case 'gf-pig':
 				tex = Paths.getSparrowAtlas('GFs/GF_pig', 'shared', true);

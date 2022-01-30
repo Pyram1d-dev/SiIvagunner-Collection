@@ -6224,9 +6224,7 @@ class PlayState extends MusicBeatState
 						heyIsForHorses = curBeat % 16 == 7;
 			}
 			if (heyIsForHorses)
-			{
 				boyfriend.playAnim('hey', true);
-			}
 		}
 
 		if (curBeat % 16 == 15
@@ -6236,7 +6234,8 @@ class PlayState extends MusicBeatState
 			&& curBeat < 48)
 		{
 			boyfriend.playAnim('hey', true);
-			dad.playAnim('cheer', true);
+			if (dad.curCharacter != 'gf-yankin')
+				dad.playAnim('cheer', true);
 		}
 		if (FlxG.save.data.distractions && !PlayStateChangeables.Optimize)
 		{
