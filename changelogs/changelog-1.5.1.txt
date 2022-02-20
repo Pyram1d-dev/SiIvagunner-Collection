@@ -1,2 +1,2 @@
-1.5.1;
+WHAT'S NEW:
 - Added credits for Nate Anim8 (accidentally uploaded the wrong version)
