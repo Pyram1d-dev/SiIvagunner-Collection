@@ -1,6 +1,6 @@
 WHAT'S NEW:
 - New Roses rip
-- 3 New fanchannel rips!
+- 3 new fan channel rips!
 - Made the story menu wheel loop
 - Added joke explanations to songs that were missing them (dance inferno, fab fairies dance, Ballistic BM)
 - The screen that informs you of extra difficulties no longer lies about you "unlocking them" (they are always unlocked from the start)
