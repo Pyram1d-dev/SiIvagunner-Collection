@@ -48,7 +48,7 @@ class UnlockedWeekPog extends MusicBeatSubstate
 		var bg = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		uiShit.add(bg);
 		bg.alpha = 0;
-		var unlockText = new FlxText(0, 0, FlxG.width * 0.9, "You unlocked new Extra difficulties!\n(Check them out in freeplay)\n\n");
+		var unlockText = new FlxText(0, 0, FlxG.width * 0.9, "A few songs you played also have Extra difficulties!\n(Check them out in freeplay)\n\n");
 		unlockText.alpha = 0;
 		unlockText.autoSize = false;
 		unlockText.setFormat("VCR OSD Mono", 40, FlxColor.WHITE, CENTER, OUTLINE, FlxColor.BLACK);
@@ -57,7 +57,7 @@ class UnlockedWeekPog extends MusicBeatSubstate
 		unlockText.screenCenter(XY);
 		unlockText.antialiasing = FlxG.save.data.antialiasing;
 		for (i in unlocks)
-			unlockText.text += "\n" + "- " + i;
+			unlockText.text += "\n" + i;
 
 		unlockText.text += "\n\n\n(Enter to continue)";
 		uiShit.add(unlockText);
@@ -87,14 +87,19 @@ class UnlockedWeekPog extends MusicBeatSubstate
 class WeekItem extends FlxTypedSpriteGroup<FlxSprite>
 {
 	public var targetY:Int;
+	var position:Int;
 	var bg:FlxSprite;
 	static var boxHeight = 100;
 	var stopTweeningLol = false;
 	var fakeTargetY:Int;
+	var initTex = "";
+	var nameText:FlxText;
 
 	public override function new(x:Float, y:Float, weekName:String, targetY:Int)
 	{
 		super(x, y);
+		position = targetY;
+		initTex = weekName;
 		this.targetY = targetY;
 		fakeTargetY = targetY;
 		bg = new FlxSprite(0, 0).makeGraphic(Std.int(FlxG.width / 2) + 100, boxHeight, FlxColor.WHITE);
@@ -109,15 +114,22 @@ class WeekItem extends FlxTypedSpriteGroup<FlxSprite>
 		name.x = FlxG.width / 2;
 		name.y = boxHeight/2;
 		add(name);
+
+		nameText = name;
 	}
 
 	public override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 		fakeTargetY = targetY;
+		var weekLen = StoryMenuState.instance.weekData.length;
+		if (fakeTargetY > 4)
+			fakeTargetY -= weekLen;
+		else if (fakeTargetY < -4)
+			fakeTargetY += weekLen;
 		if (!stopTweeningLol)
 		{
-			x = FlxMath.lerp(x, (-Math.abs(fakeTargetY * (fakeTargetY / 2)) * 200 - 120), 0.2);
+			x = FlxMath.lerp(x, (-Math.abs((Math.exp(Math.abs(fakeTargetY)) - 1) / 4) * 200 - 120), 0.2);
 			y = FlxMath.lerp(y, FlxG.height / 2 + fakeTargetY * (boxHeight + 20), 0.2);
 		}
 		bg.color = FlxColor.interpolate(bg.color, FlxColor.BLACK, elapsed);
@@ -151,10 +163,11 @@ class StoryMenuState extends MusicBeatState
 	public static var weekUnlocked:Array<Bool> = [];
 	public static var unlockedExtras:Array<String> = [];
 	public static var beatWeek = false;
+	public static var instance:StoryMenuState = null;
 
 	var acceptInput:Bool = true;
 
-	var weekData:Array<StoryWeekData>;
+	public var weekData:Array<StoryWeekData>;
 
 	var curWeek:Int = 0;
 
@@ -193,6 +206,7 @@ class StoryMenuState extends MusicBeatState
 
 	override function create()
 	{
+		instance = this;
 		#if windows
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Story Mode Menu", null);

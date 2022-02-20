@@ -124,6 +124,7 @@
 				"Roses Beta Mix",
 				"Roses Itch io Build",
 				"Roses OST Version",
+				"Roses In-Game Version",
 				"Roses",
 				"Thorns",
 				"Thorns Beta Mix"
@@ -193,6 +194,18 @@
             "week":12,
             "songs":[
                 "Red and Black"
+            ]
+        },
+        {
+            "title":"Fan Channels",
+            "subtitle":"Gotta give the other rippers some love, too!",
+            "preview":"fanchannels",
+            "color":"0xFFFFD9D6",
+            "week":"fanchannels",
+            "songs":[
+                "Roses Nafun",
+                "Thorns Nafun",
+                "Ugh Yoshigunner"
             ]
         },
         {

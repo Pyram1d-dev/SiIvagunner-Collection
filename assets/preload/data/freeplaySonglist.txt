@@ -63,9 +63,12 @@ Senpai Beta Mix:senpai:6
 Roses:senpai-punk-full:6
 Roses Beta Mix:senpai-will:6
 Roses Itch io Build:senpai:6
+Roses Nafun:senpai:6
 Roses OST Version:senpai-skeletron:6
+Roses In-Game Version:senpai:6
 Thorns:spirit-gariwald:6
 Thorns Beta Mix:spirit-giygas:6
+Thorns Nafun:spirit:6
 
 Ugh:tankman-homedepot:7
 Ugh Alterneeyyytive Mix:psy:7
@@ -73,6 +76,7 @@ Guns Short Version:tankman:7
 Ugh In-Game Version:maskedWolf:7
 Konga Conga Kappa Original Mix:tankman:7
 The Fab Fairies Dance:tankman:7
+Ugh Yoshigunner:tankman:7
 
 Lo-Fight:whitty:8
 Overhead:whitty-mars:8

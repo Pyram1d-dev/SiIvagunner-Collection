@@ -1007,65 +1007,17 @@ class PlayState extends MusicBeatState
 		if ((isStoryMode || FlxG.save.data.freeplayCutscenes) && !restarted && !PlayStateChangeables.Optimize)
 		{
 			var doof:DialogueBox = null;
-			if (songsWithDialogue.contains(rootSong))
+			if (songsWithDialogue.contains(rootSong) && !ignoreThisShit.contains(songLowercase))
 			{
 				doof = new DialogueBox(false, dialogue);
 				doof.scrollFactor.set();
 				doof.finishThing = startCountdown;
 				doof.cameras = [camHUD];
 			}
-			if (songLowercase == 'fresh')
-				OHGODNO();
-			else if (songLowercase == 'philly-nice-in-game-version')
-				ladyIntro();
+			if (storyWeek == "fanchannels" && storyLength - storyPlaylist.length == 0)
+				fanchannelIntro(doof, songLowercase);
 			else
-			switch (rootSong)
-			{
-				case "winter-horrorland":
-					var blackScreen:FlxSprite = new FlxSprite(0, 0).makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
-					blackScreen.screenCenter(XY);
-					add(blackScreen);
-					blackScreen.scrollFactor.set();
-					camHUD.visible = false;
-					new FlxTimer().start(0.1, function(tmr:FlxTimer)
-					{
-						remove(blackScreen);
-						camZooming = false;
-						inCutscene = true;
-						FlxG.sound.play(Paths.sound('Lights_Turn_On'));
-						camFollow.y = -2050;
-						camFollow.x += 200;
-						FlxG.camera.focusOn(camFollow.getPosition());
-						FlxG.camera.zoom = 1.5;
-						new FlxTimer().start(0.8, function(tmr:FlxTimer)
-						{
-							camZooming = true;
-							inCutscene = false;
-							camHUD.visible = true;
-							remove(blackScreen);
-							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {
-								ease: FlxEase.quadInOut,
-								onComplete: function(twn:FlxTween)
-								{
-									startCountdown();
-								}
-							});
-						});
-					});
-				case 'wocky' | 'beathoven':
-					kapiIntro(doof);
-				case 'senpai' | 'thorns' | 'high-school-conflict':
-					schoolIntro(doof);
-				case 'roses':
-					FlxG.sound.play(Paths.sound('ANGRY'));
-					schoolIntro(doof);
-				case 'lo-fight' | 'overhead' | 'ballistic':
-					whittyAnimation(doof);
-				case 'ugh' | 'guns':
-					tankmanIntro();
-				default:
-					startCountdown();
-			}
+				checkCutscene(doof, songLowercase);
 		}
 		else
 		{
@@ -1104,6 +1056,104 @@ class PlayState extends MusicBeatState
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_UP, releaseInput);
 		trace(storyWeek);
 		super.create();
+	}
+
+	function checkCutscene(doof:DialogueBox, songLowercase:String)
+	{
+		switch (songLowercase)
+		{
+			case 'fresh':
+				OHGODNO();
+			case 'philly-nice-in-game-version':
+				ladyIntro();
+			case 'ballistic':
+				whittyAnimation(doof);
+			default:
+				switch (rootSong)
+				{
+					case "winter-horrorland":
+						var blackScreen:FlxSprite = new FlxSprite(0, 0).makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
+						blackScreen.screenCenter();
+						add(blackScreen);
+						blackScreen.scrollFactor.set();
+						camHUD.visible = false;
+						new FlxTimer().start(0.1, function(tmr:FlxTimer)
+						{
+							remove(blackScreen);
+							camZooming = false;
+							inCutscene = true;
+							FlxG.sound.play(Paths.sound('Lights_Turn_On'));
+							camFollow.y = -2050;
+							FlxG.camera.focusOn(camFollow.getPosition());
+							FlxG.camera.zoom = 1.5;
+							new FlxTimer().start(0.8, function(tmr:FlxTimer)
+							{
+								camZooming = true;
+								inCutscene = false;
+								camHUD.visible = true;
+								remove(blackScreen);
+								FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {
+									ease: FlxEase.quadInOut,
+									onComplete: function(twn:FlxTween)
+									{
+										startCountdown();
+									}
+								});
+							});
+						});
+					case 'wocky' | 'beathoven':
+						kapiIntro(doof);
+					case 'senpai' | 'thorns' | 'high-school-conflict':
+						schoolIntro(doof);
+					case 'roses':
+						FlxG.sound.play(Paths.sound('ANGRY'));
+						schoolIntro(doof);
+					case 'lo-fight' | 'overhead':
+						whittyAnimation(doof);
+					case 'ugh' | 'guns':
+						tankmanIntro();
+					default:
+						startCountdown();
+				}
+		}
+	}
+
+	function fanchannelIntro(doof:DialogueBox, songLowercase:String)
+	{
+		var blacc = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+		blacc.cameras = [camGame];
+		blacc.scrollFactor.set();
+		blacc.updateHitbox();
+		camZooming = false;
+		camHUD.visible = false;
+		inCutscene = true;
+		add(blacc);
+		var info:FlxText = new FlxText(0, 0, Math.floor(FlxG.width * 0.95), "This week consists of rips produced by the fan channels \"Nafun\" and \"YoshiGunner.\"\n\nPlease support their channels!\n(They can be found in on the credits screen)", 28);
+		info.font = Paths.font("vcr.ttf");
+		info.antialiasing = FlxG.save.data.antialiasing;
+		info.autoSize = false;
+		info.alignment = CENTER;
+		info.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.BLACK, 1, 1);
+		info.updateHitbox();
+		info.screenCenter();
+		info.scrollFactor.set();
+		add(info);
+		new FlxTimer().start(4, function(tmr:FlxTimer)
+		{
+			FlxTween.tween(blacc, {alpha: 0}, 2, {
+				onUpdate: function(twn:FlxTween)
+				{
+					info.alpha = blacc.alpha;
+				},
+				onComplete: function(twn:FlxTween)
+				{
+					blacc.destroy();
+					info.destroy();
+					camHUD.visible = true;
+					checkCutscene(doof, songLowercase);
+				}
+			});
+		});
 	}
 
 	function ladyIntro()

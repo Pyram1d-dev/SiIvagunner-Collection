@@ -5,14 +5,16 @@
             "icon":"alert",
             "color":"0xFF00FFFF",
             "songs":[
-                "Ballistic Beta Mix",
-                "Thorns Beta Mix"
+                "Roses Nafun",
+                "Thorns Nafun",
+                "Ugh Yoshigunner",
+				"Roses In-Game Version"
             ]
         },
         {
             "title":"Erect Remixes",
-            "icon":"face",
-            "color":"0xFF00FFFF",
+            "icon":"erect",
+            "color":"0xFFFF00FF",
             "songs":[
                 "Dad Battle In-Game Version",
                 "Thorns Beta Mix"
@@ -132,6 +134,7 @@
                 "Roses Beta Mix",
                 "Roses Itch io Build",
                 "Roses OST Version",
+				"Roses In-Game Version",
                 "Thorns",
                 "Thorns Beta Mix"
             ]
@@ -201,6 +204,23 @@
                 "Heat In Your Hand Beta Mix",
                 "Konga Conga Kappa Original Mix",
                 "The Fab Fairies Dance"
+            ]
+        },
+        {
+            "title":"Nafun",
+            "icon":"nafun",
+            "color":"0xFF808080",
+            "songs":[
+                "Roses Nafun",
+                "Thorns Nafun"
+            ]
+        },
+        {
+            "title":"Yoshigunner",
+            "icon":"yoshigunner",
+            "color":"0xFF808080",
+            "songs":[
+                "Ugh Yoshigunner"
             ]
         },
         {

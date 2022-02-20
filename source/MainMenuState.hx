@@ -43,13 +43,12 @@ class MainMenuState extends MusicBeatState
 	public var camOptions:FlxCamera;
 	private var camMenu:FlxCamera;
 
-
 	public static var firstStart:Bool = true;
 
 	public static var nightly:String = "";
 
 	public static var kadeEngineVer:String = "HQ" + nightly;
-	public static var gameVer:String = "1.4";
+	public static var gameVer:String = "1.5";
 
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;

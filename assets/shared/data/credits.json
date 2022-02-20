@@ -7,10 +7,22 @@
             "icons":[]
         },
         {
-            "name":"SiIvagunner",
+            "name":"SiIvaGunner",
             "description":"All reskins and rips",
             "link":"https://www.youtube.com/c/SiIvaGunner",
             "icons":[]
+        },
+        {
+            "name":"Nafun",
+            "description":"SG contributor, 2 rips used in this mod",
+            "link":"https://www.youtube.com/c/Nafun",
+            "icons":["nafun"]
+        },
+        {
+            "name":"YoshiGunner",
+            "description":"Fan channel, rip used in this mod",
+            "link":"https://www.youtube.com/channel/UCCqAAU6LTZSX8ZcCpI_dpyg",
+            "icons":["yoshigunner"]
         },
         {
             "name":"MtH",
@@ -20,7 +32,7 @@
         },
         {
             "name":"KadeDev",
-            "description":"Kade Engine, Whitty and Tricky code",
+            "description":"Kade Engine, Whitty (original ver.) and Tricky code",
             "link":"https://www.youtube.com/c/KadeDev",
             "icons":["whitty","tricky"]
         },

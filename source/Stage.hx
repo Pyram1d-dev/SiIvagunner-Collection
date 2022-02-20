@@ -51,7 +51,7 @@ class Stage // Stolen from KE 1.7 :troll:
 	public var slowBacks:Map<Int, Array<FlxSprite>> = []; // Change/add/remove backgrounds mid song! Format: "slowBacks[StepToBeActivated] = [Sprites,To,Be,Changed,Or,Added];"
 	public var swagDancers:Map<String, Dynamic> = []; // Group for objects with a dance() function so that doesn't have to be manually added to beatHit in PlayState. (This is something that wasn't in KE 1.7 that I added)
 	public var distractions:Array<Dynamic> = []; // Why have I complicated this whole thing
-	public var isPixel:Bool = false; // PIXEL STAGES
+	public var isPixel:Bool = false; // PIXEL STAGES (for AA settings)
 	
 	public function new(stageCheck:String, rootSong:String, songLowercase:String, daPixelZoom:Float)
 	{
