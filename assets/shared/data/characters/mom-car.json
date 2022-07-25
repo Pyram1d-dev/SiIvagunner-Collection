@@ -1,0 +1,44 @@
+{
+    "texturePath":"Moms/momCar",
+    "hasUniqueOffsets":true,
+    "characterColor":"0xFF5A07F5",
+    "biDirectional":false,
+    "scale":1,
+    
+    "positionOffset":[0, 0],
+    "isPixel":false,
+    "animationData":[
+        {
+            "name":"idle",
+            "identifier":"Mom Idle",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"Mom Up Pose",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"Mom Left Pose",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"Mom Pose Left",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"MOM DOWN POSE",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "flipX":false,
+    "baseCharacter":null
+}

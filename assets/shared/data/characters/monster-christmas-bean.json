@@ -1,0 +1,7 @@
+{
+    "texturePath":"Monsters/monsterChristmas_bean",
+    "hasUniqueOffsets":false,
+    "baseCharacter":"monster",
+    "positionOffset":[0, 130],
+    "copyAllFromBase":true
+}

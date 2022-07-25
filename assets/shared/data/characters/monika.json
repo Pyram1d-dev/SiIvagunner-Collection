@@ -1,0 +1,38 @@
+{
+    "texturePath":"Senpais/monika",
+    "hasUniqueOffsets":false,
+    "animationData":[
+        {
+            "name":"idle",
+            "identifier":"Monika Idle",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"Monika UP NOTE",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"Monika LEFT NOTE",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"Monika RIGHT NOTE",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"Monika DOWN NOTE",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "baseCharacter":"senpai",
+    "copyAllFromBase":true
+}

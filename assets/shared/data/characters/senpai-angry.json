@@ -1,0 +1,43 @@
+{
+    "texturePath":"Senpais/senpai",
+    "hasUniqueOffsets":true,
+    "characterColor":"0xFFF76D6D",
+    "biDirectional":false,
+    "scale":6,
+    "positionOffset":[150, 300],
+    "cameraOffset":[-100, -430],
+    "isPixel":true,
+    "animationData":[
+        {
+            "name":"idle",
+            "identifier":"Angry Senpai Idle",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"Angry Senpai UP NOTE",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"Angry Senpai LEFT NOTE",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"Angry Senpai RIGHT NOTE",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"Angry Senpai DOWN NOTE",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "baseCharacter":"senpai"
+}

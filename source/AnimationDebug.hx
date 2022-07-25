@@ -24,11 +24,13 @@ class AnimationDebug extends FlxState
 	var isDad:Bool = true;
 	var daAnim:String = 'spooky';
 	var camFollow:FlxObject;
+	var isBF:Bool;
 
-	public function new(daAnim:String = 'spooky')
+	public function new(daAnim:String = 'spooky', isBF = false)
 	{
 		super();
 		this.daAnim = daAnim;
+		this.isBF = isBF;
 	}
 
 	override function create()
@@ -39,7 +41,7 @@ class AnimationDebug extends FlxState
 		gridBG.scrollFactor.set(0.5, 0.5);
 		add(gridBG);
 
-		if (daAnim == 'bf')
+		if (daAnim == 'bf' || isBF)
 			isDad = false;
 
 		if (isDad)
@@ -54,7 +56,7 @@ class AnimationDebug extends FlxState
 		}
 		else
 		{
-			bf = new Boyfriend(0, 0);
+			bf = new Boyfriend(0, 0, daAnim);
 			bf.screenCenter();
 			bf.debugMode = true;
 			add(bf);

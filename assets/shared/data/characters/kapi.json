@@ -1,0 +1,57 @@
+{
+    "texturePath":"Kapi",
+    "hasUniqueOffsets":true,
+    "characterColor":"0xFFFC03A9",
+    "biDirectional":false,
+    "scale":1,
+    
+    "positionOffset":[0, 0],
+    "isPixel":false,
+    "animationData":[
+        {
+            "name":"idle",
+            "identifier":"Dad idle dance",
+            "indicies":[2, 4, 6, 8, 10, 0],
+            "framerate":12,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"Dad Sing Note UP",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"Dad Sing Note LEFT",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"Dad Sing Note RIGHT",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"Dad Sing Note DOWN",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"meow",
+            "identifier":"Dad meow",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"stare",
+            "identifier":"Dad stare",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "flipX":false,
+    "baseCharacter":null
+}

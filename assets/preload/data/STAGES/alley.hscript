@@ -11,32 +11,45 @@ var wstageFront = new FlxSprite(-650, 600).loadGraphic(Paths.image('whittyFront'
 wstageFront.setGraphicSize(Std.int(wstageFront.width * 1.1));
 wstageFront.updateHitbox();
 wstageFront.antialiasing = FlxG.save.data.antialiasing;
-wstageFront.scrollFactor.set(0.9, 0.9);
+wstageFront.scrollFactor.set(0.95, 0.95);
 wstageFront.active = false;
 data.swagBacks['wstageFront'] = wstageFront;
+data.charPositions[0][0] = -25;
 
 if (stageName == 'ballisticAlley')
 {
+    data.charPositions[1] = [100, 200];
     trace('pogging');
     wBg.antialiasing = FlxG.save.data.antialiasing;
+    wBg.alpha = 0;
     var bgTex = Paths.getSparrowAtlas('BallisticBackground', 'bonusWeek');
     var nwBg = new FlxSprite(-600, -200);
     nwBg.frames = bgTex;
     nwBg.antialiasing = FlxG.save.data.antialiasing;
     nwBg.scrollFactor.set(0.9, 0.9);
     nwBg.active = true;
+    nwBg.alpha = 1;
     nwBg.animation.addByPrefix('start', 'Background Whitty Start', 24, false);
     nwBg.animation.addByPrefix('gaming', 'Background Whitty Startup', 24, false);
     nwBg.animation.addByPrefix('gameButMove', 'Background Whitty Moving', 16, true);
+    nwBg.animation.play("gameButMove");
+
+    var funneEffect = new FlxSprite().loadGraphic(Paths.image('thefunnyeffect', 'bonusWeek'));
+    funneEffect.setGraphicSize(Std.int(FlxG.width * 1.1));
+    funneEffect.alpha = 0;
+    funneEffect.screenCenter();
+    funneEffect.scrollFactor.set();
+    funneEffect.visible = true;
+	funneEffect.cameras = [camHUD];
     data.swagBacks['nwBg'] = nwBg;
-    data.toAdd.push(wBg);
+    data.swagBacks['funneEffect'] = funneEffect;
     data.toAdd.push(nwBg);
-    nwBg.alpha = 0;
     data.toAdd.push(wBg);
-    data.toAdd.push(wstageFront);
+    data.toAdd.push(funneEffect);
 }
 else
 {
+    data.charPositions[1] = [10, 150];
     wBg.antialiasing = FlxG.save.data.antialiasing;
     wBg.scrollFactor.set(0.9, 0.9);
     wBg.active = false;

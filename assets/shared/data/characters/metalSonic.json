@@ -1,0 +1,7 @@
+{
+    "texturePath":"metal_sonic",
+    "characterColor":"0xFF0000FF",
+    "hasUniqueOffsets":true,
+    "baseCharacter":"spooky",
+    "copyAllFromBase":true
+}

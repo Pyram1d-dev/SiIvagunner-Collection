@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="testis_3_ecstatic_jubilee.png">
+	<!-- Created with Adobe Flash CS6 version 12.0.0.481 -->
+	<!-- http://www.adobe.com/products/flash.html -->
+	<SubTexture name="whitty idle 30000" x="2" y="2" width="664" height="682" frameX="0" frameY="-2" frameWidth="664" frameHeight="687"/>
+	<SubTexture name="whitty idle 30001" x="2" y="2" width="664" height="682" frameX="0" frameY="-2" frameWidth="664" frameHeight="687"/>
+	<SubTexture name="whitty idle 30002" x="668" y="2" width="648" height="660" frameX="0" frameY="-24" frameWidth="664" frameHeight="687"/>
+	<SubTexture name="whitty idle 30003" x="668" y="2" width="648" height="660" frameX="0" frameY="-24" frameWidth="664" frameHeight="687"/>
+	<SubTexture name="whitty idle 30004" x="1318" y="2" width="638" height="656" frameX="-3" frameY="-29" frameWidth="664" frameHeight="687"/>
+	<SubTexture name="whitty idle 30005" x="1318" y="2" width="638" height="656" frameX="-3" frameY="-29" frameWidth="664" frameHeight="687"/>
+	<SubTexture name="whitty idle 30006" x="2" y="686" width="631" height="670" frameX="-7" frameY="-16" frameWidth="664" frameHeight="687"/>
+	<SubTexture name="whitty idle 30007" x="2" y="686" width="631" height="670" frameX="-7" frameY="-16" frameWidth="664" frameHeight="687"/>
+	<SubTexture name="whitty idle 30008" x="635" y="686" width="640" height="682" frameX="-2" frameY="-5" frameWidth="664" frameHeight="687"/>
+	<SubTexture name="whitty idle 30009" x="635" y="686" width="640" height="682" frameX="-2" frameY="-5" frameWidth="664" frameHeight="687"/>
+	<SubTexture name="whitty idle 30010" x="1277" y="686" width="644" height="686" frameX="-3" frameY="-1" frameWidth="664" frameHeight="687"/>
+	<SubTexture name="whitty idle 30011" x="2" y="1374" width="644" height="686" frameX="-3" frameY="-1" frameWidth="664" frameHeight="687"/>
+	<SubTexture name="whitty idle 30012" x="648" y="1374" width="644" height="687" frameX="-3" frameY="0" frameWidth="664" frameHeight="687"/>
+	<SubTexture name="whitty idle 30013" x="648" y="1374" width="644" height="687" frameX="-3" frameY="0" frameWidth="664" frameHeight="687"/>
+</TextureAtlas>

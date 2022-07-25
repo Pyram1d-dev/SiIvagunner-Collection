@@ -12,7 +12,7 @@ import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.text.TextFormat;
-#if windows
+#if cpp
 import Discord.DiscordClient;
 #end
 
@@ -91,7 +91,7 @@ class Main extends Sprite
 		game = new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen);
 		#end
 		addChild(game);
-		#if windows
+		#if cpp
 		DiscordClient.initialize();
 
 		Application.current.onExit.add (function (exitCode) {

@@ -7,7 +7,7 @@ import flixel.FlxG;
 import flixel.addons.ui.FlxUIState;
 import flixel.util.FlxColor;
 import openfl.Lib;
-#if windows
+#if cpp
 import Discord.DiscordClient;
 #end
 
@@ -28,13 +28,13 @@ class MusicBeatState extends FlxUIState
 
 	private var assets:Array<FlxBasic> = [];
 
-	override function remove(Object:flixel.FlxBasic, Splice:Bool = false):flixel.FlxBasic
+	override function remove(Object:FlxBasic, Splice:Bool = false):FlxBasic
 	{
 		assets.remove(Object);
 		return super.remove(Object, Splice);
 	}
 
-	override function add(Object:flixel.FlxBasic):flixel.FlxBasic
+	override function add(Object:FlxBasic):FlxBasic
 	{
 		assets.push(Object);
 		return super.add(Object);

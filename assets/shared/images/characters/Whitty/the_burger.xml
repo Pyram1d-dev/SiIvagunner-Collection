@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="the burger.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="wheat down note0000" x="0" y="0" width="478" height="683" frameX="0" frameY="-14" frameWidth="486" frameHeight="697"/>
+	<SubTexture name="wheat down note0001" x="0" y="0" width="478" height="683" frameX="0" frameY="-14" frameWidth="486" frameHeight="697"/>
+	<SubTexture name="wheat down note0002" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0003" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0004" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0005" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0006" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0007" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0008" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0009" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0010" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0011" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0012" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0013" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0014" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0015" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0016" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0017" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0018" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0019" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0020" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0021" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0022" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0023" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0024" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0025" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0026" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0027" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0028" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0029" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0030" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0031" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0032" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0033" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0034" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0035" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0036" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0037" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0038" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat down note0039" x="488" y="0" width="486" height="697"/>
+	<SubTexture name="wheat idle0000" x="984" y="0" width="493" height="718" frameX="0" frameY="-10" frameWidth="493" frameHeight="728"/>
+	<SubTexture name="wheat idle0001" x="1487" y="0" width="493" height="718" frameX="0" frameY="-10" frameWidth="493" frameHeight="728"/>
+	<SubTexture name="wheat idle0002" x="1990" y="0" width="488" height="722" frameX="-2" frameY="-6" frameWidth="493" frameHeight="728"/>
+	<SubTexture name="wheat idle0003" x="2488" y="0" width="488" height="722" frameX="-2" frameY="-6" frameWidth="493" frameHeight="728"/>
+	<SubTexture name="wheat idle0004" x="2986" y="0" width="484" height="725" frameX="-4" frameY="-3" frameWidth="493" frameHeight="728"/>
+	<SubTexture name="wheat idle0005" x="3480" y="0" width="484" height="725" frameX="-4" frameY="-3" frameWidth="493" frameHeight="728"/>
+	<SubTexture name="wheat idle0006" x="0" y="735" width="484" height="728" frameX="-7" frameY="0" frameWidth="493" frameHeight="728"/>
+	<SubTexture name="wheat idle0007" x="494" y="735" width="484" height="728" frameX="-7" frameY="0" frameWidth="493" frameHeight="728"/>
+	<SubTexture name="wheat idle0008" x="988" y="735" width="485" height="727" frameX="-7" frameY="-1" frameWidth="493" frameHeight="728"/>
+	<SubTexture name="wheat idle0009" x="1483" y="735" width="485" height="727" frameX="-7" frameY="-1" frameWidth="493" frameHeight="728"/>
+	<SubTexture name="wheat idle0010" x="1978" y="735" width="485" height="728" frameX="-7" frameY="0" frameWidth="493" frameHeight="728"/>
+	<SubTexture name="wheat idle0011" x="2473" y="735" width="485" height="728" frameX="-7" frameY="0" frameWidth="493" frameHeight="728"/>
+	<SubTexture name="wheat idle0012" x="2968" y="735" width="485" height="728" frameX="-7" frameY="0" frameWidth="493" frameHeight="728"/>
+	<SubTexture name="wheat idle0013" x="3463" y="735" width="485" height="728" frameX="-7" frameY="0" frameWidth="493" frameHeight="728"/>
+	<SubTexture name="wheat left note0000" x="0" y="1473" width="488" height="744" frameX="-5" frameY="0" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0001" x="0" y="1473" width="488" height="744" frameX="-5" frameY="0" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0002" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0003" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0004" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0005" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0006" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0007" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0008" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0009" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0010" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0011" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0012" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0013" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0014" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0015" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0016" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0017" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0018" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0019" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0020" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0021" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0022" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0023" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0024" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0025" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0026" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0027" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0028" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0029" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0030" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0031" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0032" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0033" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0034" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0035" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0036" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0037" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0038" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat left note0039" x="498" y="1473" width="497" height="742" frameX="0" frameY="-2" frameWidth="497" frameHeight="744"/>
+	<SubTexture name="wheat right note0000" x="1005" y="1473" width="503" height="736" frameX="0" frameY="0" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0001" x="1005" y="1473" width="503" height="736" frameX="0" frameY="0" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0002" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0003" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0004" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0005" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0006" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0007" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0008" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0009" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0010" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0011" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0012" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0013" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0014" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0015" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0016" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0017" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0018" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0019" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0020" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0021" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0022" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0023" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0024" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0025" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0026" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0027" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0028" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0029" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0030" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0031" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0032" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0033" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0034" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0035" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0036" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0037" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0038" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat right note0039" x="1518" y="1473" width="506" height="735" frameX="0" frameY="-1" frameWidth="506" frameHeight="736"/>
+	<SubTexture name="wheat sad0000" x="2034" y="1473" width="486" height="728"/>
+	<SubTexture name="wheat sad0001" x="2034" y="1473" width="486" height="728"/>
+	<SubTexture name="wheat sad0002" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0003" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0004" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0005" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0006" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0007" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0008" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0009" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0010" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0011" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0012" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0013" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0014" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0015" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0016" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0017" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0018" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0019" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0020" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0021" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0022" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0023" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0024" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0025" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0026" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0027" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0028" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0029" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0030" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0031" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0032" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0033" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0034" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0035" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0036" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0037" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0038" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0039" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0040" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0041" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0042" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0043" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0044" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0045" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0046" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0047" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0048" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0049" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0050" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0051" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0052" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0053" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0054" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0055" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0056" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0057" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0058" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0059" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0060" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0061" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0062" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0063" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0064" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0065" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0066" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0067" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0068" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0069" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0070" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0071" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0072" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0073" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0074" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0075" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0076" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0077" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0078" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0079" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0080" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0081" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0082" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0083" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0084" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0085" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0086" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0087" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0088" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat sad0089" x="2530" y="1473" width="485" height="728" frameX="0" frameY="0" frameWidth="486" frameHeight="728"/>
+	<SubTexture name="wheat up note0000" x="3025" y="1473" width="448" height="768"/>
+	<SubTexture name="wheat up note0001" x="3025" y="1473" width="448" height="768"/>
+	<SubTexture name="wheat up note0002" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0003" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0004" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0005" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0006" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0007" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0008" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0009" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0010" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0011" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0012" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0013" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0014" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0015" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0016" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0017" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0018" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0019" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0020" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0021" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0022" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0023" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0024" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0025" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0026" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0027" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0028" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0029" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0030" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0031" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0032" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0033" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0034" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0035" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0036" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0037" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0038" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+	<SubTexture name="wheat up note0039" x="3483" y="1473" width="448" height="759" frameX="0" frameY="-9" frameWidth="448" frameHeight="768"/>
+</TextureAtlas>

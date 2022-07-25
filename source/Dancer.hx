@@ -92,7 +92,7 @@ class Dancer extends FlxSprite // There's like 200000000 different classes for d
 		while (lerpAnim && frameTick > 1 / 24 && !moving)
 		{
 			frameTick -= 1 / 24;
-			y = FlxMath.lerp(y, originalY, 0.2);
+			y = CoolUtil.coolLerp(y, originalY, 0.2);
 		}
 	}
 }

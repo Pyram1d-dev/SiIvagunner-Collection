@@ -1,0 +1,8 @@
+{
+    "texturePath":"Monsters/monsterChristmas",
+    "hasUniqueOffsets":true,
+    "characterColor":"0xFFF5DD07",
+    "baseCharacter":"monster",
+    "positionOffset":[0, 130],
+    "copyAllFromBase":true
+}

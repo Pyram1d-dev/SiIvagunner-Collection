@@ -1,5 +1,6 @@
 package;
 
+import openfl.utils.AssetType;
 import haxe.Json;
 import Song.SwagSong;
 import flash.text.TextField;
@@ -24,7 +25,7 @@ import smTools.SMFile;
 import sys.FileSystem;
 import sys.io.File;
 #end
-#if windows
+#if cpp
 import Discord.DiscordClient;
 #end
 
@@ -73,7 +74,7 @@ class FreeplayState extends MusicBeatState
 
 	public static var songData:Map<String, Array<SwagSong>> = [];
 
-	public static var categories:Array<CategoryData> = [];
+	public var categories:Array<CategoryData> = [];
 
 	public static function loadDiff(diff:Int, format:String, name:String, array:Array<SwagSong>)
 	{
@@ -144,24 +145,23 @@ class FreeplayState extends MusicBeatState
 			var diffs = [];
 			var diffsThatExist = [];
 
-			#if sys
-			if (FileSystem.exists('assets/data/${format}/${format}-easy.json'))
+			var lowercase = CoolUtil.lowerCaseSong(format);
+
+			if (Assets.exists('assets/data/SONGS/$lowercase/$lowercase-easy.json', TEXT))
 				diffsThatExist.push("Easy");
-			if (FileSystem.exists('assets/data/${format}/${format}.json'))
+			if (Assets.exists('assets/data/SONGS/$lowercase/$lowercase.json', TEXT))
 				diffsThatExist.push("Normal");
-			if (FileSystem.exists('assets/data/${format}/${format}-hard.json'))
+			if (Assets.exists('assets/data/SONGS/$lowercase/$lowercase-hard.json', TEXT))
 				diffsThatExist.push("Hard");
-			if (FileSystem.exists('assets/data/${format}/${format}-extra.json'))
+			if (Assets.exists('assets/data/SONGS/$lowercase/$lowercase-extra.json', TEXT))
 				diffsThatExist.push("Extra");
 
 			if (diffsThatExist.length == 0)
 			{
-				Application.current.window.alert("No difficulties found for chart, skipping.", meta.songName + " Chart " + ${format});
+				Application.current.window.alert('No difficulties found for ${lowercase}, skipping.', meta.songName + " Chart " + ${format});
 				continue;
 			}
-			#else
-			diffsThatExist = ["Easy", "Normal", "Hard"];
-			#end
+
 			if (diffsThatExist.contains("Easy"))
 				FreeplayState.loadDiff(0, format, meta.songName, diffs);
 			if (diffsThatExist.contains("Normal"))
@@ -195,7 +195,7 @@ class FreeplayState extends MusicBeatState
 					"alternateversion" => "AV", "itchiobuild" => "Itch Ver.", "poopversion" => "PV", "jpversion" => "JPV", "jpnversion" => "JPNV", "week4update" => "Updated",
 					"in-gamemix" => "IGM", "alterneeyyytivemix" => "eyyyy", "shortversion" => "SHORT",
 					"newgroundsbuild" => "NG Ver", "originalmix" => "OGM", "alphamix" => "AM"
-				]; // Yeah, I used a map. I could just abbreviate shit but sometimes the length of the title is different and I'd like entries to be something specific so instead of mixing those two I created more work for myself lmao
+				];
 				var startIndex = (temp[temp.length - 3] == 'itch' || temp[temp.length - 3] == 'week') ? 3 : 2;
 				var h:String = ""; // h
 				for (gaming in temp.length - startIndex...temp.length)
@@ -273,34 +273,6 @@ class FreeplayState extends MusicBeatState
 		clean();
 
 		// Sorry SM files have to go bye-bye :(
-		/*trace("tryin to load sm files");
-
-		#if sys
-		for (i in FileSystem.readDirectory("assets/sm/"))
-		{
-			trace(i);
-			if (FileSystem.isDirectory("assets/sm/" + i))
-			{
-				trace("Reading SM file dir " + i);
-				for (file in FileSystem.readDirectory("assets/sm/" + i))
-				{
-					if (file.contains(" "))
-						FileSystem.rename("assets/sm/" + i + "/" + file, "assets/sm/" + i + "/" + file.replace(" ", "_"));
-					if (file.endsWith(".sm"))
-					{
-						trace("reading " + file);
-						var file:SMFile = SMFile.loadFile("assets/sm/" + i + "/" + file.replace(" ", "_"));
-						trace("Converting " + file.header.TITLE);
-						var data = file.convertToFNF("assets/sm/" + i + "/converted.json");
-						var meta = new SongMetadata(file.header.TITLE, 0, "sm", file, "assets/sm/" + i);
-						songs.push(meta);
-						var song = Song.loadFromJsonRAW(data);
-						songData.set(file.header.TITLE, [song, song, song]);
-					}
-				}
-			}
-		}
-		#end */
 
 		// trace("\n" + diffList);
 
@@ -310,7 +282,7 @@ class FreeplayState extends MusicBeatState
 				FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
 
-		#if windows
+		#if cpp
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Freeplay Menu", null);
 		#end
@@ -457,7 +429,7 @@ class FreeplayState extends MusicBeatState
 
 		if (inSection)
 		{
-			lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, 0.4));
+			lerpScore = Math.floor(CoolUtil.coolLerp(lerpScore, intendedScore, 0.4));
 
 			if (Math.abs(lerpScore - intendedScore) <= 10)
 				lerpScore = intendedScore;
@@ -562,18 +534,7 @@ class FreeplayState extends MusicBeatState
 					PlayState.storyDifficulty = curDifficulty;
 					PlayState.storyWeek = songs[curSelected].week;
 					trace('CUR WEEK' + PlayState.storyWeek);
-					#if sys
-					if (songs[curSelected].songCharacter == "sm")
-					{
-						PlayState.isSM = true;
-						PlayState.sm = songs[curSelected].sm;
-						PlayState.pathToSm = songs[curSelected].path;
-					}
-					else
-						PlayState.isSM = false;
-					#else
 					PlayState.isSM = false;
-					#end
 					LoadingState.loadAndSwitchState(new PlayState());
 					clean();
 				}

@@ -1,0 +1,7 @@
+{
+    "texturePath":"Mario_assets",
+    "hasUniqueOffsets":false,
+    "characterColor":"0xFFFA0000",
+    "baseCharacter":"pico",
+    "copyAllFromBase":true
+}

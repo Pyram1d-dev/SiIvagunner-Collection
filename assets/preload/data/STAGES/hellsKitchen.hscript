@@ -13,4 +13,15 @@ tree.scrollFactor.set(0.9, 0.9);
 tree.antialiasing = FlxG.save.data.antialiasing;
 data.toAdd.push(tree);
 
+var overlay = new FlxSprite().loadGraphic(Paths.image('haato/overlayEvil', 'week5'));
+overlay.cameras = [camHUD];
+overlay.scrollFactor.set();
+overlay.antialiasing = FlxG.save.data.antialiasing;
+overlay.setGraphicSize(FlxG.width, FlxG.height);
+overlay.updateHitbox();
+overlay.screenCenter();
+data.toAdd.push(overlay);
+
 data.camZoom = 0.9;
+data.charPositions[0] = [320, 300];
+data.charPositions[1][1] = 300;

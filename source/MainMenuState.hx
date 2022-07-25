@@ -19,7 +19,7 @@ import lime.app.Application;
 
 using StringTools;
 
-#if windows
+#if cpp
 import Discord.DiscordClient;
 #end
 
@@ -69,7 +69,7 @@ class MainMenuState extends MusicBeatState
 		FlxG.cameras.add(camOptions);
 
 		FlxCamera.defaultCameras = [camMenu];
-		#if windows
+		#if cpp
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
 		#end
@@ -201,6 +201,11 @@ class MainMenuState extends MusicBeatState
 			{
 				FlxG.switchState(new TitleState());
 			}
+
+			#if debug
+			if (FlxG.keys.justPressed.SIX)
+				FlxG.switchState(new WelcomeState());
+			#end
 
 			if (controls.ACCEPT)
 			{

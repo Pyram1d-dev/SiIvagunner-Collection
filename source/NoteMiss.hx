@@ -38,7 +38,7 @@ class NoteMiss extends FlxSprite
 			(PlayStateChangeables.useDownscroll) ? -90 : 90);
 		updateHitbox();
 		scrollFactor.set();
-		cameras = [FlxG.cameras.list[1]];
+		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 		alpha = (FlxG.save.data.missGFX) ? 1 : 0;
 		FlxTween.tween(this, {
 			alpha: 0,

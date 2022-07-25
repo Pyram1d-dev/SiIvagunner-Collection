@@ -1,0 +1,44 @@
+{
+    "texturePath":"Whitty/testis",
+    "hasUniqueOffsets":true,
+    "characterColor":"0xFFFF6200",
+    "biDirectional":false,
+    "scale":1,
+    "positionOffset":[50, 320],
+    "cameraOffset":[0, -500],
+    "isPixel":false,
+    "animationData":[
+        {
+            "name":"idle",
+            "identifier":"whitty idle",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"whitty up",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"whitty left",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"whitty right",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"whitty down",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "flipX":false,
+    "baseCharacter":null
+}

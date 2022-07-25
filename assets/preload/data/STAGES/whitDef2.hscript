@@ -1,0 +1,44 @@
+data.camZoom = 0.7;
+data.charPositions = [
+    [325, 30],
+    [200, 200],
+    [200, 80]
+];
+
+var stageBack1 = new FlxSprite(-870, -360);
+stageBack1.frames = Paths.getSparrowAtlas('Definitive/tha_woman_wall', 'bonusWeek');
+stageBack1.animation.addByPrefix('tha_swag_wal','wal style change',24,true);
+stageBack1.animation.play('tha_swag_wal', true);
+stageBack1.scrollFactor.set(0.9, 0.9);
+data.swagBacks['stageBack1'] = stageBack1;
+data.toAdd.push(stageBack1);
+
+var stageFront1 = new FlxSprite(-600, -350);
+stageFront1.frames = Paths.getSparrowAtlas('Definitive/tha_cool_groun', 'bonusWeek');
+stageFront1.animation.addByPrefix('tha_cool_groun','flo style change',24,true);
+stageFront1.animation.play('tha_cool_groun', true);
+data.swagBacks['stageFront1'] = stageFront1;
+data.toAdd.push(stageFront1);
+
+var stageback = new FlxSprite(-870, -360).loadGraphic(Paths.image('Definitive/walnospider', 'bonusWeek'));
+stageback.scrollFactor.set(0.9, 0.9);
+data.swagBacks['stageback'] = stageback;
+data.toAdd.push(stageback);
+
+var stagefront = new FlxSprite(-600, -350).loadGraphic(Paths.image('Definitive/thagroun', 'bonusWeek'));
+data.swagBacks['stagefront'] = stagefront;
+data.toAdd.push(stagefront);
+
+var lawl = new FlxSprite(1120, 800);
+lawl.frames = Paths.getSparrowAtlas('Definitive/angry_joe_base', 'bonusWeek');
+lawl.animation.addByPrefix('idle', 'angry joe base0', 24, true);
+lawl.animation.addByPrefix('stylechange', 'angry joe base style change', 24, true);
+lawl.animation.play('idle', true);
+data.swagBacks['lawl'] = lawl;
+
+data.toAdd.push(lawl);
+
+var jackettt = new FlxSprite(450, 375).loadGraphic(Paths.image('Definitive/number12COCK', 'bonusWeek'));
+jackettt.visible = false;
+data.swagBacks['jackettt'] = jackettt;
+data.layInFront[2].push(jackettt);

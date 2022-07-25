@@ -2,7 +2,7 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin': SiIvagunner Collection" file="SiIvagunner" packageName="com.pyran1d.siivacollection" package="com.pyran1d.siivacollection" main="Main" version="0.2.7.1" company="pyran1d" />
+	<app title="Friday Night Funkin': SiIvagunner Collection" file="SiIvagunner" packageName="com.pyram1d.siivacollection" package="com.pyram1d.siivacollection" main="Main" version="0.2.7.1" company="pyram1d" />
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="SIIVA_NIGHT_FUNKIN" value="0x0100f6c013bbc000" />

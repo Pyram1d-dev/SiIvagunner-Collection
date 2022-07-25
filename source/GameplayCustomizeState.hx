@@ -7,7 +7,7 @@ import flixel.math.FlxMath;
 import flixel.FlxCamera;
 import flixel.math.FlxPoint;
 import flixel.FlxObject;
-#if windows
+#if cpp
 import Discord.DiscordClient;
 import sys.thread.Thread;
 #end
@@ -42,7 +42,7 @@ class GameplayCustomizeState extends MusicBeatState
     var camFollow:FlxObject;
     
     public override function create() {
-        #if windows
+        #if cpp
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("Customizing Gameplay Modules", null);
 		#end
@@ -272,7 +272,7 @@ class GameplayCustomizeState extends MusicBeatState
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 
-        super.update(elapsed);
+		super.update(elapsed);
 
         if (FlxG.save.data.zoom < 0.8)
             FlxG.save.data.zoom = 0.8;
@@ -280,8 +280,8 @@ class GameplayCustomizeState extends MusicBeatState
         if (FlxG.save.data.zoom > 1.2)
 			FlxG.save.data.zoom = 1.2;
 
-        FlxG.camera.zoom = FlxMath.lerp(0.9, FlxG.camera.zoom, 0.95);
-        camHUD.zoom = FlxMath.lerp(FlxG.save.data.zoom, camHUD.zoom, 0.95);
+		FlxG.camera.zoom = CoolUtil.coolLerp(0.9, FlxG.camera.zoom, 0.95);
+		camHUD.zoom = CoolUtil.coolLerp(FlxG.save.data.zoom, camHUD.zoom, 0.95);
 
         if (FlxG.mouse.overlaps(sick) && FlxG.mouse.pressed)
         {

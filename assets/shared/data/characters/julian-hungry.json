@@ -1,0 +1,50 @@
+{
+    "texturePath":"Whitty/the_burger",
+    "hasUniqueOffsets":true,
+    "characterColor":"0xFFFF6200",
+    "biDirectional":false,
+    "scale":1,
+    "positionOffset":[90, 420],
+    "cameraOffset":[80, -530],
+    "isPixel":false,
+    "animationData":[
+        {
+            "name":"idle",
+            "identifier":"wheat idle",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"wheat up",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"wheat left",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"wheat right",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"wheat down",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"bruh",
+            "identifier":"wheat sad",
+            "framerate":15,
+            "looped":false
+        }
+    ],
+    "flipX":false,
+    "baseCharacter":null
+}

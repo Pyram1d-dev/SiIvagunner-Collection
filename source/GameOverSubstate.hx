@@ -28,6 +28,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	{
 		daSong = StringTools.replace(PlayState.SONG.song.toLowerCase(), ' ', '-');
 		var p1 = PlayState.SONG.player1;
+		var daBf:String = getDeathVariant(p1);
 		if (p1.split('-')[1] == 'car') // There are a LOTTA character skins in this game so I have to make sure all the blueballs are also working. Unfortunately that resulted in this pain
 		{
 			var temp:Array<String> = p1.split('-');
@@ -56,14 +57,10 @@ class GameOverSubstate extends MusicBeatSubstate
 				p1 = p1final;
 			}
 		}
-		var daBf:String = '';
 		trace(p1);
 		if (p1.startsWith('bf-pixel'))
 		{
 			soundSuffix = musicSuffix = confirmSuffix = '-pixel';
-			daBf = p1 + '-dead';
-			if (PlayState.SONG.song.toLowerCase() == 'thorns')
-				daBf = 'bf-pixel-dead-clp';
 			switch (p1)
 			{
 				case "bf-pixel-terraria":
@@ -78,39 +75,30 @@ class GameOverSubstate extends MusicBeatSubstate
 			{
 				case 'bf-slam':
 					musicSuffix = '-slam';
-					daBf = p1;
 					folder = 'week2';
 				case 'bf-samsung':
 					musicSuffix = '-samsung';
 					soundSuffix = musicSuffix;
-					daBf = p1;
 				case 'bf-quote':
 					musicSuffix = '-cs';
 					soundSuffix = musicSuffix;
-					daBf = p1;
 				case 'bf-lady':
 					musicSuffix = '-pain';
 					soundSuffix = '-yank';
-					daBf = p1;
 				case 'bf-richter':
 					soundSuffix = '-richter';
-					daBf = p1;
 				case 'bf-sockdude':
 					soundSuffix = '-games';
-					daBf = p1;
 				case 'bf-aloe':
 					musicSuffix = '-holo';
-					daBf = p1;
 				case 'bf-reimu':
 					soundSuffix = '-reimu';
-					daBf = p1;
 				case 'bf-hk':
 					soundSuffix = '-hk';
 					musicSuffix = '-tricky';
 					confirmSuffix = musicSuffix;
 					daBf = 'signDeath';
 				default:
-					daBf = (p1.startsWith('bf')) ? p1 : 'bf';
 					if (FlxG.random.bool(10)) // Oh shit is that a random chance to listen to a certified banger
 					{
 						musicSuffix = '-porter';
@@ -168,6 +156,8 @@ class GameOverSubstate extends MusicBeatSubstate
 		camFollow = new FlxObject(bf.getGraphicMidpoint().x + offset[0], bf.getGraphicMidpoint().y + offset[1], 1, 1);
 		add(camFollow);
 
+		FlxTween.cancelTweensOf(FlxG.camera);
+
 		FlxG.sound.play(Paths.sound('fnf_loss_sfx' + soundSuffix));
 
 		// FlxG.camera.followLerp = 1;
@@ -176,6 +166,55 @@ class GameOverSubstate extends MusicBeatSubstate
 		FlxG.camera.target = null;
 
 		bf.playAnim('firstDeath');
+	}
+
+	public static function getDeathVariant(p1:String):String
+	{
+		if (p1.split('-')[1] == 'car')
+		{
+			var temp:Array<String> = p1.split('-');
+			var p1final = temp[0];
+			temp.remove('car');
+			for (i in 1...temp.length)
+				p1final += '-' + temp[i];
+			p1 = p1final;
+		}
+		if (p1.split('-')[1] == 'christmas')
+		{
+			var temp:Array<String> = p1.split('-');
+			var p1final = temp[0];
+			temp.remove('christmas');
+			for (i in 1...temp.length)
+				p1final += '-' + temp[i];
+			p1 = p1final;
+			if (p1.split('-')[1] == 'car')
+			{
+				var temp:Array<String> = p1.split('-');
+				var p1final = temp[0];
+				temp.remove('car');
+				for (i in 1...temp.length)
+					p1final += '-' + temp[i];
+				p1 = p1final;
+			}
+		}
+		if (p1.startsWith('bf-pixel'))
+		{
+			if (PlayState.SONG.song.toLowerCase() == 'thorns')
+				return 'bf-pixel-dead-clp';
+			else
+				return p1 + '-dead';
+		}
+		else
+		{
+			switch (p1)
+			{
+				case 'bf-miles':
+					return 'bf';
+				case 'bf-hk':
+					return 'signDeath';
+			}
+		}
+		return (p1.startsWith('bf')) ? p1 : 'bf';
 	}
 
 	var startVibin:Bool = false;
@@ -218,6 +257,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.curFrame == 12)
 		{
 			FlxG.camera.follow(camFollow, LOCKON, 0.01);
+			FlxTween.tween(FlxG.camera, {zoom: 1}, 1, {ease: FlxEase.cubeOut});
 		}
 
 		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished)

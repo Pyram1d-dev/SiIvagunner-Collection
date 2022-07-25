@@ -1,4 +1,6 @@
 data.camZoom = 0.90;
+data.charPositions[0] = [260, -220];
+data.stageCamOffsets[0] = [-300, 0];
 
 var skyBG = new FlxSprite(-120, -50).loadGraphic(Paths.image('limo/limoSunset', 'week4'));
 skyBG.scrollFactor.set(0.1, 0.1);
@@ -17,7 +19,7 @@ bgLimo.antialiasing = FlxG.save.data.antialiasing;
 data.swagBacks['bgLimo'] = bgLimo;
 data.toAdd.push(bgLimo);
 
-var fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('limo/fastCarLol', 'week4'));
+var fastCar = new FlxSprite(-12600, 160).loadGraphic(Paths.image('limo/fastCarLol', 'week4'));
 fastCar.antialiasing = FlxG.save.data.antialiasing;
 
 var grpLimoDancers = new DancerGroup();

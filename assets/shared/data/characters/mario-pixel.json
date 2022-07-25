@@ -1,0 +1,43 @@
+{
+    "texturePath":"MarioPixel",
+    "usePackerAtlas":true,
+    "hasUniqueOffsets":true,
+    "biDirectional":false,
+    "scale":12,
+    "positionOffset":[150, 300],
+    "cameraOffset":[300, 0],
+    "isPixel":true,
+    "animationData":[
+        {
+            "name":"idle",
+            "identifier":"idle_",
+            "framerate":12,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"singUP_",
+            "framerate":12,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"singLEFT_",
+            "framerate":12,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"singRIGHT_",
+            "framerate":12,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"singDOWN_",
+            "framerate":12,
+            "looped":false
+        }
+    ],
+    "baseCharacter":null
+}

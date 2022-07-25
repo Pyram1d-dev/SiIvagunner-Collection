@@ -1,0 +1,6 @@
+idle 181 412
+singUP 174 452
+singRIGHT 175 420
+singLEFT 180 427
+singDOWN 174 381
+bruh 174 412

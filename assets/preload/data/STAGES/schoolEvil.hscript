@@ -1,5 +1,9 @@
 data.curStage = 'schoolEvil';
 data.isPixel = true;
+data.charPositions[0] = [200, 220];
+data.charPositions[1] = [180, 300];
+data.charPositions[2] = [-50, 200];
+data.stageCamOffsets[0] = [-200, -200];
 
 /*if (!PlayStateChangeables.Optimize)
 {

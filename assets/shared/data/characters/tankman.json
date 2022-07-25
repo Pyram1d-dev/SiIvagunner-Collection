@@ -1,0 +1,56 @@
+{
+    "texturePath":"Tankmen/tankmanCaptain",
+    "hasUniqueOffsets":true,
+    "characterColor":"0xFFFFFFFF",
+    "biDirectional":false,
+    "scale":1,
+    
+    "positionOffset":[110, 220],
+    "isPixel":false,
+    "animationData":[
+        {
+            "name":"idle",
+            "identifier":"Tankman Idle Dance",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"Tankman UP note",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"Tankman Note Left",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"Tankman Right Note",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"Tankman DOWN note",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP-alt",
+            "identifier":"TANKMAN UGH",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN-alt",
+            "identifier":"PRETTY GOOD tankman",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "flipX":true,
+    "baseCharacter":null
+}

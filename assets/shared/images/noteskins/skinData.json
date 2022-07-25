@@ -9,6 +9,15 @@
             "colors":["0xFFCF4BDE","0xFF00FFFF","0xFF00FF00","0xFFFF0000"]
         },
         {
+            "name":"aceattorney",
+            "skinOverride":"normal",
+            "type":"normal",
+            "uiSkin":"aceattorney",
+            "splats":"noteSplashes",
+            "mineSkin":"fireNote",
+            "colors":["0xFFCF4BDE","0xFF00FFFF","0xFF00FF00","0xFFFF0000"]
+        },
+        {
             "name":"holofunk",
             "type":"normal",
             "uiSkin":"holofunk",

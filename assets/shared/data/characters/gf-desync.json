@@ -1,0 +1,6 @@
+{
+    "texturePath":"GFs/gfTankmenDesync",
+    "hasUniqueOffsets":false,
+    "baseCharacter":"gf-tankmen",
+    "copyAllFromBase":true
+}

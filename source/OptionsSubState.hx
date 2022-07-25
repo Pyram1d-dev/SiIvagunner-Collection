@@ -26,7 +26,7 @@ class OptionText extends FlxText
 
 	public override function update(elapsed:Float)
 	{
-		y = FlxMath.lerp(y, targetY, 0.1);
+		y = CoolUtil.coolLerp(y, targetY, 0.1);
 		super.update(elapsed);
 	}
 }
@@ -306,7 +306,7 @@ class OptionsSubState extends MusicBeatSubstate
 			}
 			if (!inPlay)
 			{
-				cameras[0].zoom = FlxMath.lerp(cameras[0].zoom, 1, .1); // Where would we be without (b-a)*alpha honestly
+				cameras[0].zoom = CoolUtil.coolLerp(cameras[0].zoom, 1, 0.1); // Where would we be without (b-a)*alpha honestly
 				// Conductor.songPosition += elapsed * 1000;
 				// doing the above made it start to desync every loop (obviously I'm kind of a dumbass) so I'm just making it equal to the song's time
 				Conductor.songPosition = bgMusic.time;

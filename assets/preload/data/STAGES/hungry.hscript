@@ -1,0 +1,25 @@
+data.camZoom = 1;
+data.charPositions = [
+    [110, 490],
+    [220, -50],
+    [160, 90]
+];
+
+gf.visible = false;
+
+data.swagBacks['da_bbg'] = new FlxSprite().loadGraphic(Paths.image('Definitive/i_need_some_yellow_snow_halation', 'bonusWeek'));
+data.swagBacks['da_bg'] = new FlxSprite().loadGraphic(Paths.image('Definitive/i_need_some_snow_halation', 'bonusWeek'));
+
+data.swagBacks['da_counter'] = new FlxSprite(580, 400).loadGraphic(Paths.image('Definitive/counter-thing', 'bonusWeek'));
+data.swagBacks['ratsAss'] = new FlxSprite().loadGraphic(Paths.image('Definitive/the-background-ever-hang-up', 'bonusWeek'));
+
+var divider = new FlxSprite(520, 0);
+divider.frames = Paths.getSparrowAtlas('Definitive/cool_anime_thing', 'bonusWeek');
+divider.animation.addByPrefix('thingy','lightning thing',24,true);
+divider.animation.play('thingy', true);
+data.animatedBacks['divider'] = divider;
+
+data.swagBacks['ratsAss'].visible = false;
+
+data.toAdd = [data.swagBacks['da_bbg'], data.swagBacks['da_bg']];
+data.layInFront[2] = [data.swagBacks['da_counter'], data.swagBacks['ratsAss'], divider];

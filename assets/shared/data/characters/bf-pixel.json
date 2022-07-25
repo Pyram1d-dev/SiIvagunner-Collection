@@ -1,0 +1,66 @@
+{
+    "texturePath":"BFs/bfPixel",
+    "hasUniqueOffsets":true,
+    "biDirectional":false,
+    "scale":6,
+    "sizeOffset":[-100, -100],
+    "isPixel":true,
+    "animationData":[
+        {
+            "name":"idle",
+            "identifier":"BF IDLE",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"BF UP NOTE",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"BF LEFT NOTE",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"BF RIGHT NOTE",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"BF DOWN NOTE",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUPmiss",
+            "identifier":"BF UP MISS",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFTmiss",
+            "identifier":"BF LEFT MISS",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHTmiss",
+            "identifier":"BF RIGHT MISS",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWNmiss",
+            "identifier":"BF DOWN MISS",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "flipX":true,
+    "baseCharacter":null
+}

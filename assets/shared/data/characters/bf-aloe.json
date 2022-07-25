@@ -1,0 +1,8 @@
+{
+    "texturePath":"BFs/Aloo",
+    "hasUniqueOffsets":true,
+    "characterColor":"0xFFFC03A9",
+    "baseCharacter":"bf",
+    "copyAllFromBase":true,
+    "mergeProperties":true
+}

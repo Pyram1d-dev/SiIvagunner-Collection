@@ -1,0 +1,11 @@
+WHAT'S NEW:
+- New rips n shit
+- Whitty rips!
+- Resuming a paused game will give you a countdown (so you aren't jumpscared by incoming notes)
+- Modchart improvements!
+- Filesystem changes
+- Characters are now all loaded from JSON files
+- Changed all moving elements (menu items, camera panning, etc.) to scale according to framerate (same speed no matter what framerate)
+- Optimization
+- Fixed bug that would misplace the progress bar if scroll direction is changed
+- Set the progress bar to be ON by default (and now it just kinda looks like the psych engine one)

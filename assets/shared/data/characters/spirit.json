@@ -1,0 +1,44 @@
+{
+    "texturePath":"Senpais/spirit",
+    "usePackerAtlas":true,
+    "hasUniqueOffsets":true,
+    "characterColor":"0xFFAD0505",
+    "biDirectional":false,
+    "hasTrail":true,
+    "scale":6,
+    "positionOffset":[-150, -100],
+    "isPixel":true,
+    "animationData":[
+        {
+            "name":"idle",
+            "identifier":"idle spirit_",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"up_",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"left_",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"right_",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"spirit down_",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "baseCharacter":null
+}

@@ -1,0 +1,15 @@
+{
+    "texturePath":"mario_ded",
+    "hasUniqueOffsets":false,
+    "characterColor":"0xFFFA0000",
+    "animationData":[
+        {
+            "name":"idle",
+            "identifier":"Pico Idle Dance",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "baseCharacter":"pico",
+    "copyAllFromBase":true
+}

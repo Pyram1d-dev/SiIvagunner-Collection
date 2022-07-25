@@ -1,0 +1,7 @@
+{
+    "texturePath":"bomberman_assets",
+    "hasUniqueOffsets":false,
+    "characterColor":"0xFFF24188",
+    "baseCharacter":"spooky",
+    "copyAllFromBase":true
+}

@@ -24,7 +24,7 @@ import openfl.Assets;
 
 using StringTools;
 
-#if windows
+#if cpp
 import Discord.DiscordClient;
 #end
 
@@ -121,16 +121,17 @@ class WeekItem extends FlxTypedSpriteGroup<FlxSprite>
 	public override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		var scaledFps = FPSScalingShit.scaledFPS();
 		fakeTargetY = targetY;
 		var weekLen = StoryMenuState.instance.weekData.length;
-		if (fakeTargetY > 4)
+		if (fakeTargetY > 6)
 			fakeTargetY -= weekLen;
-		else if (fakeTargetY < -4)
+		else if (fakeTargetY < -6)
 			fakeTargetY += weekLen;
 		if (!stopTweeningLol)
 		{
-			x = FlxMath.lerp(x, (-Math.abs((Math.exp(Math.abs(fakeTargetY)) - 1) / 4) * 200 - 120), 0.2);
-			y = FlxMath.lerp(y, FlxG.height / 2 + fakeTargetY * (boxHeight + 20), 0.2);
+			x = CoolUtil.coolLerp(x, (-Math.abs((Math.exp(Math.abs(fakeTargetY)) - 1) / 4) * 200 - 120), 0.2);
+			y = CoolUtil.coolLerp(y, FlxG.height / 2 + fakeTargetY * (boxHeight + 20), 0.2);
 		}
 		bg.color = FlxColor.interpolate(bg.color, FlxColor.BLACK, elapsed);
 	}
@@ -207,7 +208,7 @@ class StoryMenuState extends MusicBeatState
 	override function create()
 	{
 		instance = this;
-		#if windows
+		#if cpp
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Story Mode Menu", null);
 		#end
@@ -357,7 +358,7 @@ class StoryMenuState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		// scoreText.setFormat('VCR OSD Mono', 32);
-		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, 0.5));
+		lerpScore = Math.floor(CoolUtil.coolLerp(lerpScore, intendedScore, 0.5));
 
 		var index = 0;
 		if (!selectedWeek)
@@ -367,8 +368,8 @@ class StoryMenuState extends MusicBeatState
 				var alphaCheck = 0;
 				if (index == curWeek)
 					alphaCheck = 1;
-				previewBG.color = FlxColor.interpolate(previewBG.color, Std.parseInt(weekData[curWeek].color), 0.02);
-				previewBG.alpha = FlxMath.lerp(previewBG.alpha, alphaCheck, 0.015);
+				previewBG.color = FlxColor.interpolate(previewBG.color, Std.parseInt(weekData[curWeek].color), elapsed * 3);
+				previewBG.alpha = CoolUtil.coolLerp(previewBG.alpha, alphaCheck, 0.01);
 				index++;
 			}
 		}

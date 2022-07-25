@@ -1,0 +1,67 @@
+{
+    "texturePath":"Picos/Pico_FNF_assetss",
+    "hasUniqueOffsets":true,
+    "characterColor":"0xFF52B514",
+    "biDirectional":false,
+    "scale":1,
+    "positionOffset":[0, 300],
+    "isPixel":false,
+    "animationData":[
+        {
+            "name":"idle",
+            "identifier":"Pico Idle Dance",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"pico Up note0",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"Pico Note Right0",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"Pico NOTE LEFT0",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"Pico Down Note0",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUPmiss",
+            "identifier":"pico Up note miss",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFTmiss",
+            "identifier":"Pico NOTE LEFT miss",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHTmiss",
+            "identifier":"Pico Note Right Miss",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWNmiss",
+            "identifier":"Pico Down Note MISS",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "flipX":true,
+    "baseCharacter":null
+}

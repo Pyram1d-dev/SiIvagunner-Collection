@@ -1,0 +1,122 @@
+{
+    "texturePath":"BFs/minimum_wage_weaboo",
+    "hasUniqueOffsets":true,
+    "biDirectional":false,
+    "scale":1,
+    "positionOffset":[-40, -625],
+    "cameraOffset":[-280, 5],
+    "isPixel":false,
+    "animationData":[
+        {
+            "name":"idle",
+            "identifier":"BF idle dance",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"BF NOTE UP0",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"BF NOTE LEFT0",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"BF NOTE RIGHT0",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"BF NOTE DOWN0",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUPmiss",
+            "identifier":"BF NOTE UP MISS",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFTmiss",
+            "identifier":"BF NOTE LEFT MISS",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHTmiss",
+            "identifier":"BF NOTE RIGHT MISS",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWNmiss",
+            "identifier":"BF NOTE DOWN MISS",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"hey",
+            "identifier":"BF HEY",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"firstDeath",
+            "identifier":"BF dies",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"deathLoop",
+            "identifier":"BF Dead Loop",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"deathConfirm",
+            "identifier":"BF Dead confirm",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"pogstart",
+            "identifier":"pog start",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"pogloop",
+            "identifier":"pog loop",
+            "framerate":24,
+            "looped":true
+        },
+        {
+            "name":"poglook",
+            "identifier":"pog look",
+            "framerate":24,
+            "looped":true
+        },
+        {
+            "name":"pogpoint",
+            "identifier":"pog point",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"idle-alt",
+            "indices": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+            "identifier":"pog start",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "flipX":true,
+    "baseCharacter":"bf"
+}

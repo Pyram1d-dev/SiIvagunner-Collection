@@ -1,0 +1,7 @@
+{
+    "texturePath":"Tankmen/maskedWolf",
+    "hasUniqueOffsets":true,
+    "characterColor":"0xFFFFFFFF",
+    "baseCharacter":"tankman",
+    "copyAllFromBase":true
+}

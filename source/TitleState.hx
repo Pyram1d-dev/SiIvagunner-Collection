@@ -1,8 +1,8 @@
 package;
 
-import sys.FileSystem;
 #if sys
 import smTools.SMFile;
+import sys.FileSystem;
 #end
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -28,15 +28,12 @@ import io.newgrounds.NG;
 import lime.app.Application;
 import openfl.Assets;
 
-#if windows
-import Discord.DiscordClient;
-#end
-
+using StringTools;
 #if cpp
+import Discord.DiscordClient;
 import sys.thread.Thread;
 #end
 
-using StringTools;
 
 class TitleState extends MusicBeatState
 {
@@ -138,6 +135,11 @@ class TitleState extends MusicBeatState
 	function startIntro()
 	{
 		persistentUpdate = true;
+
+		#if !cpp
+		if (randomAssNumber == 1)
+			randomAssNumber = 2;
+		#end
 
 		titleVersion = (randomAssNumber == 1) ? '-PH' : (randomAssNumber > 1 && randomAssNumber <= 15) ? '-tricky' : '';
 
@@ -288,6 +290,7 @@ class TitleState extends MusicBeatState
 			FlxG.sound.music.fadeIn(4, 0, 0.7);
 			Conductor.changeBPM(titleVersion != '-tricky'? 102 : 139);
 			initialized = true;
+			#if cpp
 			if (titleVersion == '-PH')
 			{
 				var video:MP4Handler = new MP4Handler();
@@ -306,6 +309,7 @@ class TitleState extends MusicBeatState
 				}, 0);
 
 			}
+			#end
 		}
 
 		// credGroup.add(credTextShit);

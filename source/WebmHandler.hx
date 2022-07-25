@@ -8,7 +8,7 @@ import webm.*;
 
 class WebmHandler
 {
-	#if desktop
+	#if cpp
 	public var webm:WebmPlayer;
 	public var vidPath:String = "";
 	public var io:WebmIo;

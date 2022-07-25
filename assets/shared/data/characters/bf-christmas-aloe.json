@@ -1,0 +1,40 @@
+{
+    "texturePath":"BFs/AlooChristmas",
+    "characterColor":"0xFFFC03A9",
+    "hasUniqueOffsets":true,
+    "animationData":[
+        {
+            "name":"idle-fard",
+            "identifier":"BF idle fard",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP-fard",
+            "identifier":"BF NOTE UP alt0",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT-fard",
+            "identifier":"BF NOTE LEFT alt0",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT-fard",
+            "identifier":"BF NOTE RIGHT alt0",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN-fard",
+            "identifier":"BF NOTE DOWN alt0",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "baseCharacter":"bf-car",
+    "copyAllFromBase":true,
+    "mergeProperties":true
+}

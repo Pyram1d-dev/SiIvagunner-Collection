@@ -1,5 +1,7 @@
 package;
 
+import flixel.util.FlxTimer;
+import flixel.group.FlxSpriteGroup;
 import Controls.Control;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -17,7 +19,7 @@ import openfl.Lib;
 
 using StringTools;
 
-#if windows
+#if cpp
 import llua.Lua;
 #end
 #if sys
@@ -41,6 +43,10 @@ class PauseSubState extends MusicBeatSubstate
 
 	var offsetChanged:Bool = false;
 
+	var acceptInput:Bool = true;
+
+	var literallyEverythingOnScreen = new FlxSpriteGroup();
+
 	public function new(x:Float, y:Float)
 	{
 		super();
@@ -50,7 +56,7 @@ class PauseSubState extends MusicBeatSubstate
 
 		#if sys
 		var format:String = StringTools.replace(PlayState.SONG.song.toLowerCase(), " ", "-");
-		if (FileSystem.exists('assets/data/${format}/thefunny.txt')) // Check if thefunny.txt exists, add joke explainer if it does
+		if (FileSystem.exists('assets/data/SONGS/${format}/thefunny.txt')) // Check if thefunny.txt exists, add joke explainer if it does
 			menuItems.insert(menuItems.length - 2, 'Joke Explainer');
 		#else
 		menuItems.insert(menuItems.length - 2, 'Joke Explainer');
@@ -67,19 +73,21 @@ class PauseSubState extends MusicBeatSubstate
 		pauseMusic.volume = 0;
 		pauseMusic.play(false, FlxG.random.int(0, Std.int(pauseMusic.length / 2))); // Un moment de bruh
 
+		add(literallyEverythingOnScreen);
+
 		FlxG.sound.list.add(pauseMusic);
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		bg.alpha = 0;
 		bg.scrollFactor.set();
-		add(bg);
+		literallyEverythingOnScreen.add(bg);
 
 		var levelInfo:FlxText = new FlxText(20, 15, 0, "", 32);
 		levelInfo.text += PlayState.SONG.song;
 		levelInfo.scrollFactor.set();
 		levelInfo.setFormat(Paths.font("vcr.ttf"), 32);
 		levelInfo.updateHitbox();
-		add(levelInfo);
+		literallyEverythingOnScreen.add(levelInfo);
 		
 		var newtext = CoolUtil.difficultyFromInt(PlayState.storyDifficulty).toUpperCase();
 		if (newtext == "EXTRA")
@@ -90,7 +98,7 @@ class PauseSubState extends MusicBeatSubstate
 		levelDifficulty.scrollFactor.set();
 		levelDifficulty.setFormat(Paths.font('vcr.ttf'), 32);
 		levelDifficulty.updateHitbox();
-		add(levelDifficulty);
+		literallyEverythingOnScreen.add(levelDifficulty);
 
 		levelDifficulty.alpha = 0;
 		levelInfo.alpha = 0;
@@ -107,7 +115,7 @@ class PauseSubState extends MusicBeatSubstate
 			remainingSongs.updateHitbox();
 			remainingSongs.setPosition(FlxG.width - remainingSongs.width - 15, FlxG.height);
 			remainingSongs.alpha = 0;
-			add(remainingSongs);
+			literallyEverythingOnScreen.add(remainingSongs);
 			FlxTween.tween(remainingSongs, {alpha: 1, y: FlxG.height - remainingSongs.height - 20}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.7});
 		}
 
@@ -127,7 +135,7 @@ class PauseSubState extends MusicBeatSubstate
 		perSongOffset.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 
 		#if cpp
-		add(perSongOffset);
+		literallyEverythingOnScreen.add(perSongOffset);
 		#end
 
 		for (i in 0...menuItems.length)
@@ -170,21 +178,16 @@ class PauseSubState extends MusicBeatSubstate
 		}
 
 		// pre lowercasing the song name (update)
-		var songLowercase = StringTools.replace(PlayState.SONG.song, " ", "-").toLowerCase();
-		switch (songLowercase)
-		{
-			case 'dad-battle':
-				songLowercase = 'dadbattle';
-			case 'philly-nice':
-				songLowercase = 'philly';
-		}
-		var songPath = 'assets/data/' + songLowercase + '/';
+		var songLowercase = CoolUtil.lowerCaseSong(PlayState.SONG.song);
+		var songPath = Paths.songPath + songLowercase + '/';
 
 		#if sys
 		if (PlayState.isSM && !PlayState.isStoryMode)
 			songPath = PlayState.pathToSm;
 		#end
 
+		if (!acceptInput)
+			return;
 		if (controls.UP_P || upPcontroller)
 		{
 			changeSelection(-1);
@@ -290,7 +293,38 @@ class PauseSubState extends MusicBeatSubstate
 			switch (daSelected)
 			{
 				case "Resume":
-					close(); // Lol
+					acceptInput = false;
+					FlxTween.tween(literallyEverythingOnScreen, {alpha: 0}, 1);
+					grpMenuShit.forEachAlive(function(spr:Alphabet)
+					{
+						FlxTween.tween(spr, {alpha: 0}, 1);
+					});
+					var timeRemainingText = new FlxText();
+					timeRemainingText.setFormat(Paths.font('vcr.ttf'), 100, FlxColor.WHITE);
+					timeRemainingText.borderColor = FlxColor.BLACK;
+					timeRemainingText.borderSize = 3;
+					timeRemainingText.borderStyle = FlxTextBorderStyle.OUTLINE;
+					timeRemainingText.centerOrigin();
+					timeRemainingText.updateHitbox();
+					timeRemainingText.screenCenter();
+					timeRemainingText.cameras = [PlayState.instance.camHUD];
+					add(timeRemainingText);
+					var funnyTween = function(text:String)
+					{
+						timeRemainingText.text = text;
+						timeRemainingText.alpha = 1;
+						timeRemainingText.scale.x = 1.3;
+						timeRemainingText.scale.y = 1.3;
+						FlxTween.tween(timeRemainingText, {alpha: 0}, .45, {ease: FlxEase.quadOut});
+						FlxTween.tween(timeRemainingText.scale, {x: 1, y: 1}, .45, {ease: FlxEase.quadOut});
+					}
+					funnyTween("3");
+					new FlxTimer().start(0.5, function(tmr:FlxTimer)
+					{
+						funnyTween(Std.string(tmr.loopsLeft));
+						if (tmr.loopsLeft == 0)
+							close(); // Lol
+					}, 3);
 				case "Restart Song":
 					PlayState.fromDeath = true;
 					PlayState.startTime = 0;
@@ -317,7 +351,7 @@ class PauseSubState extends MusicBeatSubstate
 						FlxG.save.data.downscroll = false;
 					}
 					PlayState.loadRep = false;
-					#if windows
+					#if cpp
 					if (PlayState.luaModchart != null)
 					{
 						PlayState.luaModchart.die();
@@ -337,62 +371,16 @@ class PauseSubState extends MusicBeatSubstate
 						FlxG.switchState(new FreeplayState());
 					}
 
-				case "Skip Song": // I copypasted this from the end song function in playstate LMAOOOOOOO
-					if (PlayState.storyPlaylist.length > 1)
-					{
-						if (PlayState.instance.useVideo)
-						{
-							GlobalVideo.get().stop();
-							PlayState.instance.remove(PlayState.instance.videoSprite);
-							PlayState.instance.removedVideo = true;
-						}
-						PlayState.storyPlaylist.remove(PlayState.storyPlaylist[0]);
-						var songFormat = StringTools.replace(PlayState.storyPlaylist[0], " ", "-");
-						switch (songFormat)
-						{
-							case 'Dad-Battle':
-								songFormat = 'Dadbattle';
-							case 'Philly-Nice':
-								songFormat = 'Philly';
-						}
-
-						var poop:String = Highscore.formatSong(songFormat, PlayState.storyDifficulty);
-
-						trace('LOADING NEXT SONG');
-						trace(poop);
-
-						if (StringTools.replace(PlayState.storyPlaylist[0], " ", "-").toLowerCase() == 'eggnog')
-						{
-							var blackShit:FlxSprite = new FlxSprite(-FlxG.width * FlxG.camera.zoom,
-								-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
-							blackShit.scrollFactor.set();
-							add(blackShit);
-							PlayState.instance.camHUD.visible = false;
-
-							FlxG.sound.play(Paths.sound('Lights_Shut_off'));
-						}
-
-						// FlxTransitionableState.skipNextTransIn = true;
-						// FlxTransitionableState.skipNextTransOut = true;
-
-						PlayState.SONG = Song.loadFromJson(poop, PlayState.storyPlaylist[0]);
-						FlxG.sound.music.stop();
-
-						LoadingState.loadAndSwitchState(new PlayState());
-						PlayState.instance.clean();
-					}
-					else
-					{
-						PlayState.instance.endSong();
-						close();
-					}
+				case "Skip Song": // This used to be copypasted code from PlayState wtf is wrong with me
+					PlayState.instance.endSong();
+					close();
 				case "Joke Explainer": // Joke explainer code (obviously lmao)
 					curSelected = 0;
 					grpMenuShit.clear(); // Clear all current menu options
 					menuItems = [];
 					explainingJoke = true;
 					var format:String = StringTools.replace(PlayState.SONG.song.toLowerCase(), " ", "-");
-					var jokeData = CoolUtil.coolTextFile(Paths.txt('data/${format}/thefunny')); // Get joke data from txt file and create text object
+					var jokeData = CoolUtil.coolTextFile(Paths.txt('data/SONGS/${format}/thefunny')); // Get joke data from txt file and create text object
 					jokeText = new FlxText(100, 100, Std.int(FlxG.width * 0.9), "Joke: ", 28);
 					jokeText.text += jokeData[0];
 					jokeText.scrollFactor.set();
@@ -401,7 +389,7 @@ class PauseSubState extends MusicBeatSubstate
 					jokeText.borderSize = 3;
 					jokeText.borderStyle = FlxTextBorderStyle.OUTLINE;
 					jokeText.updateHitbox();
-					add(jokeText);
+					literallyEverythingOnScreen.add(jokeText);
 					trace(jokeData);
 					for (i in 1...jokeData.length) // Generate source links
 					{

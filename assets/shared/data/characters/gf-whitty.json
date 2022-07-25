@@ -1,0 +1,37 @@
+{
+    "texturePath":"GFs/GF_Standing_Sway",
+    "hasUniqueOffsets":true,
+    "biDirectional":true,
+    "scale":1,
+    
+    "positionOffset":[0, 0],
+    "isPixel":false,
+    "animationData":[
+        {
+            "name":"danceRight",
+            "identifier":"Idle Right",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"danceLeft",
+            "identifier":"Idle Left",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"scared",
+            "identifier":"Scared",
+            "framerate":24,
+            "looped":true
+        },
+        {
+            "name":"sad",
+            "identifier":"Sad",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "flipX":false,
+    "baseCharacter":null
+}

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="angry_joe_base.png">
+	<!-- Created with Adobe Animate version 20.5.0.29329 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="angry joe base0000" x="2" y="2" width="393" height="128"/>
+	<SubTexture name="angry joe base style change0000" x="397" y="2" width="441" height="179" frameX="-2" frameY="-6" frameWidth="448" frameHeight="186"/>
+	<SubTexture name="angry joe base style change0001" x="397" y="2" width="441" height="179" frameX="-2" frameY="-6" frameWidth="448" frameHeight="186"/>
+	<SubTexture name="angry joe base style change0002" x="397" y="2" width="441" height="179" frameX="-2" frameY="-6" frameWidth="448" frameHeight="186"/>
+	<SubTexture name="angry joe base style change0003" x="397" y="2" width="441" height="179" frameX="-2" frameY="-6" frameWidth="448" frameHeight="186"/>
+	<SubTexture name="angry joe base style change0004" x="2" y="183" width="381" height="126" frameX="-32" frameY="-30" frameWidth="448" frameHeight="186"/>
+	<SubTexture name="angry joe base style change0005" x="2" y="183" width="381" height="126" frameX="-32" frameY="-30" frameWidth="448" frameHeight="186"/>
+	<SubTexture name="angry joe base style change0006" x="2" y="183" width="381" height="126" frameX="-32" frameY="-30" frameWidth="448" frameHeight="186"/>
+	<SubTexture name="angry joe base style change0007" x="2" y="183" width="381" height="126" frameX="-32" frameY="-30" frameWidth="448" frameHeight="186"/>
+	<SubTexture name="angry joe base style change0008" x="385" y="183" width="387" height="124" frameX="-31" frameY="-30" frameWidth="448" frameHeight="186"/>
+	<SubTexture name="angry joe base style change0009" x="385" y="183" width="387" height="124" frameX="-31" frameY="-30" frameWidth="448" frameHeight="186"/>
+	<SubTexture name="angry joe base style change0010" x="385" y="183" width="387" height="124" frameX="-31" frameY="-30" frameWidth="448" frameHeight="186"/>
+	<SubTexture name="angry joe base style change0011" x="385" y="183" width="387" height="124" frameX="-31" frameY="-30" frameWidth="448" frameHeight="186"/>
+	<SubTexture name="angry joe base style change0012" x="2" y="311" width="386" height="129" frameX="-27" frameY="-27" frameWidth="448" frameHeight="186"/>
+	<SubTexture name="angry joe base style change0013" x="2" y="311" width="386" height="129" frameX="-27" frameY="-27" frameWidth="448" frameHeight="186"/>
+	<SubTexture name="angry joe base style change0014" x="2" y="311" width="386" height="129" frameX="-27" frameY="-27" frameWidth="448" frameHeight="186"/>
+	<SubTexture name="angry joe base style change0015" x="2" y="311" width="386" height="129" frameX="-27" frameY="-27" frameWidth="448" frameHeight="186"/>
+</TextureAtlas>

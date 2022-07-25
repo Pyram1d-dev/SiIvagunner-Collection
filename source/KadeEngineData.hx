@@ -1,6 +1,6 @@
+import flixel.FlxG;
 import flixel.input.gamepad.FlxGamepad;
 import openfl.Lib;
-import flixel.FlxG;
 
 class KadeEngineData
 {
@@ -31,7 +31,7 @@ class KadeEngineData
 			FlxG.save.data.offset = 0;
 
 		if (FlxG.save.data.songPosition == null)
-			FlxG.save.data.songPosition = false;
+			FlxG.save.data.songPosition = true;
 
 		if (FlxG.save.data.fps == null)
 			FlxG.save.data.fps = false;

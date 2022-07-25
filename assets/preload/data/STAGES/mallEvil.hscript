@@ -17,3 +17,6 @@ var evilSnow = new FlxSprite(-200, 700).loadGraphic(Paths.image("christmas/evilS
 evilSnow.antialiasing = FlxG.save.data.antialiasing;
 data.swagBacks['evilSnow'] = evilSnow;
 data.toAdd.push(evilSnow);
+
+data.charPositions[0][0] = 320;
+data.charPositions[2][1] = -80;

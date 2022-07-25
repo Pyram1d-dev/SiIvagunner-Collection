@@ -55,11 +55,11 @@ class CreditText extends FlxSpriteGroup
 	override public function update(elapsed:Float)
 	{
         x = 250;
-		y = FlxMath.lerp(y, (FlxG.height * 0.5) + (menuIndex * 150), 0.1);
+		y = CoolUtil.coolLerp(y, (FlxG.height * 0.5) + (menuIndex * 150), 0.1);
         if (menuIndex == 0)
-			alpha = FlxMath.lerp(alpha, 1, 0.1);
+			alpha = CoolUtil.coolLerp(alpha, 1, 0.1);
         else
-		    alpha = FlxMath.lerp(alpha, 0.5, 0.1);
+			alpha = CoolUtil.coolLerp(alpha, 0.5, 0.1);
 		super.update(elapsed);
 	}
 }

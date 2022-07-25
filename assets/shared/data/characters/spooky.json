@@ -1,0 +1,51 @@
+{
+    "texturePath":"Spooky/spooky_kids_assets",
+    "hasUniqueOffsets":true,
+    "characterColor":"0xFFF57E07",
+    "biDirectional":true,
+    "scale":1,
+    "positionOffset":[0, 200],
+    "isPixel":false,
+    "animationData":[
+        {
+            "name":"danceRight",
+            "identifier":"spooky dance idle",
+            "indicies":[8, 10, 12, 14],
+            "framerate":12,
+            "looped":false
+        },
+        {
+            "name":"danceLeft",
+            "identifier":"spooky dance idle",
+            "indicies":[0, 2, 6],
+            "framerate":12,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"spooky UP NOTE",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"note sing left",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"spooky sing right",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"spooky DOWN note",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "flipX":false,
+    "baseCharacter":null
+}

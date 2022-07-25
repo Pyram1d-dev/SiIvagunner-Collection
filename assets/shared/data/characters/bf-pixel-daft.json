@@ -1,0 +1,7 @@
+{
+    "texturePath":"BFs/bfPixelDaft",
+    "characterColor":"0xFFF0BE69",
+    "hasUniqueOffsets":false,
+    "baseCharacter":"bf-pixel",
+    "copyAllFromBase":true
+}

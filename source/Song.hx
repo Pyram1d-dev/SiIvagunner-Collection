@@ -92,7 +92,7 @@ class Song
 		
 		trace('loading ' + folderLowercase + '/' + jsonInput.toLowerCase());
 
-		var rawJson = Assets.getText(Paths.json(folderLowercase + '/' + jsonInput.toLowerCase())).trim();
+		var rawJson = Assets.getText(Paths.json('SONGS/' + folderLowercase + '/' + jsonInput.toLowerCase())).trim();
 
 		while (!rawJson.endsWith("}"))
 		{

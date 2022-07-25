@@ -1,0 +1,6 @@
+{
+    "texturePath":"Tankmen/psy",
+    "hasUniqueOffsets":true,
+    "baseCharacter":"tankman",
+    "copyAllFromBase":true
+}

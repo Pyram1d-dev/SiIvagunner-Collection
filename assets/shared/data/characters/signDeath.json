@@ -1,0 +1,31 @@
+{
+    "texturePath":"BFs/signDeath",
+    "hasUniqueOffsets":true,
+    "biDirectional":false,
+    "scale":1,
+    
+    "positionOffset":[0, 0],
+    "isPixel":false,
+    "animationData":[
+        {
+            "name":"firstDeath",
+            "identifier":"BF dies",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"deathLoop",
+            "identifier":"BF Dead Loop",
+            "framerate":24,
+            "looped":true
+        },
+        {
+            "name":"deathConfirm",
+            "identifier":"BF Dead confirm",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "flipX":true,
+    "baseCharacter":null
+}

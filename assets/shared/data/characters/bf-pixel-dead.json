@@ -1,0 +1,29 @@
+{
+    "texturePath":"BFs/bfPixelsDEAD",
+    "hasUniqueOffsets":true,
+    "biDirectional":false,
+    "scale":6,
+    "isPixel":true,
+    "animationData":[
+        {
+            "name":"firstDeath",
+            "identifier":"BF Dies pixel",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"deathLoop",
+            "identifier":"Retry Loop",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"deathConfirm",
+            "identifier":"RETRY CONFIRM",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "flipX":true,
+    "baseCharacter":null
+}

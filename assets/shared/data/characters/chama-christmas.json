@@ -1,0 +1,40 @@
+{
+    "texturePath":"ChamaChristmas",
+    "hasUniqueOffsets":true,
+    "characterColor":"0xFFF5DD07",
+    "positionOffset":[0, 400],
+    "animationData":[
+        {
+            "name":"idle",
+            "identifier":"monster idle",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"monster up note",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"Monster Right note",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"Monster left note",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"monster down",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "baseCharacter":"monster",
+    "copyAllFromBase":true
+}

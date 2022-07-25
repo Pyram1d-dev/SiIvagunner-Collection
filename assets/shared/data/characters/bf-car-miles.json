@@ -1,0 +1,7 @@
+{
+    "texturePath":"BFs/bfCarMiles",
+    "hasUniqueOffsets":false,
+    "characterColor":"0xFFFF4545",
+    "baseCharacter":"bf-car",
+    "copyAllFromBase":true
+}

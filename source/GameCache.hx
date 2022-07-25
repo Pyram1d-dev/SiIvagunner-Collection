@@ -36,10 +36,10 @@ class GameCache
     public static function initialize(assets:Map<String,Array<String>>)
 	{
 		globalCache = new GameCache();
-		globalCache.loadFrames(assets);
+		globalCache.loadFrames(assets, true);
     }
 
-    public function fromSparrow(id:String, xmlName:String, directory:String)
+    public function fromSparrow(id:String, xmlName:String, directory:String):FlxAtlasFrames
     {
         var graphic = get(id);
         // No need to parse data again
@@ -117,8 +117,9 @@ class GameCache
             trace(id + " doesn't exist!");
     }
 
-    public function loadFrames(toBeLoaded:Map<String,Array<String>>, persist:Bool = true)
+    public function loadFrames(toBeLoaded:Map<String,Array<String>>, persist:Bool = false)
 	{
+		// Mmmmmm multithreading
         #if cpp
 		sys.thread.Thread.create(() ->
 		{

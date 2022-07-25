@@ -18,10 +18,7 @@ class StaticArrow extends FlxSprite // Stolen from KE 1.7 LMAOOOOOOOOOOO
 
 	override function update(elapsed:Float)
 	{
-		if (!modifiedByLua)
-			angle = localAngle + modAngle;
-		else
-			angle = modAngle;
+		angle = localAngle + modAngle;
 		
 		super.update(elapsed);
 

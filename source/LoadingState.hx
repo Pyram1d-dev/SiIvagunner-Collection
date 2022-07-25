@@ -23,11 +23,13 @@ class LoadingState extends MusicBeatState
 	var stopMusic = false;
 	var callbacks:MultiCallback;
 
-	static var week2folder = [
+	static var weektofolder = [
 		8 => 'bonusWeek',
 		9 => 'arcadeWeek',
 		10 => 'clown',
-		11 => 'week2'];
+		11 => 'week6',
+		12 => 'holoWeek'
+	];
 	
 	var logo:FlxSprite;
 	var gfDance:FlxSprite;
@@ -70,7 +72,7 @@ class LoadingState extends MusicBeatState
 					checkLoadSong(getVocalPath());
 				checkLibrary("shared");
 				if (PlayState.storyWeek > 0)
-					checkLibrary(week2folder.exists(PlayState.storyWeek) ? week2folder[PlayState.storyWeek] : ("week" + PlayState.storyWeek));
+					checkLibrary(weektofolder.exists(PlayState.storyWeek) ? weektofolder[PlayState.storyWeek] : ("week" + PlayState.storyWeek));
 				else
 					checkLibrary("tutorial");
 				
@@ -157,7 +159,7 @@ class LoadingState extends MusicBeatState
 	
 	static function getNextState(target:FlxState, stopMusic = false):FlxState
 	{
-		Paths.setCurrentLevel(week2folder.exists(PlayState.storyWeek) ? week2folder[PlayState.storyWeek] : ("week" + PlayState.storyWeek));
+		Paths.setCurrentLevel(weektofolder.exists(PlayState.storyWeek) ? weektofolder[PlayState.storyWeek] : ("week" + PlayState.storyWeek));
 		#if NO_PRELOAD_ALL
 		var loaded = isSoundLoaded(getSongPath())
 			&& (!PlayState.SONG.needsVoices || isSoundLoaded(getVocalPath()))

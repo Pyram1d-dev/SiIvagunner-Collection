@@ -1,0 +1,43 @@
+{
+    "texturePath":"GFs/gfCar",
+    "hasUniqueOffsets":true,
+    "biDirectional":false,
+    "scale":1,
+    
+    "positionOffset":[0, 0],
+    "isPixel":false,
+    "animationData":[
+        {
+            "name":"idle",
+            "identifier":"Idle",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"Sing Up",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"Sing Right",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"Sing Down",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"Sing Left",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "flipX":false,
+    "baseCharacter":null
+}

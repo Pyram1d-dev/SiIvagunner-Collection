@@ -1,4 +1,6 @@
 data.camZoom = 0.80;
+data.charPositions[0][0] = 200;
+data.stageCamOffsets[0] = [0, -400];
 
 var bg = new FlxSprite(-1000, -500).loadGraphic(Paths.image('christmas/bgWalls', 'week5'));
 bg.antialiasing = FlxG.save.data.antialiasing;

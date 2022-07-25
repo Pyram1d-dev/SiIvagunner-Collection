@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="cool anime thing.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="lightning thing0000" x="0" y="0" width="273" height="830" frameX="-7" frameY="-6" frameWidth="284" frameHeight="878"/>
+	<SubTexture name="lightning thing0001" x="283" y="0" width="269" height="833" frameX="-13" frameY="-4" frameWidth="284" frameHeight="878"/>
+	<SubTexture name="lightning thing0002" x="562" y="0" width="283" height="877" frameX="0" frameY="0" frameWidth="284" frameHeight="878"/>
+	<SubTexture name="lightning thing0003" x="855" y="0" width="283" height="872" frameX="-1" frameY="-6" frameWidth="284" frameHeight="878"/>
+</TextureAtlas>

@@ -1,0 +1,44 @@
+{
+    "texturePath":"Monsters/Monster_Assets",
+    "hasUniqueOffsets":true,
+    "characterColor":"0xFFF5DD07",
+    "biDirectional":false,
+    "scale":1,
+    
+    "positionOffset":[0, 100],
+    "isPixel":false,
+    "animationData":[
+        {
+            "name":"idle",
+            "identifier":"monster idle",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"monster up note",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"Monster Right note",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"Monster left note",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"monster down",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "flipX":false,
+    "baseCharacter":null
+}

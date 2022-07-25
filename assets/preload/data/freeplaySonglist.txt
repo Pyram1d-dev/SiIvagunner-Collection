@@ -8,6 +8,8 @@ Bopeebo Beta Mix:dad:1
 Bopeebo In-Game Version:dad:1
 Bopeebo Extended Version:dad:1
 Bopeebo Newgrounds Build:dad:1
+Bopeebo Short Version:dad:1
+Bopeebo Itch io Build:dad:1
 Fresh:dad-amogus:1
 Fresh In-Game Version:big-chungus:1
 Fresh Itch io Build:crazybus:1
@@ -15,11 +17,14 @@ Fresh Alternate Version:bomberman:1
 Fresh Vocal Mix:dad:1
 Fresh OST Version:dads:1
 Fresh Poop Version:dad-king:1
+Fresh Week 7 Update:plok:1
 Dad Battle:pain:1
 Dad Battle In-Game Version:mario:1
 Dad Battle In-Game Mix:mario-ded:1
 Dad Battle JP Version:mom-ragyo:1
 Dance Inferno:dad:1
+Electroman Adventures Alpha Mix:dad:1
+Bad Piggies:lady:1
 
 Spookeez Beta Mix:spooky:2
 Spookeez In-Game Version:spooky-slam:2
@@ -50,6 +55,8 @@ Milf Beta Mix:mom:4
 Milf In-Game Version:mom:4
 Milf Itch io Build:mom:4
 Milf JP Version:mom-car-neko:4
+Milf OST Version:mom-car-courtney:4
+Bonus Stage Alpha Mix:mario:4
 
 Cocoa Short Version:parents-christmas:5
 Eggnog:parents-christmas:5:new
@@ -82,6 +89,10 @@ Lo-Fight:whitty:8
 Overhead:whitty-mars:8
 Ballistic:whittyCrazy:8
 Ballistic Beta Mix:whittyCrazySlam:8
+Low-Rise:julian:8
+Underground:julian:8
+Underground In-Game Mix:julian:8
+Hungry:julian:8
 Heat In Your Hand Beta Mix:whitty:8
 
 Wocky:kapi:9

@@ -25,12 +25,15 @@
                 "Bopeebo In-Game Version",
                 "Bopeebo Extended Version",
                 "Bopeebo Newgrounds Build",
+                "Bopeebo Short Version",
+                "Bopeebo Itch io Build",
                 "Fresh",
                 "Fresh In-Game Version",
 				"Fresh Alternate Version",
                 "Fresh Vocal Mix",
                 "Fresh OST Version",
                 "Fresh Poop Version",
+                "Fresh Week 7 Update",
                 "Dad Battle In-Game Version",
                 "Dad Battle In-Game Mix",
 				"Dad Battle JP Version"
@@ -96,7 +99,8 @@
                 "Milf Beta Mix",
                 "Milf In-Game Version",
                 "Milf Itch io Build",
-                "Milf JP Version"
+                "Milf JP Version",
+                "Milf OST Version"
             ]
         },
         {
@@ -152,7 +156,11 @@
                 "Lo-Fight",
                 "Overhead",
                 "Ballistic",
-                "Ballistic Beta Mix"
+                "Ballistic Beta Mix",
+                "Low-Rise",
+                "Underground",
+                "Underground In-Game Mix",
+                "Hungry"
             ]
         },
         {
@@ -216,6 +224,7 @@
             "week":"awesome",
             "songs":[
                 "Fresh Itch io Build",
+                "Dad Battle",
                 "Winter Horrorland Short Version"
             ]
         },
@@ -241,7 +250,10 @@
                 "Dance Inferno",
                 "Heat In Your Hand Beta Mix",
                 "Konga Conga Kappa Original Mix",
-                "The Fab Fairies Dance"
+                "The Fab Fairies Dance",
+                "Electroman Adventures Alpha Mix",
+                "Bonus Stage Alpha Mix",
+                "Bad Piggies"
             ]
         }
     ]

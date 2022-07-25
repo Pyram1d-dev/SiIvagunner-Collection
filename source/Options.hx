@@ -214,6 +214,8 @@ class DownscrollOption extends Option
 		super();
 		description = desc;
 		updateOption = true;
+		if (PlayState.instance != null && (PlayStateChangeables.Optimize || PlayState.instance.executeModchart))
+			quickOptionsAccess = false;
 	}
 
 	public override function press():Bool
@@ -236,7 +238,7 @@ class MidscrollOption extends Option
 		super();
 		description = desc;
 		updateOption = true;
-		if (PlayStateChangeables.Optimize && PlayState.instance != null)
+		if (PlayState.instance != null && (PlayStateChangeables.Optimize || PlayState.instance.executeModchart))
 			quickOptionsAccess = false;
 	}
 
@@ -1438,7 +1440,7 @@ class PlayEnemyOption extends Option // Some enemies in this game look like they
 		super();
 		description = desc;
 		updateOption = true;
-		if (PlayStateChangeables.Optimize && PlayState.instance != null)
+		if (PlayState.instance != null && (PlayStateChangeables.Optimize || PlayState.instance.executeModchart))
 			quickOptionsAccess = false;
 		// fuck that
 	}

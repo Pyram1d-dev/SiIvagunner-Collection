@@ -1,5 +1,7 @@
 package;
 
+import Character.CharacterData;
+import lime.utils.Assets;
 import flixel.FlxG;
 import flixel.FlxSprite;
 
@@ -10,15 +12,6 @@ class HealthIcon extends FlxSprite
 	public var char:String = 'bf';
 	public var isPlayer:Bool = false;
 	public var isOldIcon:Bool = false;
-
-	// There's probably a more automated and/or efficient way to do this. Too bad!
-	// Ok this is getting worryingly large, I think I do have to change how this works after all. I'll do it next update lol
-	static var exceptions:Array<String> = [
-		'bf-pixel', 'bf-old', 'bf-amogus', 'big-chungus', 'dad-amogus', 'dad-king', 'spooky-slam', 'bf-slam', 'bf-ryuko', 'mom-ragyo', 'spooky-tetris',
-		'pico-grandpa', 'pico-igor', 'bf-igor', 'bf-richter', 'pico-cringe', 'pico-fw', 'bf-pixel-squisherz', 'bf-pixel-daft', 'senpai-punk',
-		'senpai-punk-full', 'senpai-will', 'senpai-skeletron', 'spirit-gariwald', 'spirit-giygas', 'mario-ded', 'bf-pixel-terraria', 'tankman-homedepot',
-		'bf-sockdude', 'parents-games', 'bf-sonic', 'bf-reimu', 'bf-hk', 'mom-car-neko', 'bf-lady', 'bf-pixel-knuck', 'bf-christmas-aloe'
-	];
 
 	/**
 	 * Used for FreeplayState! If you use it elsewhere, prob gonna annoying
@@ -47,17 +40,26 @@ class HealthIcon extends FlxSprite
 
 	public function changeIcon(char:String)
 	{
-		if (char.startsWith('bf-pixel') && !exceptions.contains(char))
-			char = 'bf-pixel';
+		var potentialData:CharacterData = Character.loadCharacterFromJSON(char);
+		var aa = false;
+		if (potentialData != null && potentialData.icon != null)
+		{
+			aa = potentialData.isPixel ? false : FlxG.save.data.antialiasing;
+			char = potentialData.icon;
+		}
+		else
+		{
+			if (char.startsWith('bf-pixel') && !Assets.exists(Paths.image('icons/icon-$char')))
+				char = 'bf-pixel';
 
-		if (!exceptions.contains(char) && !char.startsWith("gf"))
-			char = char.split("-")[0];
+			if (!Assets.exists(Paths.image('icons/icon-$char')) && !char.startsWith("gf"))
+				char = char.split("-")[0];
+
+			aa = !(char.endsWith('-pixel') || char.startsWith('senpai') || char.startsWith('spirit'));
+		}
 
 		loadGraphic(Paths.image('icons/icon-' + char), true, 150, 150);
-		if (char.endsWith('-pixel') || char.startsWith('senpai') || char.startsWith('spirit'))
-			antialiasing = false
-		else
-			antialiasing = FlxG.save.data.antialiasing;
+		antialiasing = aa;
 		animation.add(char, [0, 1], 0, false, isPlayer);
 		animation.play(char);
 	}

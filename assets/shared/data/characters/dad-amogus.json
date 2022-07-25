@@ -1,0 +1,45 @@
+{
+    "texturePath":"Dads/DADDY_DEAREST_amogus",
+    "hasUniqueOffsets":true,
+    "characterColor":"0xFFFA0000",
+    "animationData":[
+        {
+            "name":"idle",
+            "identifier":"Dad idle dance",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"Dad Sing Note UP",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP-alt",
+            "identifier":"Drip",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"Dad Sing Note LEFT",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"Dad Sing Note RIGHT",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"Dad Sing Note DOWN",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "baseCharacter":"dad",
+    "copyAllFromBase":true
+}

@@ -1,0 +1,26 @@
+data.camZoom = 0.7;
+data.charPositions = [
+    [325, 30],
+    [200, 200],
+    [200, 80]
+];
+
+var stageback = new FlxSprite(-870, -360).loadGraphic(Paths.image('Definitive/walnospider', 'bonusWeek'));
+stageback.scrollFactor.set(0.9, 0.9);
+data.swagBacks['stageback'] = stageback;
+data.toAdd.push(stageback);
+
+var stagefront = new FlxSprite(-600, -350).loadGraphic(Paths.image('Definitive/thagroun', 'bonusWeek'));
+data.swagBacks['stagefront'] = stagefront;
+data.toAdd.push(stagefront);
+
+var moonlight1 = new FlxSprite(-600, -350).loadGraphic(Paths.image('Definitive/moonlight1', 'bonusWeek'));
+moonlight1.blend = BlendMode.MULTIPLY;
+data.swagBacks['moonlight1'] = moonlight1;
+data.layInFront[2].push(moonlight1);
+
+var moonlight2 = new FlxSprite(-600, -350).loadGraphic(Paths.image('Definitive/moonlight2', 'bonusWeek'));
+moonlight2.blend = BlendMode.ADD;
+moonlight2.alpha = 0.4;
+data.swagBacks['moonlight2'] = moonlight2;
+data.layInFront[2].push(moonlight2);

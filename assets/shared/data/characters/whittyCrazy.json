@@ -1,0 +1,43 @@
+{
+    "texturePath":"Whitty/WhittyCrazy",
+    "hasUniqueOffsets":true,
+    "characterColor":"0xFFFF6200",
+    "biDirectional":false,
+    "scale":1,
+    "positionOffset":[-100, 0],
+    "isPixel":false,
+    "animationData":[
+        {
+            "name":"idle",
+            "identifier":"Whitty idle dance",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"Whitty Sing Note UP",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"Whitty Sing Note LEFT",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"whitty sing note right",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"Whitty Sing Note DOWN",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "flipX":false,
+    "baseCharacter":null
+}

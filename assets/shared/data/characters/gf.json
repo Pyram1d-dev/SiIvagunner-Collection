@@ -1,0 +1,84 @@
+{
+    "texturePath":"GFs/GF_assets",
+    "hasUniqueOffsets":true,
+    "biDirectional":true,
+    "scale":1,
+    
+    "positionOffset":[0, 0],
+    "isPixel":false,
+    "animationData":[
+        {
+            "name":"danceRight",
+            "identifier":"GF Dancing Beat",
+            "indicies": [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29],
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"danceLeft",
+            "identifier":"GF Dancing Beat",
+            "indicies": [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"cheer",
+            "identifier":"GF Cheer",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"GF Up Note",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"GF left note",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"GF Right Note",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"GF Down Note",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"sad",
+            "identifier":"gf sad",
+            "indicies":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"hairBlow",
+            "identifier":"GF Dancing Beat Hair blowing",
+            "indicies":[0, 1, 2, 3],
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"hairFall",
+            "identifier":"GF Dancing Beat Hair Landing",
+            "indicies":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"scared",
+            "identifier":"GF FEAR",
+            "framerate":24,
+            "looped":true
+        }
+    ],
+    "flipX":false,
+    "baseCharacter":null
+}

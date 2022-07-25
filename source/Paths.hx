@@ -12,12 +12,14 @@ class Paths
 
 	static var currentLevel:String;
 
+	public static var songPath:String = "assets/data/SONGS/";
+
 	static public function setCurrentLevel(name:String)
 	{
 		currentLevel = name.toLowerCase();
 	}
 
-	static function getPath(file:String, type:AssetType, library:Null<String>, ?debug:Bool = false)
+	static function getPath(file:String, type:AssetType, library:Null<String>, debug:Bool = false)
 	{
 		if (debug)
 			trace(file + ", " + library + ", " + getLibraryPath(file, library));
@@ -112,14 +114,7 @@ class Paths
 
 	inline static public function voices(song:String, ?isCover:Bool = false)
 	{
-		var songLowercase = StringTools.replace(song, " ", "-").toLowerCase();
-		switch (songLowercase)
-		{
-			case 'dad-battle':
-				songLowercase = 'dadbattle';
-			case 'philly-nice':
-				songLowercase = 'philly';
-		}
+		var songLowercase = CoolUtil.lowerCaseSong(song);
 		var crAdder = (isCover) ? '-cover' : '';
 		if (isCover)
 			trace("LOADING COVER OF " + song.toUpperCase() + "'S VOICES");
@@ -128,14 +123,7 @@ class Paths
 
 	inline static public function inst(song:String, ?isCover:Bool = false)
 	{
-		var songLowercase = StringTools.replace(song, " ", "-").toLowerCase();
-		switch (songLowercase)
-		{
-			case 'dad-battle':
-				songLowercase = 'dadbattle';
-			case 'philly-nice':
-				songLowercase = 'philly';
-		}
+		var songLowercase = CoolUtil.lowerCaseSong(song);
 		var crAdder = (isCover) ? '-cover' : '';
 		if (isCover)
 			trace("LOADING COVER OF " + song.toUpperCase() + "'S INSTRUMENTAL TRACK");

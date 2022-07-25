@@ -1,0 +1,96 @@
+{
+    "texturePath":"BFs/BOYFRIEND",
+    "hasUniqueOffsets":true,
+    "biDirectional":false,
+    "scale":1,
+    "positionOffset":[0, 0],
+    "isPixel":false,
+    "animationData":[
+        {
+            "name":"idle",
+            "identifier":"BF idle dance",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUP",
+            "identifier":"BF NOTE UP0",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFT",
+            "identifier":"BF NOTE LEFT0",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHT",
+            "identifier":"BF NOTE RIGHT0",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWN",
+            "identifier":"BF NOTE DOWN0",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singUPmiss",
+            "identifier":"BF NOTE UP MISS",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singLEFTmiss",
+            "identifier":"BF NOTE LEFT MISS",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singRIGHTmiss",
+            "identifier":"BF NOTE RIGHT MISS",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"singDOWNmiss",
+            "identifier":"BF NOTE DOWN MISS",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"hey",
+            "identifier":"BF HEY",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"firstDeath",
+            "identifier":"BF dies",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"deathLoop",
+            "identifier":"BF Dead Loop",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"deathConfirm",
+            "identifier":"BF Dead confirm",
+            "framerate":24,
+            "looped":false
+        },
+        {
+            "name":"scared",
+            "identifier":"BF idle shaking",
+            "framerate":24,
+            "looped":false
+        }
+    ],
+    "flipX":true,
+    "baseCharacter":null
+}

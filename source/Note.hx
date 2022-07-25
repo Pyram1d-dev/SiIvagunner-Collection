@@ -38,6 +38,7 @@ typedef MineData =
 typedef NoteSkinData =
 {
 	var name:String;
+	var skinOverride:Null<String>;
 	var type:String;
 	var splats:String;
 	var uiSkin:String;
@@ -68,6 +69,8 @@ class Note extends FlxSprite
 	public var isSustainNote:Bool = false;
 	public var originColor:Int = 0; // The sustain note's original note's color
 	public var noteSection:Int = 0;
+
+	public var luaID:Int = 0;
 
 	public var isAlt:Bool = false;
 
@@ -354,26 +357,31 @@ class Note extends FlxSprite
 		{
 			var strumCheck:Float = rStrumTime;
 
-			// I give up on fluctuating bpms. something has to be subtracted from strumCheck to make them look right but idk what.
-			// I'd use the note's section's start time but neither the note's section nor its start time are accessible by themselves
-			// strumCheck -= ???
-
-			// Well I mean, looks like Kade figured it out in 1.7 but I'm pretty sure that requires me to use the in-game chart editor
-			// so nah fuck that imma keep using SNIFF the players can cry about it ¯\_(ツ)_/¯
-			// No offense to Kade's version of the chart editor but shit's kinda busted in this version and also FL is nice to use lol
-
-			// update: LMAO I FIGURED IT OUT LET'S GO BAYBEE
-
-			// I did fix the receptor colors in this version so they don't have to cry about that ;D
-
-			var strumStep = (beat != null ? beat * 8 : strumCheck / (Conductor.stepCrochet / 2)) + 0.0001;
+			var strumStep = (beat != null ? beat * 8 : strumCheck / (Conductor.stepCrochet / 2));
 
 			var ind:Int = Std.int(Math.round(strumStep));
 
-			//trace(strumStep, ind % 8);
+			// trace(strumStep, ind % 8);
 
 			var col:Int = 0;
 			col = quantityColor[ind % 8]; // Set the color depending on the beats
+
+			// var beatRow = Math.round(beat * 48);
+
+			// // STOLEN ETTERNA CODE (IN 2002)
+
+			// if (beatRow % (192 / 4) == 0)
+			// 	col = quantityColor[0];
+			// else if (beatRow % (192 / 8) == 0)
+			// 	col = quantityColor[2];
+			// else if (beatRow % (192 / 12) == 0)
+			// 	col = quantityColor[4];
+			// else if (beatRow % (192 / 16) == 0)
+			// 	col = quantityColor[6];
+			// else if (beatRow % (192 / 24) == 0)
+			// 	col = quantityColor[4];
+			// else if (beatRow % (192 / 32) == 0)
+			// 	col = quantityColor[4];
 
 			animation.play(dataColor[col] + 'Scroll');
 			localAngle -= arrowAngles[col];

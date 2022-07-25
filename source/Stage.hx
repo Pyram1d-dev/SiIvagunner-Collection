@@ -19,25 +19,6 @@ class StageData
 	public var curStage:String = '';
 	public var halloweenLevel:Bool = false;
 	public var camZoom:Float = 1.05;
-	public var toAdd:Array<Dynamic> = [];
-	public var swagBacks:Map<String, Dynamic> = [];
-	public var swagGroup:Map<String, FlxTypedGroup<Dynamic>> = [];
-	public var swagDancerGroup:Array<FlxTypedGroup<Dancer>> = [];
-	public var swagSounds:Map<String, FlxSound> = [];
-	public var animatedBacks:Array<FlxSprite> = [];
-	public var layInFront:Array<Array<Dynamic>> = [[], [], []];
-	public var slowBacks:Map<Int,Array<FlxSprite>> = [];
-	public var swagDancers:Map<String,Dynamic> = [];
-	public var distractions:Array<Dynamic> = [];
-	public var isPixel:Bool = false;
-	public function new() {}
-}
-
-class Stage // Stolen from KE 1.7 :troll:
-{
-	public var curStage:String = '';
-	public var halloweenLevel:Bool = false;
-	public var camZoom:Float = 1.05;
 	public var hideLastBG:Bool = false; // True = hide last BG and show ones from slowBacks on certain step, False = Toggle Visibility of BGs from SlowBacks on certain step
 	public var tweenDuration:Float = 2; // How long will it tween hiding/showing BGs, variable above must be set to True for tween to activate
 	public var toAdd:Array<Dynamic> = []; // Add BGs on stage startup, load BG in by using "toAdd.push(bgVar);"
@@ -52,7 +33,15 @@ class Stage // Stolen from KE 1.7 :troll:
 	public var swagDancers:Map<String, Dynamic> = []; // Group for objects with a dance() function so that doesn't have to be manually added to beatHit in PlayState. (This is something that wasn't in KE 1.7 that I added)
 	public var distractions:Array<Dynamic> = []; // Why have I complicated this whole thing
 	public var isPixel:Bool = false; // PIXEL STAGES (for AA settings)
-	
+	public var charPositions:Array<Array<Int>> = [[0, 0], [0, 0], [0, 0]]; // [0] - BF, [1] - GF, [2] - Opponent
+	public var stageCamOffsets:Array<Array<Int>> = [[0, 0], [0, 0]]; // [0] - BF, [1] - Opponent
+	public function new() {}
+}
+
+class Stage // Stolen from KE 1.7 :troll: (this was true like 5 updates ago but then I made it load from a script so it's not the same at all anymore lmao)
+{
+	public var data:StageData;
+
 	public function new(stageCheck:String, rootSong:String, songLowercase:String, daPixelZoom:Float)
 	{
 		switch (stageCheck)
@@ -60,31 +49,15 @@ class Stage // Stolen from KE 1.7 :troll:
 			case 'ballisticAlley':
 				stageCheck = 'alley';
 		}
-		var stageData:StageData = HScriptHandler.loadStageFromHScript(stageCheck);
-		curStage = stageData.curStage;
-		halloweenLevel = stageData.halloweenLevel;
-		camZoom = stageData.camZoom;
-		toAdd = stageData.toAdd;
-		swagBacks = stageData.swagBacks;
-		swagGroup = stageData.swagGroup;
-		swagDancerGroup = stageData.swagDancerGroup;
-		swagSounds = stageData.swagSounds;
-		animatedBacks = stageData.animatedBacks;
-		layInFront = stageData.layInFront;
-		slowBacks = stageData.slowBacks;
-		swagDancers = stageData.swagDancers;
-		distractions = stageData.distractions;
-		isPixel = stageData.isPixel;
-
-		trace(swagBacks);
+		data = HScriptHandler.loadStageFromHScript(stageCheck);
 
 		if (songLowercase == 'test')
-			layInFront[2].push(new AscendedPixelBF(15, 15));
+			data.layInFront[2].push(new AscendedPixelBF(15, 15));
 
-		for (i in swagDancers)
-			distractions.push(i);
+		for (i in data.swagDancers)
+			data.distractions.push(i);
 
-		trace(curStage);
-		PlayState.curStage = curStage;
+		trace(data.curStage);
+		PlayState.curStage = data.curStage;
     }
 }

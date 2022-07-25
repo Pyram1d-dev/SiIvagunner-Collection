@@ -1,5 +1,8 @@
 data.curStage = 'school';
 data.isPixel = true;
+data.charPositions[0] = [200, 220];
+data.charPositions[1] = [180, 300];
+data.stageCamOffsets[0] = [-200, -200];
 
 var bgSky = new FlxSprite().loadGraphic(Paths.image('weeb/weebSky', 'week6'));
 bgSky.scrollFactor.set(0.1, 0.1);

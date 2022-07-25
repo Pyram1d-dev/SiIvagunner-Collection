@@ -1,5 +1,7 @@
 data.camZoom = 0.75;
 data.curStage = 'nevada';
+data.charPositions[0] = [150, 0];
+data.stageCamOffsets[0] = [0, -300];
 
 var bg = new FlxSprite(-350, -300).loadGraphic(Paths.image('red', 'clown'));
 bg.antialiasing = true;
