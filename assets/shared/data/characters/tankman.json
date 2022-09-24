@@ -4,7 +4,6 @@
     "characterColor":"0xFFFFFFFF",
     "biDirectional":false,
     "scale":1,
-    
     "positionOffset":[110, 220],
     "isPixel":false,
     "animationData":[

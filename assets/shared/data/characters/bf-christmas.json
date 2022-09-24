@@ -3,7 +3,7 @@
     "hasUniqueOffsets":true,
     "biDirectional":false,
     "scale":1,
-    
+    "cameraOffset":[0, 330],
     "isPixel":false,
     "animationData":[
         {

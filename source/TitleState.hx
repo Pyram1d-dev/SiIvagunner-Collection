@@ -55,10 +55,6 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-		#if polymod
-		//polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']}); // This kept crashing my game so I kinda had to remove it. I have no idea why that is but whatever lol
-		#end
-		
 		#if sys
 		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
 			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");

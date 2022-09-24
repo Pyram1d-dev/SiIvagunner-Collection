@@ -3,16 +3,10 @@ package;
 import PlayState;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.addons.effects.FlxSkewedSprite;
-import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxMath;
-import flixel.util.FlxColor;
 import haxe.Exception;
 
 using StringTools;
-#if polymod
-import polymod.format.ParseRules.TargetSignatureElement;
-#end
 
 typedef AnimData = 
 {

@@ -1,6 +1,5 @@
 package;
 
-import sys.FileSystem;
 import Character.CharacterData;
 import LuaClass;
 import Note.MineData;
@@ -3619,8 +3618,8 @@ class PlayState extends MusicBeatState
 				member.angle = luaModchart.getVar("strum" + i + "Angle", "float");
 			}*/
 
-			FlxG.camera.angle = luaModchart.getVar('cameraAngle', 'float');
-			camHUD.angle = luaModchart.getVar('camHudAngle', 'float');
+			// FlxG.camera.angle = luaModchart.getVar('cameraAngle', 'float');
+			// camHUD.angle = luaModchart.getVar('camHudAngle', 'float');
 
 			if (luaModchart.getVar("showOnlyStrums", 'bool'))
 			{
