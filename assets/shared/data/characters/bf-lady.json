@@ -1,6 +1,7 @@
 {
     "texturePath":"BFs/BOYFRIEND_lady",
     "hasUniqueOffsets":true,
+    "positionOffset": [100, 0],
     "characterColor":"0xFFF57E07",
     "baseCharacter":"bf",
     "copyAllFromBase":true

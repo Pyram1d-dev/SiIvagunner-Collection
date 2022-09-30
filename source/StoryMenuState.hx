@@ -121,19 +121,21 @@ class WeekItem extends FlxTypedSpriteGroup<FlxSprite>
 	public override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-		var scaledFps = FPSScalingShit.scaledFPS();
 		fakeTargetY = targetY;
 		var weekLen = StoryMenuState.instance.weekData.length;
 		if (fakeTargetY > 6)
 			fakeTargetY -= weekLen;
 		else if (fakeTargetY < -6)
 			fakeTargetY += weekLen;
+		var coolColor = FlxColor.BLACK;
 		if (!stopTweeningLol)
 		{
 			x = CoolUtil.coolLerp(x, (-Math.abs((Math.exp(Math.abs(fakeTargetY)) - 1) / 4) * 200 - 120), 0.2);
 			y = CoolUtil.coolLerp(y, FlxG.height / 2 + fakeTargetY * (boxHeight + 20), 0.2);
+			if (position == position - targetY)
+				coolColor = FlxColor.GRAY;
 		}
-		bg.color = FlxColor.interpolate(bg.color, FlxColor.BLACK, elapsed);
+		bg.color = FlxColor.interpolate(bg.color, coolColor, elapsed * 3);
 	}
 
 	public function startFlashing(isSelected:Bool)

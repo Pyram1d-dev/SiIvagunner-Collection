@@ -37,10 +37,7 @@ typedef CharacterData = {
 	flipX:Bool,
 	characterColor:String,
 	baseCharacter:String,
-	toCopyFromBase:Array<String>,
 	copyAllFromBase:Bool,
-	dontCopy:Array<String>,
-	overrideConflictingProperties:Bool,
 	mergeProperties:Bool,
 	icon:String
 }
@@ -87,12 +84,10 @@ class Character extends FlxSprite
 		{
 			baseCharacterData = loadCharacterFromJSON(baseCharacter);
 
-			if (characterData.toCopyFromBase != null || characterData.copyAllFromBase)
+			if (characterData.copyAllFromBase)
 			{
-				if (characterData.dontCopy == null)
-					characterData.dontCopy = [];
 				
-				var toCopyTemp = [
+				var toCopy = [
 					"usePackerAtlas",
 					"biDirectional",
 					"scale",
@@ -104,15 +99,9 @@ class Character extends FlxSprite
 					"flipX",
 					"characterColor"
 				];
-				if (!(characterData.toCopyFromBase != null && characterData.toCopyFromBase[0].toLowerCase().trim() == "all") && !characterData.copyAllFromBase)
-					toCopyTemp = characterData.toCopyFromBase;
-
-				for (str in characterData.dontCopy)
-					if (toCopyTemp.contains(str))
-						toCopyTemp.remove(str);
 				
 				// Reflect my beloved
-				for (fieldName in toCopyTemp)
+				for (fieldName in toCopy)
 				{
 					var fieldExists = Reflect.hasField(characterData, fieldName);
 					var baseFieldExists = Reflect.hasField(baseCharacterData, fieldName);
@@ -122,8 +111,6 @@ class Character extends FlxSprite
 
 					if (fieldExists)
 					{
-						if (!characterData.overrideConflictingProperties && !characterData.mergeProperties)
-							continue;
 						if (characterData.mergeProperties)
 						{
 							switch (fieldName)
